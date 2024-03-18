@@ -2,127 +2,127 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>ticktechman.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2024-03-18T11:41:01+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/"
+                href="/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/"
+                href="/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/categories/blog/</loc>
+    <loc>/categories/blog/</loc>
     <lastmod>2024-03-18T11:40:25+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/categories/blog/"
+                href="/en/categories/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/categories/blog/"
+                href="/categories/blog/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2024-03-18T11:40:25+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/categories/"
+                href="/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/categories/"
+                href="/categories/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/blog/</loc>
+    <loc>/blog/</loc>
     <lastmod>2024-03-18T11:40:25+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/blog/"
+                href="/en/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/blog/"
+                href="/blog/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2024-03-18T11:33:18+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/about/"
+                href="/en/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/about/"
+                href="/about/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/archive/</loc>
+    <loc>/archive/</loc>
     <lastmod>2024-03-18T11:32:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/archive/"
+                href="/en/archive/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/archive/"
+                href="/archive/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/categories/series/</loc>
+    <loc>/categories/series/</loc>
     <lastmod>2024-03-18T11:32:38+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/categories/series/"
+                href="/en/categories/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/categories/series/"
+                href="/categories/series/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/series/</loc>
+    <loc>/series/</loc>
     <lastmod>2024-03-18T11:32:38+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/series/"
+                href="/en/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/series/"
+                href="/series/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/tags/pinned/</loc>
+    <loc>/tags/pinned/</loc>
     <lastmod>2024-03-18T11:00:32+08:00</lastmod>
   </url><url>
-    <loc>ticktechman.github.io/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2024-03-18T11:00:32+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/tags/"
+                href="/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/tags/"
+                href="/tags/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/blog/2024/starting-here/</loc>
+    <loc>/blog/2024/starting-here/</loc>
     <lastmod>2024-03-18T11:00:32+08:00</lastmod>
   </url>
 </urlset>

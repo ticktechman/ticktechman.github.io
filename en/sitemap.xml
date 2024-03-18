@@ -2,120 +2,120 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>ticktechman.github.io/en/</loc>
+    <loc>/en/</loc>
     <lastmod>2024-03-18T11:41:04+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/"
+                href="/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/"
+                href="/en/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/en/archive/</loc>
+    <loc>/en/archive/</loc>
     <lastmod>2024-03-18T11:37:35+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/archive/"
+                href="/archive/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/archive/"
+                href="/en/archive/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/en/categories/</loc>
+    <loc>/en/categories/</loc>
     <lastmod>2024-03-18T11:37:21+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/categories/"
+                href="/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/categories/"
+                href="/en/categories/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/en/categories/series/</loc>
+    <loc>/en/categories/series/</loc>
     <lastmod>2024-03-18T11:37:21+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/categories/series/"
+                href="/categories/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/categories/series/"
+                href="/en/categories/series/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/en/series/</loc>
+    <loc>/en/series/</loc>
     <lastmod>2024-03-18T11:37:21+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/series/"
+                href="/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/series/"
+                href="/en/series/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/en/categories/blog/</loc>
+    <loc>/en/categories/blog/</loc>
     <lastmod>2024-03-18T11:37:10+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/categories/blog/"
+                href="/categories/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/categories/blog/"
+                href="/en/categories/blog/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/en/blog/</loc>
+    <loc>/en/blog/</loc>
     <lastmod>2024-03-18T11:37:10+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/blog/"
+                href="/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/blog/"
+                href="/en/blog/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/en/about/</loc>
+    <loc>/en/about/</loc>
     <lastmod>2024-03-18T11:35:29+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/about/"
+                href="/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/about/"
+                href="/en/about/"
                 />
   </url><url>
-    <loc>ticktechman.github.io/en/tags/</loc>
+    <loc>/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="ticktechman.github.io/tags/"
+                href="/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="ticktechman.github.io/en/tags/"
+                href="/en/tags/"
                 />
   </url>
 </urlset>
