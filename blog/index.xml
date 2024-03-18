@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>博客 on Ticktechman&#39;s Blog</title>
+    <link>ticktechman.github.io/blog/</link>
+    <description>Recent content in 博客 on Ticktechman&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 18 Mar 2024 11:40:25 +0800</lastBuildDate><atom:link href="ticktechman.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>开篇</title>
+      <link>ticktechman.github.io/blog/2024/starting-here/</link>
+      <pubDate>Mon, 18 Mar 2024 11:00:32 +0800</pubDate>
+      
+      <guid>ticktechman.github.io/blog/2024/starting-here/</guid>
+      <description>刚刚（2024/3/18）新建了一套自己的博客系统，基于hugo和tailwindcss，纯手工打造。 1. 为什么要自己搭建？ 原因只有一个，就是</description>
+    </item>
+    
+  </channel>
+</rss>
