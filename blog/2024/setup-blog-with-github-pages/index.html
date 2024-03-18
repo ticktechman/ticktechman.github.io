@@ -5,7 +5,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文章归档</title>
+    <title>白嫖一个github博客系统</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -14,9 +14,9 @@
     <img name="logo" src="/assets/images/logo.png" >
     <ul name="menu-h-area">
       <li><a href='/' class=''>主页</a></li>
-      <li><a href='/blog' class=''>博客</a></li>
+      <li><a href='/blog' class='current-menu'>博客</a></li>
       <li><a href='/series' class=''>专栏</a></li>
-      <li><a href='/archive' class='current-menu'>归档</a></li>
+      <li><a href='/archive' class=''>归档</a></li>
       <li><a href='/about' class=''>关于</a></li>
     </ul>
     <div class="flex flow-col space-x-4 items-center place-content-center">
@@ -48,58 +48,59 @@
 </header>
 
     
+<main class="mt-16 pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
+    
+    <img class="w-full mt-16 h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/assets/images/banner/bg-4.jpg" alt="">
+    
+    <h2 class="pt-4 text-center">白嫖一个github博客系统</h2>
+    <h4 class="text-center text-gray-400 text-sm mb-3">
+      <span class="px-1 py-2">2024/03/18</span> 
+      <span class="px-1 py-2">|</span>
+      <span class="px-1 py-2">字数441</span> 
+      <span class="px-1 py-2">|</span> 
+      <span class="px-1 py-2">阅读1分钟</span>
+    </h4>
+    <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
+    
+    
+    <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+        <blockquote>
+<p>你现在看到的这个博客系统，就是托管在了github上，对于纯静态网站来说，github可能是性价比非常高的选择，非常适合纯纯的写作者朋友。</p>
+</blockquote>
+<h1 id="为什么选择github">为什么选择Github</h1>
+<ul>
+<li>免费（穷），域名+证书+带宽+服务器+存储，这些通通免费；</li>
+<li>简单（当然是相对于Github老鸟来说），一个git库就是一个网站；</li>
+<li>不需要实名认证和备案，虽然如此，也不要放违规内容上去；</li>
+<li>历史数据留存，不用单独开库保存历史记录；</li>
+</ul>
+<h1 id="前提">前提</h1>
+<ul>
+<li>熟悉Git基础操作</li>
+<li>了解Github的使用流程</li>
+<li>了解一些基础的HTML、CSS、JS编程</li>
+</ul>
+<h1 id="如何开通">如何开通</h1>
+<ol>
+<li>注册一个<a href="https://github.com/signup">github</a>账号：https://github.com/signup（老用户直接跳到第二步）；</li>
+<li>新建仓库，命名为<code>{your-user-name}.github.io</code>，这里的<code>{your-user-name}</code>是你的github用户名；</li>
+<li>上传你的网站内容（HTML、CSS、JS、图片等）；</li>
+<li>浏览器访问https://your-user-name.github.io（首次上传需要等待几分钟）；</li>
+</ol>
+<p>这里看下效果图：</p>
+<p><img src="/blog/2024/setup-blog-with-github-pages.png" alt="img"></p>
 
-<main class="mt-16 px-4 w-full bg-slate-50 dark:bg-slate-900 pb-4 dark:border-none">
-  <h1 class="pt-4 text-center">归档</h1>
-  <hr class="w-48 mt-2 mb-6">
-
-  
-  
-  
-    <div class="my-1 mx-auto gap-2 w-full border shadow rounded-md overflow-hidden dark:border-white/10 sm:w-5/6 lg:w-2/3 xl:w-1/2">
-      <div class="bg-gray-100/70 w-full flex flex-row px-4 py-2 dark:bg-gray-800 dark:border-gray-800 cursor-pointer" onclick="toggleArchiveList(this);">
-        <h4 class="flex flex-row my-auto">
-          <span class="my-auto">2024</span> 
-          <span class="mx-2 px-4 py-1 text-xs bg-slate-400 text-white rounded-full my-auto">2</span>
-        </h3>
-      </div>
-      <ul class="">
-        
-        <a href="/blog/2024/setup-blog-with-github-pages/">
-          <li class="flex flex-row px-4 py-3 duration-500 border-t hover:bg-gray-900/5 dark:border-white/10 dark:hover:bg-white/10">
-            <p class="shrink-0 grow-0 w-16 px-2 my-auto text-right text-sm text-gray-400">03/18</p>
-            <p class="grow my-auto">白嫖一个github博客系统</p>
-            
-              
-              <p class="rounded-full shrink-0 grow-0 w-[60px] py-1 my-auto bg-blue-500 text-white text-xs italic text-center hidden sm:block">
-                BLOG
-              </p>
-              
-            
-          </li>
-        </a>
-        
-        <a href="/blog/2024/starting-here/">
-          <li class="flex flex-row px-4 py-3 duration-500 border-t hover:bg-gray-900/5 dark:border-white/10 dark:hover:bg-white/10">
-            <p class="shrink-0 grow-0 w-16 px-2 my-auto text-right text-sm text-gray-400">03/18</p>
-            <p class="grow my-auto">开篇</p>
-            
-              
-              <p class="rounded-full shrink-0 grow-0 w-[60px] py-1 my-auto bg-blue-500 text-white text-xs italic text-center hidden sm:block">
-                BLOG
-              </p>
-              
-            
-          </li>
-        </a>
-        
-      </ul>
     </div>
     
-  
-
-
-</main>
+    <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+      
+      <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10" href="/blog/2024/starting-here/">上一篇：开篇</a>
+      
+      
+      <p></p>
+      
+    </div>
+  </main>
 
 
     <footer>
