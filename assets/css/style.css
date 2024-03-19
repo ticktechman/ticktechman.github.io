@@ -930,6 +930,10 @@ video {
   display: none;
 }
 
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
 .size-3 {
   width: 0.75rem;
   height: 0.75rem;
@@ -957,6 +961,14 @@ video {
 
 .h-full {
   height: 100%;
+}
+
+.max-h-\[360px\] {
+  max-height: 360px;
+}
+
+.max-h-\[480px\] {
+  max-height: 480px;
 }
 
 .w-1\/2 {
@@ -1029,6 +1041,14 @@ video {
 
 .min-w-\[340px\] {
   min-width: 340px;
+}
+
+.max-w-\[640px\] {
+  max-width: 640px;
+}
+
+.max-w-\[800px\] {
+  max-width: 800px;
 }
 
 .flex-none {
