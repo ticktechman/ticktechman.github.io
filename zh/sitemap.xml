@@ -2,130 +2,163 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/categories/blog/</loc>
-    <lastmod>2024-03-18T13:42:11+08:00</lastmod>
+    <loc>//localhost:1313/categories/</loc>
+    <lastmod>2024-03-18T19:23:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/categories/blog/"
+                href="//localhost:1313/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/categories/blog/"
+                href="//localhost:1313/categories/"
                 />
   </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2024-03-18T13:42:11+08:00</lastmod>
+    <loc>//localhost:1313/categories/series/</loc>
+    <lastmod>2024-03-18T19:23:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/categories/"
+                href="//localhost:1313/en/categories/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/categories/"
+                href="//localhost:1313/categories/series/"
                 />
   </url><url>
-    <loc>/tags/pinned/</loc>
-    <lastmod>2024-03-18T13:42:11+08:00</lastmod>
+    <loc>//localhost:1313/series/play-with-termux/inside/</loc>
+    <lastmod>2024-03-18T19:23:13+08:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>//localhost:1313/series/play-with-termux/access-from-wlan/</loc>
+    <lastmod>2024-03-18T19:08:03+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/series/play-with-termux/setup-postgresql-server/</loc>
+    <lastmod>2024-03-18T19:07:01+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/series/play-with-termux/setup-redis-server/</loc>
+    <lastmod>2024-03-18T19:06:49+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/series/play-with-termux/setup-web-server/</loc>
+    <lastmod>2024-03-18T19:06:20+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/series/play-with-termux/setup-svn-server/</loc>
+    <lastmod>2024-03-18T19:06:16+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/series/play-with-termux/setup-git-server/</loc>
+    <lastmod>2024-03-18T19:02:35+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/series/play-with-termux/setup-ssh-server/</loc>
+    <lastmod>2024-03-18T18:56:32+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/series/play-with-termux/how-to-install-termux/</loc>
+    <lastmod>2024-03-18T18:51:26+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/series/play-with-termux/what-is-termux/</loc>
+    <lastmod>2024-03-18T18:34:12+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/series/play-with-termux/</loc>
+    <lastmod>2024-03-18T18:26:42+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/categories/blog/</loc>
     <lastmod>2024-03-18T13:42:11+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/tags/"
+                href="//localhost:1313/en/categories/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/tags/"
+                href="//localhost:1313/categories/blog/"
                 />
   </url><url>
-    <loc>/blog/2024/setup-blog-with-github-pages/</loc>
+    <loc>//localhost:1313/tags/pinned/</loc>
     <lastmod>2024-03-18T13:42:11+08:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2024-03-18T13:42:11+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="//localhost:1313/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="//localhost:1313/tags/"
+                />
+  </url><url>
+    <loc>//localhost:1313/blog/2024/setup-blog-with-github-pages/</loc>
+    <lastmod>2024-03-18T13:42:11+08:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/</loc>
     <lastmod>2024-03-18T11:41:01+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/"
+                href="//localhost:1313/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/"
+                href="//localhost:1313/"
                 />
   </url><url>
-    <loc>/blog/</loc>
+    <loc>//localhost:1313/blog/</loc>
     <lastmod>2024-03-18T11:40:25+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/blog/"
+                href="//localhost:1313/en/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/blog/"
+                href="//localhost:1313/blog/"
                 />
   </url><url>
-    <loc>/about/</loc>
+    <loc>//localhost:1313/about/</loc>
     <lastmod>2024-03-18T11:33:18+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/about/"
+                href="//localhost:1313/en/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/about/"
+                href="//localhost:1313/about/"
                 />
   </url><url>
-    <loc>/archive/</loc>
+    <loc>//localhost:1313/archive/</loc>
     <lastmod>2024-03-18T11:32:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/archive/"
+                href="//localhost:1313/en/archive/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/archive/"
+                href="//localhost:1313/archive/"
                 />
   </url><url>
-    <loc>/categories/series/</loc>
+    <loc>//localhost:1313/series/</loc>
     <lastmod>2024-03-18T11:32:38+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/categories/series/"
+                href="//localhost:1313/en/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/categories/series/"
+                href="//localhost:1313/series/"
                 />
   </url><url>
-    <loc>/series/</loc>
-    <lastmod>2024-03-18T11:32:38+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="/en/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="/series/"
-                />
-  </url><url>
-    <loc>/blog/2024/starting-here/</loc>
+    <loc>//localhost:1313/blog/2024/starting-here/</loc>
     <lastmod>2024-03-18T11:00:32+08:00</lastmod>
   </url>
 </urlset>

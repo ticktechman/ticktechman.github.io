@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>series on Ticktechman&#39;s Blog</title>
-    <link>/en/categories/series/</link>
-    <description>Recent content in series on Ticktechman&#39;s Blog</description>
+    <title>Series on Ticktechman&#39;s Blog</title>
+    <link>//localhost:1313/en/categories/series/</link>
+    <description>Recent content in Series on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 18 Mar 2024 11:37:21 +0800</lastBuildDate><atom:link href="/en/categories/series/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Mar 2024 11:37:21 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/en/categories/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Series</title>
-      <link>/en/series/</link>
+      <link>//localhost:1313/en/series/</link>
       <pubDate>Mon, 18 Mar 2024 11:37:21 +0800</pubDate>
-      
-      <guid>/en/series/</guid>
+      <guid>//localhost:1313/en/series/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

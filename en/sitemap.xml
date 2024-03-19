@@ -2,120 +2,120 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/en/</loc>
+    <loc>//localhost:1313/en/</loc>
     <lastmod>2024-03-18T11:41:04+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/"
+                href="//localhost:1313/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/"
+                href="//localhost:1313/en/"
                 />
   </url><url>
-    <loc>/en/archive/</loc>
+    <loc>//localhost:1313/en/archive/</loc>
     <lastmod>2024-03-18T11:37:35+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/archive/"
+                href="//localhost:1313/archive/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/archive/"
+                href="//localhost:1313/en/archive/"
                 />
   </url><url>
-    <loc>/en/categories/</loc>
+    <loc>//localhost:1313/en/categories/</loc>
     <lastmod>2024-03-18T11:37:21+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/categories/"
+                href="//localhost:1313/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/categories/"
+                href="//localhost:1313/en/categories/"
                 />
   </url><url>
-    <loc>/en/categories/series/</loc>
+    <loc>//localhost:1313/en/categories/series/</loc>
     <lastmod>2024-03-18T11:37:21+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/categories/series/"
+                href="//localhost:1313/categories/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/categories/series/"
+                href="//localhost:1313/en/categories/series/"
                 />
   </url><url>
-    <loc>/en/series/</loc>
+    <loc>//localhost:1313/en/series/</loc>
     <lastmod>2024-03-18T11:37:21+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/series/"
+                href="//localhost:1313/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/series/"
+                href="//localhost:1313/en/series/"
                 />
   </url><url>
-    <loc>/en/categories/blog/</loc>
+    <loc>//localhost:1313/en/categories/blog/</loc>
     <lastmod>2024-03-18T11:37:10+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/categories/blog/"
+                href="//localhost:1313/categories/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/categories/blog/"
+                href="//localhost:1313/en/categories/blog/"
                 />
   </url><url>
-    <loc>/en/blog/</loc>
+    <loc>//localhost:1313/en/blog/</loc>
     <lastmod>2024-03-18T11:37:10+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/blog/"
+                href="//localhost:1313/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/blog/"
+                href="//localhost:1313/en/blog/"
                 />
   </url><url>
-    <loc>/en/about/</loc>
+    <loc>//localhost:1313/en/about/</loc>
     <lastmod>2024-03-18T11:35:29+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/about/"
+                href="//localhost:1313/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/about/"
+                href="//localhost:1313/en/about/"
                 />
   </url><url>
-    <loc>/en/tags/</loc>
+    <loc>//localhost:1313/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/tags/"
+                href="//localhost:1313/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/en/tags/"
+                href="//localhost:1313/en/tags/"
                 />
   </url>
 </urlset>

@@ -2,10 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About on Ticktechman&#39;s Blog</title>
-    <link>/en/about/</link>
+    <link>//localhost:1313/en/about/</link>
     <description>Recent content in About on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 18 Mar 2024 11:35:29 +0800</lastBuildDate><atom:link href="/en/about/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="//localhost:1313/en/about/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
