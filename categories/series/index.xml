@@ -62,21 +62,21 @@
       <link>//localhost:1313/series/play-with-termux/setup-ssh-server/</link>
       <pubDate>Mon, 18 Mar 2024 18:56:32 +0800</pubDate>
       <guid>//localhost:1313/series/play-with-termux/setup-ssh-server/</guid>
-      <description></description>
+      <description>准备工作 在安全所有软件之前，需要先使用下面的命令更新系统 1 2 3 4 5 6 7 apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade 用过u</description>
     </item>
     <item>
-      <title>玩转termux | 2.软件安装</title>
+      <title>玩转termux | 2.立即安装</title>
       <link>//localhost:1313/series/play-with-termux/how-to-install-termux/</link>
       <pubDate>Mon, 18 Mar 2024 18:51:26 +0800</pubDate>
       <guid>//localhost:1313/series/play-with-termux/how-to-install-termux/</guid>
-      <description></description>
+      <description>安装 在github上可以找到最新的安装包：https://github.com/termux/termux-app/releases 选择这个</description>
     </item>
     <item>
       <title>玩转termux | 1.什么是termux</title>
       <link>//localhost:1313/series/play-with-termux/what-is-termux/</link>
       <pubDate>Mon, 18 Mar 2024 18:34:12 +0800</pubDate>
       <guid>//localhost:1313/series/play-with-termux/what-is-termux/</guid>
-      <description>简单来说，termux是一个android应用，实现了一个控制台界面和一个最小根文件系统，整个APK大小才30MB（基于目前最新的v0.11</description>
+      <description>能做什么 简单来说，termux是一个android应用，实现了一个控制台界面和一个Linux最小根文件系统，整个APK大小才30MB（基于目</description>
     </item>
     <item>
       <title>玩转termux</title>
