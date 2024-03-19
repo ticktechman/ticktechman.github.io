@@ -48,21 +48,21 @@
       <link>//localhost:1313/series/play-with-termux/setup-svn-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:06:16 +0800</pubDate>
       <guid>//localhost:1313/series/play-with-termux/setup-svn-server/</guid>
-      <description></description>
+      <description>SVN也是一个代码管理工具，一般用来存储二进制的文件，例如word文档，图片或者压缩包等，自带权限管理功能。笔者一般用它来作为文档配置库用，</description>
     </item>
     <item>
       <title>玩转termux | 4.搭建git服务</title>
       <link>//localhost:1313/series/play-with-termux/setup-git-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:02:35 +0800</pubDate>
       <guid>//localhost:1313/series/play-with-termux/setup-git-server/</guid>
-      <description></description>
+      <description>说明：本文只搭建基于ssh的简单git服务，没有权限管理等一些复杂操作，不会用到gitlab这种大型的git服务软件，不感兴趣的读者可以跳过</description>
     </item>
     <item>
       <title>玩转termux | 3.搭建ssh服务</title>
       <link>//localhost:1313/series/play-with-termux/setup-ssh-server/</link>
       <pubDate>Mon, 18 Mar 2024 18:56:32 +0800</pubDate>
       <guid>//localhost:1313/series/play-with-termux/setup-ssh-server/</guid>
-      <description>准备工作 在安全所有软件之前，需要先使用下面的命令更新系统 1 2 3 4 5 6 7 apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade 用过u</description>
+      <description>准备工作 在安装所有软件之前，需要先使用下面的命令更新系统 1 2 3 4 5 6 7 apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade 用过u</description>
     </item>
     <item>
       <title>玩转termux | 2.立即安装</title>

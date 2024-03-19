@@ -56,15 +56,206 @@
     <h4 class="text-center text-gray-400 text-sm mb-3">
       <span class="px-1 py-2">2024/03/18</span> 
       <span class="px-1 py-2">|</span>
-      <span class="px-1 py-2">字数0</span> 
+      <span class="px-1 py-2">字数404</span> 
       <span class="px-1 py-2">|</span> 
-      <span class="px-1 py-2">阅读0分钟</span>
+      <span class="px-1 py-2">阅读1分钟</span>
     </h4>
     <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
     
     
     <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+        <blockquote>
+<p>SVN也是一个代码管理工具，一般用来存储二进制的文件，例如word文档，图片或者压缩包等，自带权限管理功能。笔者一般用它来作为文档配置库用，也有公司用来作为软件发布包的配置库来用。</p>
+</blockquote>
+<p>这里我们不对SVN是什么做说明，感兴趣的读者可以自行Google。这里假设你需要一个SVN库，又不想占用过多资源，可以考虑在termux中搭建一个。</p>
+<h1 id="安装">安装</h1>
+<p>使用下面的命令安装软件，这里包含了服务器和客户端软件：</p>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
+        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install -y subversion</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">apt install -y subversion</div>
+    </div>
+</div>
+<h1 id="配置启动">配置&amp;启动</h1>
+<ol>
+<li>创建仓库：<code>svnadmin create svn-repo</code></li>
+<li>配置权限</li>
+</ol>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <pre tabindex="0"><code class="language-conf" data-lang="conf">## file: svn-repo/conf/authz
+## 1. group name: dev, users in dev group: userA, userB
+[groups]
+dev = userA, userB
+
+## dev group have read and write permission
+[/]
+@dev = rw</code></pre>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">## file: svn-repo/conf/authz
+## 1. group name: dev, users in dev group: userA, userB
+[groups]
+dev = userA, userB
+
+## dev group have read and write permission
+[/]
+@dev = rw</div>
+    </div>
+</div>
+<ol start="3">
+<li>配置用户名以及密码</li>
+</ol>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <pre tabindex="0"><code class="language-conf" data-lang="conf">## file: svn-repo/conf/passwd
+[users]
+userA = passwd
+userB = passwd</code></pre>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">## file: svn-repo/conf/passwd
+[users]
+userA = passwd
+userB = passwd</div>
+    </div>
+</div>
+<ol start="4">
+<li>配置服务参数</li>
+</ol>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <pre tabindex="0"><code class="language-conf" data-lang="conf">## file: svn-repo/conf/svnserve.conf
+[general]
+anon-access = none
+password-db = passwd
+authz-db = authz</code></pre>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">## file: svn-repo/conf/svnserve.conf
+[general]
+anon-access = none
+password-db = passwd
+authz-db = authz</div>
+    </div>
+</div>
+<ol start="5">
+<li>启动服务</li>
+</ol>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>svnserve -d -r <span style="color:#e06c75">$HOME</span>/svn-repo</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">svnserve -d -r $HOME/svn-repo</div>
+    </div>
+</div>
+<h1 id="验证">验证</h1>
+<p>需要在电脑上执行，同时保证你电脑上安装了svn客户端软件：</p>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>svn ls svn://<span style="color:#e06c75">$your</span>-termux-ip/</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">svn ls svn://$your-termux-ip/</div>
+    </div>
+</div>
+
     </div>
     
     <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
