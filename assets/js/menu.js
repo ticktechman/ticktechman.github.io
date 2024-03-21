@@ -50,3 +50,59 @@ function copyCode(elem) {
 
   }
 }
+
+
+function imageZoomIn(ev, e) {
+  console.log("image zoom in");
+  if (e.classList.contains("max-w-max")) {
+    e.classList.remove("max-w-max");
+    e.classList.remove("max-h-max");
+    e.classList.remove("cursor-zoom-out");
+    e.classList.add("max-w-[100vw]");
+    e.classList.add("max-h-[100vh]");
+    e.classList.add("cursor-zoom-in");
+  } else {
+    e.classList.remove("max-w-[100vw]");
+    e.classList.remove("max-h-[100vh]");
+    e.classList.add("max-w-max");
+    e.classList.add("max-h-max");
+    e.classList.remove("cursor-zoom-in");
+    e.classList.add("cursor-zoom-out");
+  }
+
+  ev.stopPropagation();
+  return true;
+}
+
+
+function hideImageDiag(e) {
+  console.log("hide image diag");
+  e.classList.add("hidden");
+  return true;
+}
+
+function showImageDiag(e) {
+  e.classList.remove("hidden");
+  return true;
+}
+
+var pgcontent = document.getElementById("page-content");
+if (pgcontent != null) {
+  var eles = pgcontent.getElementsByTagName("img");
+  console.log(eles);
+  if (eles.length > 0) {
+
+    for (let ele of eles) {
+      ele.onclick = (ev) => {
+        console.log("click");
+        var diag = document.getElementById("page-model-image-diag");
+        let images = diag.getElementsByTagName("img");
+        for (let one of images) {
+          one.src = ele.src;
+        }
+        showImageDiag(diag);
+        ev.stopPropagation();
+      };
+    }
+  }
+}

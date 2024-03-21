@@ -13,7 +13,7 @@
       <link>//localhost:1313/series/play-with-termux/inside/</link>
       <pubDate>Mon, 18 Mar 2024 19:23:13 +0800</pubDate>
       <guid>//localhost:1313/series/play-with-termux/inside/</guid>
-      <description>这是笔者的一个嗜好，喜欢研究软件的内部实现。今天我们就来扒一扒termux，看看它是如何做到在Android系统上搭建一套linux系统的，</description>
+      <description>这是笔者的一个嗜好，喜欢研究软件的内部实现。今天我们就来扒一扒termux，看看它是如何做到在Android系统上搭建一套Linux系统的，</description>
     </item>
     <item>
       <title>玩转termux | 9.外网访问</title>
