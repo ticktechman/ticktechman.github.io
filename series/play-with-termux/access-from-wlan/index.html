@@ -56,15 +56,45 @@
     <h4 class="text-center text-gray-400 text-sm mb-3">
       <span class="px-1 py-2">2024/03/18</span> 
       <span class="px-1 py-2">|</span>
-      <span class="px-1 py-2">字数0</span> 
+      <span class="px-1 py-2">字数499</span> 
       <span class="px-1 py-2">|</span> 
-      <span class="px-1 py-2">阅读0分钟</span>
+      <span class="px-1 py-2">阅读1分钟</span>
     </h4>
     <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
     
     
     <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
-        
+        <h1 id="为什么需要外网访问">为什么需要外网访问</h1>
+<p>当你的手机放在家里或者其他固定地方，但想要在任何有网络的地方都能访问，例如你在手机上托管了一个博客系统、一个数据库、一个git库等，想要在公司或者出差的时候也能访问到，就需要增加外网访问能力。</p>
+<h1 id="如何做">如何做</h1>
+<ol>
+<li>DMZ主机</li>
+</ol>
+<p>“Demilitarized Zone”，这是路由器提供的功能，它是为了解决安装防火墙后外部网络的访问用户不能访问内部网络服务器的问题。 启用DMZ 主机后，可以直接从因特网访问设置为DMZ主机的计算机。</p>
+<p>下面是一个典型的DMZ主机的配置界面：
+<img src="/series/play-with-termux/p1.png"></p>
+<ol start="2">
+<li>虚拟服务器</li>
+</ol>
+<p>这是路由器提供的功能，也就是端口转发，外部主动访问路由器的某个端口时，数据会被转发给内部IP的特定端口，用于实现内外互通。</p>
+<p>下面是一个典型的虚拟服务器的配置界面：
+<img src="/series/play-with-termux/p2.png"></p>
+<ol start="3">
+<li>自带SIM卡</li>
+</ol>
+<p>关闭WI-FI，在系统设置中查到手机的外网IP地址，直接连接即可。</p>
+<ol start="4">
+<li>花生壳</li>
+</ol>
+<p>笔者没有用过，是一个商用软件，感兴趣的读者可以到这里看看：<a href="https://www.oray.com/">https://www.oray.com/</a></p>
+<h1 id="其他注意事项">其他注意事项</h1>
+<ul>
+<li>电源：常备电源；</li>
+<li>固定IP地址：在路由器中绑定手机的MAC地址到一个固定IP，防止重启IP地址变动；</li>
+<li>服务自启动：不需要手动启动；</li>
+<li>最小访问权限：近暴露最少端口，防止外部攻击；</li>
+</ul>
+
     </div>
     
     <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">

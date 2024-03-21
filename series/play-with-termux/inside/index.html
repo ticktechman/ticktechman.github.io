@@ -56,15 +56,223 @@
     <h4 class="text-center text-gray-400 text-sm mb-3">
       <span class="px-1 py-2">2024/03/18</span> 
       <span class="px-1 py-2">|</span>
-      <span class="px-1 py-2">字数0</span> 
+      <span class="px-1 py-2">字数1616</span> 
       <span class="px-1 py-2">|</span> 
-      <span class="px-1 py-2">阅读0分钟</span>
+      <span class="px-1 py-2">阅读4分钟</span>
     </h4>
     <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
     
     
     <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+        <p>这是笔者的一个嗜好，喜欢研究软件的内部实现。今天我们就来扒一扒termux，看看它是如何做到在Android系统上搭建一套Linux系统的，关键还不需要root权限，只通过一个APP就做到了。</p>
+<h1 id="系统架构">系统架构</h1>
+<p><img alt="架构图" src="/series/play-with-termux/arch.png"></p>
+<p>整个系统包含两部分内容：</p>
+<ol>
+<li>客户端软件：
+<ul>
+<li>一个前端模拟器，用于实现一个终端命令行界面</li>
+<li>一个根文件系统，这里包含一个最小系统，类似于Linux发行版的live CD，里面包含了最基础的系统命令，通过这些命令，可以下载更大的系统。</li>
+</ul>
+</li>
+<li>服务器软件：
+<ul>
+<li>一套包管理系统，类似ubuntu的apt</li>
+<li>三方软件包</li>
+</ul>
+</li>
+</ol>
+<p>我们重点放在客户端软件上。</p>
+<h1 id="实现">实现</h1>
+<p>我们通过几个典型问题来了解termux的一些内部实现逻辑。</p>
+<ol>
+<li><strong>为什么不需要root权限？</strong></li>
+</ol>
+<p>要实现一套linux系统体验，需要三样东西，Linux内核、根文件系统、以及chroot命令，其中Linux内核是Android系统自带的，可以直接用。根文件系统是termux App提供的，chroot是一个系统命令，一般存在根文件系统中。但执行chroot需要root权限才行。termux是如何做到不需要root权限的呢？</p>
+<blockquote>
+<p>答案就是：修改了所有软件的<code>PREFIX</code>到<code>/data/data/com.termux/files/usr</code>，这样就不需要用到传统Linux的典型目录结构了（<code>/etc, /bin /sbin</code>等），看上去是个笨方法，但非常有效。因此直接从其他开源仓库中下载的软件包时不能直接在termux上使用的，需要按照termux的规则重新编译和修改相关路径才可以。</p>
+</blockquote>
+<ol start="2">
+<li><strong>如何制作一个根文件系统？</strong></li>
+</ol>
+<p>通过这个子项目：termux-packages(<a href="https://github.com/termux/termux-packages">https://github.com/termux/termux-packages</a>)，这里有全部三方软件包的编译脚本和patch，它不但可以编译生成一个最小根文件系统，还能生成所有三方软件包，共计1000+个。</p>
+<p>这个项目中也有编译好的最小根文件系统压缩包：bootstrap-xxx.zip，在这个地址可以找到 <a href="https://github.com/termux/termux-packages/releases">https://github.com/termux/termux-packages/releases</a>。</p>
+<p>一个典型的最小根文件系统目录结构是这样的:</p>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
+        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── SYMLINKS.txt <span style="color:#7f848e">## 符号连接配置项，首次启动APP的时候用到</span>
+</span></span><span style="display:flex;"><span>├── bin          <span style="color:#7f848e">## 系统命令</span>
+</span></span><span style="display:flex;"><span>├── etc          <span style="color:#7f848e">## 系统配置</span>
+</span></span><span style="display:flex;"><span>├── include      <span style="color:#7f848e">## 系统库头文件</span>
+</span></span><span style="display:flex;"><span>├── lib          <span style="color:#7f848e">## 系统库文件</span>
+</span></span><span style="display:flex;"><span>├── libexec
+</span></span><span style="display:flex;"><span>├── share
+</span></span><span style="display:flex;"><span>├── tmp
+</span></span><span style="display:flex;"><span>└── var</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">.
+├── SYMLINKS.txt ## 符号连接配置项，首次启动APP的时候用到
+├── bin          ## 系统命令
+├── etc          ## 系统配置
+├── include      ## 系统库头文件
+├── lib          ## 系统库文件
+├── libexec
+├── share
+├── tmp
+└── var</div>
+    </div>
+</div>
+<ol start="3">
+<li><strong>如何将一个根文件系统装进APK的？</strong></li>
+</ol>
+<p>这个项目termux-app (<a href="https://github.com/termux/termux-app">https://github.com/termux/termux-app</a>)负责生成我们用到的termux.apk，在这个项目中，<code>app/src/main/cpp</code>目录负责将上面的bootstrap-xxx.zip打包为libtermux-bootstrap.so动态库给APK使用，实现的代码在一个termux-bootstrap-zip.S汇编代码中：</p>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>     <span style="color:#e06c75">.global</span> <span style="color:#e06c75">blob</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#e06c75">.global</span> <span style="color:#e06c75">blob_size</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#e06c75">.section</span> <span style="color:#e06c75">.rodata</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e06c75">blob:</span>
+</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#if defined __i686__
+</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>     <span style="color:#e06c75">.incbin</span> <span style="color:#98c379">&#34;bootstrap-i686.zip&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#elif defined __x86_64__
+</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>     <span style="color:#e06c75">.incbin</span> <span style="color:#98c379">&#34;bootstrap-x86_64.zip&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#elif defined __aarch64__
+</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>     <span style="color:#e06c75">.incbin</span> <span style="color:#98c379">&#34;bootstrap-aarch64.zip&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#elif defined __arm__
+</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>     <span style="color:#e06c75">.incbin</span> <span style="color:#98c379">&#34;bootstrap-arm.zip&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span> <span style="color:#7f848e"># error Unsupported arch
+</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span> <span style="color:#7f848e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span> 1:
+</span></span><span style="display:flex;"><span> <span style="color:#e06c75">blob_size:</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#e06c75">.int</span> <span style="color:#d19a66">1</span><span style="color:#e06c75">b</span> - <span style="color:#e06c75">blob</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">     .global blob
+     .global blob_size
+     .section .rodata
+ blob:
+ #if defined __i686__
+     .incbin &#34;bootstrap-i686.zip&#34;
+ #elif defined __x86_64__
+     .incbin &#34;bootstrap-x86_64.zip&#34;
+ #elif defined __aarch64__
+     .incbin &#34;bootstrap-aarch64.zip&#34;
+ #elif defined __arm__
+     .incbin &#34;bootstrap-arm.zip&#34;
+ #else
+ # error Unsupported arch
+ #endif
+ 1:
+ blob_size:
+     .int 1b - blob</div>
+    </div>
+</div>
+<p>上面的代码非常简单，有用的就是两个变量：</p>
+<ul>
+<li>blob：存储者压缩包的起始地址</li>
+<li>blob-size：存储压缩包大小</li>
+</ul>
+<p>有了这两个变量，就可以解压缩了。</p>
+<blockquote>
+<p>这里的<code>.incbin</code>指令负责将压缩包大包到so中</p>
+</blockquote>
+<ol start="4">
+<li><strong>APP首次启动流程是什么？</strong>
+<ul>
+<li>启动activity:
+<ul>
+<li><code>TermuxActivity::onCreate()</code></li>
+</ul>
+</li>
+<li>解压缩bootstrap压缩包到<code>/data/data/com.termux/files/</code>下：
+<ul>
+<li><code>TermuxInstaller::setupBootstrapIfNeeded()</code></li>
+</ul>
+</li>
+<li>启动命令行<code>$PREFIX/bin/login</code>：
+<ul>
+<li><code>TermuxTerminalSessionActivityClient::addNewSession()</code></li>
+<li><code>TermuxService::createTermuxSession()</code></li>
+<li><code>TermuxSession.execute()</code></li>
+</ul>
+</li>
+<li>启动<code>$PREFIX/bin/bash</code>：<code>$PREFIX/bin/login</code>脚本负责调用bash，接收终端用户输入。</li>
+</ul>
+</li>
+</ol>
+<h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://github.com/termux/termux-app">https://github.com/termux/termux-app</a></li>
+<li><a href="https://github.com/termux/termux-packages">https://github.com/termux/termux-packages</a></li>
+</ul>
+
     </div>
     
     <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">

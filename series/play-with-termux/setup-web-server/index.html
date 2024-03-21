@@ -56,15 +56,107 @@
     <h4 class="text-center text-gray-400 text-sm mb-3">
       <span class="px-1 py-2">2024/03/18</span> 
       <span class="px-1 py-2">|</span>
-      <span class="px-1 py-2">字数0</span> 
+      <span class="px-1 py-2">字数528</span> 
       <span class="px-1 py-2">|</span> 
-      <span class="px-1 py-2">阅读0分钟</span>
+      <span class="px-1 py-2">阅读2分钟</span>
     </h4>
     <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
     
     
     <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+        <blockquote>
+<p>本文我们以nginx为例，介绍如何在termux上搭建一个web服务器</p>
+</blockquote>
+<h1 id="什么是nginx">什么是nginx</h1>
+<p>Nginx是异步框架的网页服务器，也可以用作反向代理、负载平衡器和HTTP缓存。该软件由俄罗斯程序员伊戈尔·赛索耶夫开发并于2004年首次公开发布。2011年成立同名公司以提供支持服务。2019年3月11日，Nginx公司被F5网络公司以6.7亿美元收购。 Nginx是免费的开源软件，根据类BSD许可证的条款发布。</p>
+<p>—— 来自维基百科</p>
+<h1 id="安装">安装</h1>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
+        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install -y nginx</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">apt install -y nginx</div>
+    </div>
+</div>
+<h1 id="配置启动">配置&amp;启动</h1>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <pre tabindex="0"><code class="language-conf" data-lang="conf">## file: $PREFIX/etc/nginx/nginx.conf
+
+    server {
+        listen       8080;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   /data/data/com.termux/files/usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+    }</code></pre>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">## file: $PREFIX/etc/nginx/nginx.conf
+
+    server {
+        listen       8080;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   /data/data/com.termux/files/usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+    }</div>
+    </div>
+</div>
+<p>验证配置是否正确，执行这个命令：<code>nginx -t</code></p>
+<p>启动服务，执行这个命令：<code>nginx</code></p>
+<blockquote>
+<p>这里的<code>$PREFIX</code>是termux的自定义变量，可以在shell中直接使用，值一般为：<code>/data/data/com.termux/files/usr</code></p>
+</blockquote>
+<h1 id="验证">验证</h1>
+<p>打开电脑浏览器，输入地址: http://your-termux-ip:8080/，是的，nginx不能使用默认的80端口（没有root权限），因此默认配置中使用了8080这个端口。</p>
+<h1 id="部署自己的站点">部署自己的站点</h1>
+<p>将你自己的网站内容（HTML、CSS、JS、IMAGE）放到 <code>/data/data/com.termux/files/usr/share/nginx/html</code> 这个目录下就可以。</p>
+
     </div>
     
     <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
