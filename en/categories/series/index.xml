@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on Ticktechman&#39;s Blog</title>
-    <link>//localhost:1313/en/categories/series/</link>
+    <link>/en/categories/series/</link>
     <description>Recent content in Series on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 18 Mar 2024 11:37:21 +0800</lastBuildDate>
-    <atom:link href="//localhost:1313/en/categories/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/en/categories/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Series</title>
-      <link>//localhost:1313/en/series/</link>
+      <link>/en/series/</link>
       <pubDate>Mon, 18 Mar 2024 11:37:21 +0800</pubDate>
-      <guid>//localhost:1313/en/series/</guid>
+      <guid>/en/series/</guid>
       <description></description>
     </item>
   </channel>
