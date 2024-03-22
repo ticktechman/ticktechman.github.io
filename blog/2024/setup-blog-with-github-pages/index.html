@@ -3,6 +3,15 @@
 <html lang="en">
 <head>
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BGQWT0B7E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-1BGQWT0B7E');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>白嫖一个github博客系统</title>
@@ -56,7 +65,7 @@
     <h4 class="text-center text-gray-400 text-sm mb-3">
       <span class="px-1 py-2">2024/03/18</span> 
       <span class="px-1 py-2">|</span>
-      <span class="px-1 py-2">字数441</span> 
+      <span class="px-1 py-2">字数440</span> 
       <span class="px-1 py-2">|</span> 
       <span class="px-1 py-2">阅读1分钟</span>
     </h4>
@@ -82,10 +91,10 @@
 </ul>
 <h1 id="如何开通">如何开通</h1>
 <ol>
-<li>注册一个<a href="https://github.com/signup">github</a>账号：https://github.com/signup（老用户直接跳到第二步）；</li>
+<li>注册一个github账号 <a href="https://github.com/signup">https://github.com/signup</a>（老用户直接跳到第二步）；</li>
 <li>新建仓库，命名为<code>{your-user-name}.github.io</code>，这里的<code>{your-user-name}</code>是你的github用户名；</li>
 <li>上传你的网站内容（HTML、CSS、JS、图片等）；</li>
-<li>浏览器访问https://your-user-name.github.io（首次上传需要等待几分钟）；</li>
+<li>浏览器访问 <a href="https://your-user-name.github.io">https://your-user-name.github.io</a>（首次上传需要等待几分钟）；</li>
 </ol>
 <p>这里看下效果图：</p>
 <p><img alt="img" src="/blog/2024/setup-blog-with-github-pages.png"></p>
@@ -102,8 +111,8 @@
     </div>
   </main>
 
-  <div id="page-model-image-diag" class="mx-auto flex items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden" onclick="return hideImageDiag(this)">
-    <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg" onclick="return imageZoomIn(event, this)">
+  <div id="page-model-image-diag" class="mx-auto flex items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden" onclick="hideImageDiag(event, this)">
+    <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500" onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">
   </div>
 
     <footer>

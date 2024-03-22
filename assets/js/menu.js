@@ -74,14 +74,33 @@ function imageZoomIn(ev, e) {
   return true;
 }
 
+function resetImageProp(e) {
+  e.classList.remove("max-w-max");
+  e.classList.remove("max-h-max");
+  e.classList.remove("cursor-zoom-out");
+  e.classList.add("max-w-[100vw]");
+  e.classList.add("max-h-[100vh]");
+  e.classList.add("cursor-zoom-in");
+  e.src = "";
+}
 
-function hideImageDiag(e) {
+function hideImageDiag(ev, e) {
   console.log("hide image diag");
   e.classList.add("hidden");
-  return true;
+  let img = e.getElementsByTagName("img");
+  if (img.length > 0) {
+    resetImageProp(img[0]);
+  }
+
+  ev.stopPropagation();
+}
+
+function largeImageClick(ev) {
+  ev.stopPropagation();
 }
 
 function showImageDiag(e) {
+  console.log("show image diag");
   e.classList.remove("hidden");
   return true;
 }
@@ -106,3 +125,10 @@ if (pgcontent != null) {
     }
   }
 }
+
+document.addEventListener("keyup", (event) => {
+  if (event.key === "Escape") {
+    hideImageDiag(event, document.getElementById("page-model-image-diag"));
+  }
+});
+
