@@ -1,21 +1,31 @@
 
 console.log("get in menu.js");
 
-function toggleMainMenu() {
+function toggleMainMenu(event) {
   console.log("toggle main menu");
   var menu = document.getElementById("main-menu-hidden");
   menu.classList.toggle("hidden");
+  event.stopPropagation();
 }
 
-function toggleLanguageMenu() {
+function toggleLanguageMenu(event) {
   console.log("toggle language menu");
   var menu = document.getElementById("language-ul");
   menu.classList.toggle("hidden");
+  event.stopPropagation();
 }
 
+document.body.onclick = function (event) {
+  var menu = document.getElementById("language-ul");
+  menu.classList.add("hidden");
+  menu = document.getElementById("main-menu-hidden");
+  menu.classList.add("hidden");
+  event.stopPropagation();
+}
 
-function toggleArchiveList(elem) {
+function toggleArchiveList(event, elem) {
   elem.nextElementSibling.classList.toggle("hidden");
+  event.stopPropagation();
 }
 
 function copyCode(elem) {

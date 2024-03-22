@@ -30,7 +30,7 @@
       <li><a href='/about' class='current-menu'>关于</a></li>
     </ul>
     <div class="flex flow-col space-x-4 items-center place-content-center">
-      <button id="btn-menu" class="flex md:hidden" onclick="toggleMainMenu()">
+      <button id="btn-menu" class="flex md:hidden" onclick="toggleMainMenu(event)">
         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
       </button>
       <div id="main-menu-hidden" class="hidden">
@@ -43,7 +43,7 @@
         </ul>
       </div>
       <button class="flex">
-        <img  id="language-selection" src="/assets/images/icon/lang-zh.svg" width="32" onclick="toggleLanguageMenu()"/>
+        <img  id="language-selection" src="/assets/images/icon/lang-zh.svg" width="32" onclick="toggleLanguageMenu(event)"/>
         <ul id="language-ul" class="hidden">
           <li><a href='/'><img src="/assets/images/icon/lang-zh.svg" width="32"/></a></li>
           <li><a href='/en'><img src="/assets/images/icon/lang-en.svg" width="32"/></a></li>
