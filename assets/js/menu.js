@@ -19,16 +19,12 @@ function toggleArchiveList(elem) {
 }
 
 function copyCode(elem) {
-  console.log("copy code:", elem.nextElementSibling.textContent);
-
   if ('clipboard' in navigator) {
     navigator.clipboard.writeText(elem.nextElementSibling.textContent);
     var children = elem.getElementsByTagName("svg");
-    console.log(children);
     if (children.length != 2) {
       return;
     }
-    console.log(children);
 
     children[0].style.opacity = 0;
     children[1].style.opacity = 0;
@@ -48,6 +44,8 @@ function copyCode(elem) {
       }, 30);
     }, 1500);
 
+  } else {
+    console.error("can not access clipboard");
   }
 }
 
@@ -108,12 +106,9 @@ function showImageDiag(e) {
 var pgcontent = document.getElementById("page-content");
 if (pgcontent != null) {
   var eles = pgcontent.getElementsByTagName("img");
-  console.log(eles);
   if (eles.length > 0) {
-
     for (let ele of eles) {
       ele.onclick = (ev) => {
-        console.log("click");
         var diag = document.getElementById("page-model-image-diag");
         let images = diag.getElementsByTagName("img");
         for (let one of images) {
