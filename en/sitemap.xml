@@ -2,6 +2,71 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/en/categories/blog/</loc>
+    <lastmod>2024-03-22T19:53:15+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/categories/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/en/categories/blog/"
+                />
+  </url><url>
+    <loc>/en/categories/</loc>
+    <lastmod>2024-03-22T19:53:15+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/en/categories/"
+                />
+  </url><url>
+    <loc>/en/tags/pinned/</loc>
+    <lastmod>2024-03-22T19:53:15+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/tags/pinned/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/en/tags/pinned/"
+                />
+  </url><url>
+    <loc>/en/blog/2024/starting-here/</loc>
+    <lastmod>2024-03-22T19:53:15+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/blog/2024/starting-here/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/en/blog/2024/starting-here/"
+                />
+  </url><url>
+    <loc>/en/tags/</loc>
+    <lastmod>2024-03-22T19:53:15+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/en/tags/"
+                />
+  </url><url>
     <loc>/en/</loc>
     <lastmod>2024-03-18T11:41:04+08:00</lastmod>
     <xhtml:link
@@ -26,19 +91,6 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="/en/archive/"
-                />
-  </url><url>
-    <loc>/en/categories/</loc>
-    <lastmod>2024-03-18T11:37:21+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="/en/categories/"
                 />
   </url><url>
     <loc>/en/categories/series/</loc>
@@ -67,19 +119,6 @@
                 href="/en/series/"
                 />
   </url><url>
-    <loc>/en/categories/blog/</loc>
-    <lastmod>2024-03-18T11:37:10+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="/categories/blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="/en/categories/blog/"
-                />
-  </url><url>
     <loc>/en/blog/</loc>
     <lastmod>2024-03-18T11:37:10+08:00</lastmod>
     <xhtml:link
@@ -104,18 +143,6 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="/en/about/"
-                />
-  </url><url>
-    <loc>/en/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="/en/tags/"
                 />
   </url>
 </urlset>

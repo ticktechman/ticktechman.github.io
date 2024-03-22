@@ -15,18 +15,18 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive</title>
+    <title>Starting Here</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <header class=" fixed ">
+    <header class="">
   <div name="bar">
     <img name="logo" src="/assets/images/logo.png" >
     <ul name="menu-h-area">
       <li><a href='/en/' class=''>Home</a></li>
-      <li><a href='/en/blog' class=''>Blog</a></li>
+      <li><a href='/en/blog' class='current-menu'>Blog</a></li>
       <li><a href='/en/series' class=''>Series</a></li>
-      <li><a href='/en/archive' class='current-menu'>Archive</a></li>
+      <li><a href='/en/archive' class=''>Archive</a></li>
       <li><a href='/en/about' class=''>About</a></li>
     </ul>
     <div class="flex flow-col space-x-4 items-center place-content-center">
@@ -58,45 +58,47 @@
 </header>
 
     
+  <main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
+    
+    <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/assets/images/banner/default.jpg" alt="">
+    
+    <h2 class="pt-4 text-center">Starting Here</h2>
+    <h4 class="text-center text-gray-400 text-sm mb-3">
+      <span class="px-1 py-2">2024/03/22</span> 
+      <span class="px-1 py-2">|</span>
+      <span class="px-1 py-2">165 words</span> 
+      <span class="px-1 py-2">|</span> 
+      <span class="px-1 py-2">1 minute</span>
+    </h4>
+    <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
+    
+    
+    <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+        <p>Some days ago, I setup this blog website with <a href="https://gohugo.io/">hugo</a> and <a href="https://tailwindcss.com/">tailwindcss</a>. And all code written from scratch.</p>
+<p><strong>1. Why build it myself?</strong></p>
+<p>There&rsquo;s only one reason: to have full control over all the content, unaffected by any platform, solely based on personal preferences. It only requires a bit of hands-on capability. And you can DIY your own system too.</p>
+<p><strong>2. Why start blogging?</strong></p>
+<p>My thoughts have always been somewhat scattered, and I wanted to use writing as a means to record and organize them, while also documenting some content that might be reused in the future for my own reference. Of course, if this content happens to be useful to you as well, that would be better.</p>
+<p><strong>3. What kind of content is there?</strong></p>
+<p>90% of the articles are technical, covering tools, programming languages, engineering practices, environment setup, etc. They mainly consist of learning summaries, with a small amount of technical thinking.</p>
+<p><strong>4. Who is it suitable for?</strong></p>
+<p>Programmers, whether beginners or seasoned professionals.</p>
 
-<main class="mt-16 px-4 w-full bg-slate-50 dark:bg-slate-900 pb-4 dark:border-none">
-  <h1 class="pt-4 text-center">Archive</h1>
-  <hr class="w-48 mt-2 mb-6">
-
-  
-  
-  
-    <div class="my-1 mx-auto gap-2 w-full border shadow rounded-md overflow-hidden dark:border-white/10 sm:w-5/6 lg:w-2/3 xl:w-1/2">
-      <div class="bg-gray-100/70 w-full flex flex-row px-4 py-2 dark:bg-gray-800 dark:border-gray-800 cursor-pointer" onclick="toggleArchiveList(event, this);">
-        <h4 class="flex flex-row my-auto">
-          <span class="my-auto">2024</span> 
-          <span class="mx-2 px-4 py-1 text-xs bg-slate-400 text-white rounded-full my-auto">1</span>
-        </h3>
-      </div>
-      <ul class="">
-        
-        <a href="/en/blog/2024/starting-here/">
-          <li class="flex flex-row px-4 py-3 duration-500 border-t hover:bg-gray-900/5 dark:border-white/10 dark:hover:bg-white/10">
-            <p class="shrink-0 grow-0 w-16 px-2 my-auto text-right text-sm text-gray-400">03/22</p>
-            <p class="grow my-auto">Starting Here</p>
-            
-              
-              <p class="rounded-full shrink-0 grow-0 w-[60px] py-1 my-auto bg-blue-500 text-white text-xs italic text-center hidden sm:block">
-                BLOG
-              </p>
-              
-            
-          </li>
-        </a>
-        
-      </ul>
     </div>
     
-  
+    <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+      
+      <p></p>
+      
+      
+      <p></p>
+      
+    </div>
+  </main>
 
-
-</main>
-
+  <div id="page-model-image-diag" class="mx-auto flex items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden" onclick="hideImageDiag(event, this)">
+    <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500" onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">
+  </div>
 
     <footer>
   <div class="flex text-sm text-gray-400"> © ticktechman 2024</div>

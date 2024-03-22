@@ -76,6 +76,16 @@
   </url><url>
     <loc>/tags/pinned/</loc>
     <lastmod>2024-03-18T13:42:11+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/en/tags/pinned/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/tags/pinned/"
+                />
   </url><url>
     <loc>/tags/</loc>
     <lastmod>2024-03-18T13:42:11+08:00</lastmod>
@@ -160,5 +170,15 @@
   </url><url>
     <loc>/blog/2024/starting-here/</loc>
     <lastmod>2024-03-18T11:00:32+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/en/blog/2024/starting-here/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/blog/2024/starting-here/"
+                />
   </url>
 </urlset>
