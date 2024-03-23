@@ -1465,8 +1465,8 @@ header ul[name="menu-h-area"] a:hover {
 
 :is(.dark #main-menu-ul) {
   --tw-border-opacity: 1;
-  border-color: rgb(107 114 128 / var(--tw-border-opacity));
-  background-color: rgb(15 23 42 / 0.9);
+  border-color: rgb(51 65 85 / var(--tw-border-opacity));
+  background-color: rgb(2 6 23 / 0.9);
 }
 
 #main-menu-ul a {
@@ -1507,8 +1507,8 @@ header ul[name="menu-h-area"] a:hover {
 
 :is(.dark #language-ul) {
   --tw-border-opacity: 1;
-  border-color: rgb(107 114 128 / var(--tw-border-opacity));
-  background-color: rgb(15 23 42 / 0.9);
+  border-color: rgb(51 65 85 / var(--tw-border-opacity));
+  background-color: rgb(2 6 23 / 0.9);
 }
 
 #language-ul a {
