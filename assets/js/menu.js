@@ -4,22 +4,36 @@ console.log("get in menu.js");
 function toggleMainMenu(event) {
   console.log("toggle main menu");
   var menu = document.getElementById("main-menu-hidden");
-  menu.classList.toggle("hidden");
+  if (menu.classList.contains("menu-shown")) {
+    menu.classList.remove("menu-shown");
+    menu.classList.add("menu-hidden");
+  } else {
+    menu.classList.add("menu-shown");
+    menu.classList.remove("menu-hidden");
+  }
   event.stopPropagation();
 }
 
 function toggleLanguageMenu(event) {
   console.log("toggle language menu");
   var menu = document.getElementById("language-ul");
-  menu.classList.toggle("hidden");
+  if (menu.classList.contains("menu-shown")) {
+    menu.classList.remove("menu-shown");
+    menu.classList.add("menu-hidden");
+  } else {
+    menu.classList.add("menu-shown");
+    menu.classList.remove("menu-hidden");
+  }
   event.stopPropagation();
 }
 
 document.body.onclick = function (event) {
   var menu = document.getElementById("language-ul");
-  menu.classList.add("hidden");
+  menu.classList.add("menu-hidden");
+  menu.classList.remove("menu-shown");
   menu = document.getElementById("main-menu-hidden");
-  menu.classList.add("hidden");
+  menu.classList.add("menu-hidden");
+  menu.classList.remove("menu-shown");
   event.stopPropagation();
 }
 
