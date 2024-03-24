@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pinned on Ticktechman&#39;s Blog</title>
-    <link>/tags/pinned/</link>
+    <link>https://ticktechman.github.io/tags/pinned/</link>
     <description>Recent content in Pinned on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 18 Mar 2024 13:42:11 +0800</lastBuildDate>
-    <atom:link href="/tags/pinned/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ticktechman.github.io/tags/pinned/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>白嫖一个github博客系统</title>
-      <link>/blog/2024/setup-blog-with-github-pages/</link>
+      <link>https://ticktechman.github.io/blog/2024/setup-blog-with-github-pages/</link>
       <pubDate>Mon, 18 Mar 2024 13:42:11 +0800</pubDate>
-      <guid>/blog/2024/setup-blog-with-github-pages/</guid>
+      <guid>https://ticktechman.github.io/blog/2024/setup-blog-with-github-pages/</guid>
       <description>你现在看到的这个博客系统，就是托管在了github上，对于纯静态网站来说，github可能是性价比非常高的选择，非常适合纯纯的写作者朋友。 为</description>
     </item>
     <item>
       <title>开篇</title>
-      <link>/blog/2024/starting-here/</link>
+      <link>https://ticktechman.github.io/blog/2024/starting-here/</link>
       <pubDate>Mon, 18 Mar 2024 11:00:32 +0800</pubDate>
-      <guid>/blog/2024/starting-here/</guid>
+      <guid>https://ticktechman.github.io/blog/2024/starting-here/</guid>
       <description>刚刚（2024/3/18）新建了一套自己的博客系统，基于hugo和tailwindcss，纯手工打造。 1. 为什么要自己搭建？ 原因只有一个，就是</description>
     </item>
   </channel>
