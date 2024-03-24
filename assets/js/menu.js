@@ -38,6 +38,11 @@ document.body.onclick = function (event) {
 }
 
 function toggleArchiveList(event, elem) {
+  let img = elem.getElementsByTagName("img");
+  if (img.length == 1) {
+    img = img[0];
+    img.classList.toggle("rotate-90");
+  }
   elem.nextElementSibling.classList.toggle("hidden");
   event.stopPropagation();
 }
