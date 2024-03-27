@@ -6,20 +6,20 @@
     <description>Recent content in Categories on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 18 Mar 2024 19:23:13 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2024 09:50:16 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog</title>
+      <link>https://ticktechman.github.io/categories/blog/</link>
+      <pubDate>Wed, 27 Mar 2024 09:50:16 +0800</pubDate>
+      <guid>https://ticktechman.github.io/categories/blog/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Series</title>
       <link>https://ticktechman.github.io/categories/series/</link>
       <pubDate>Mon, 18 Mar 2024 19:23:13 +0800</pubDate>
       <guid>https://ticktechman.github.io/categories/series/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Blog</title>
-      <link>https://ticktechman.github.io/categories/blog/</link>
-      <pubDate>Mon, 18 Mar 2024 13:42:11 +0800</pubDate>
-      <guid>https://ticktechman.github.io/categories/blog/</guid>
       <description></description>
     </item>
   </channel>

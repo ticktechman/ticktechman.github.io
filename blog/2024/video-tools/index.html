@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8H7XPB6TV4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-8H7XPB6TV4');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的视频制作工具箱</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <header class="">
+  <div name="bar">
+    <img name="logo" src="/assets/images/logo.png" >
+    <ul name="menu-h-area">
+      <li><a href='/' class=''>主页</a></li>
+      <li><a href='/blog' class='current-menu'>博客</a></li>
+      <li><a href='/series' class=''>专栏</a></li>
+      <li><a href='/archive' class=''>归档</a></li>
+      <li><a href='/about' class=''>关于</a></li>
+    </ul>
+    <div class="flex flow-col space-x-4 items-center place-content-center">
+      <button id="btn-menu" class="flex md:hidden" onclick="toggleMainMenu(event)">
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path></svg>
+      </button>
+      <div id="main-menu-hidden" class="menu-hidden duration-300">
+        <ul id="main-menu-ul">
+          <li><a href='/'>主页</a></li>
+          <li><a href='/blog'>博客</a></li>
+          <li><a href='/series'>专栏</a></li>
+          <li><a href='/archive'>归档</a></li>
+          <li><a href='/about'>关于</a></li>
+        </ul>
+      </div>
+      <button class="flex">
+        <img  id="language-selection" src="/assets/images/icon/lang-zh.svg" width="32" onclick="toggleLanguageMenu(event)"/>
+        <ul id="language-ul" class="menu-hidden duration-300">
+          <li><a href='/'><img src="/assets/images/icon/lang-zh.svg" width="32"/></a></li>
+          <li><a href='/en'><img src="/assets/images/icon/lang-en.svg" width="32"/></a></li>
+        </ul>
+      </button>
+      <button class="flex" id="dark-mode">
+        <svg class="w-6 h-6 block dark:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7091" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="currentcolor" d="M512 783.945143a261.997714 261.997714 0 0 0 192.292571-79.725714A261.997714 261.997714 0 0 0 783.945143 512a261.997714 261.997714 0 0 0-79.725714-192.292571A261.997714 261.997714 0 0 0 512 240.054857c-36.790857 0-74.386286 8.484571-112.64 25.526857 46.811429 21.211429 84.699429 54.125714 113.737143 98.742857 28.964571 44.617143 43.52 93.842286 43.52 147.675429 0 53.833143-14.555429 103.058286-43.52 147.675429a263.899429 263.899429 0 0 1-113.664 98.742857A275.894857 275.894857 0 0 0 512 783.945143z m363.300571-422.765714L1024 512l-148.699429 150.820571v212.48H662.820571L512 1024l-150.820571-148.699429H148.699429V662.820571L0 512l148.699429-150.820571V148.699429h212.48L512 0l150.820571 148.699429h212.48v212.48z" p-id="7092"></path></svg>
+        <svg class="w-6 h-6 hidden dark:block" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5081" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="currentcolor" d="M502.518519 246.518519a256 256 0 1 0 0 512 256 256 0 0 0 0-512z m0 94.814814a161.185185 161.185185 0 1 1 0 322.370371 161.185185 161.185185 0 0 1 0-322.370371zM512 9.481481a48.545185 48.545185 0 0 1 48.279704 43.538963l0.227555 4.968297v72.628148a48.545185 48.545185 0 0 1-96.786963 4.968296l-0.227555-4.93037V57.950815C463.454815 31.213037 485.224296 9.481481 512 9.481481zM867.365926 156.634074a48.545185 48.545185 0 0 1 3.299555 64.967111l-3.337481 3.678815-51.351704 51.351704a48.545185 48.545185 0 0 1-71.945481-64.929185l3.337481-3.678815 51.351704-51.351704c18.962963-18.962963 49.682963-18.962963 68.645926 0zM1014.518519 512a48.545185 48.545185 0 0 1-43.538963 48.279704l-4.968297 0.227555h-72.628148a48.545185 48.545185 0 0 1-4.968296-96.786963l4.93037-0.227555h72.666074c26.775704 0 48.507259 21.731556 48.50726 48.507259zM867.365926 867.365926a48.545185 48.545185 0 0 1-64.967111 3.299555l-3.678815-3.337481-51.351704-51.351704a48.545185 48.545185 0 0 1 64.929185-71.945481l3.678815 3.337481 51.351704 51.351704c18.962963 18.962963 18.962963 49.682963 0 68.645926zM512 1014.518519a48.545185 48.545185 0 0 1-48.279704-43.538963l-0.227555-4.968297v-72.628148a48.545185 48.545185 0 0 1 96.786963-4.968296l0.227555 4.93037v72.666074A48.545185 48.545185 0 0 1 512 1014.518519zM156.634074 867.365926a48.545185 48.545185 0 0 1-3.299555-64.967111l3.337481-3.678815 51.351704-51.351704a48.545185 48.545185 0 0 1 71.945481 64.929185l-3.337481 3.678815-51.351704 51.351704c-18.962963 18.962963-49.682963 18.962963-68.645926 0zM9.481481 512a48.545185 48.545185 0 0 1 43.538963-48.279704l4.968297-0.227555h100.882963a48.545185 48.545185 0 0 1 4.968296 96.786963l-4.93037 0.227555H58.026667A48.545185 48.545185 0 0 1 9.481481 512zM156.634074 156.634074a48.545185 48.545185 0 0 1 64.967111-3.299555l3.678815 3.337481 51.351704 51.351704a48.545185 48.545185 0 0 1-64.929185 71.945481l-3.678815-3.337481L156.672 225.28c-18.962963-18.962963-18.962963-49.682963 0-68.645926z" p-id="5082"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+    
+  <main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
+    
+    <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/assets/images/banner/bg-1.jpg" alt="">
+    
+    <h2 class="pt-4 text-center">我的视频制作工具箱</h2>
+    <h4 class="text-center text-gray-400 text-sm mb-3">
+      <span class="px-1 py-2">2024/03/27</span> 
+      <span class="px-1 py-2">|</span>
+      <span class="px-1 py-2">字数1051</span> 
+      <span class="px-1 py-2">|</span> 
+      <span class="px-1 py-2">阅读3分钟</span>
+    </h4>
+    <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
+    
+    
+    <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+        <p>这是一期工具介绍，做了UP主一段时间了，介绍一下用到的视频制作工具。主力机是一台2023年的MacMini（16G+512G），用于日常视频制作，剪辑，代码开发，文档编写等，还有一台备用机15款的MacBookPro（16G+256G，最后一款带发光Logo的Mac），外出时，写写文档和代码，还能用，不过也快退休了。</p>
+<h1 id="构思脚本编写">构思&amp;脚本编写</h1>
+<p><a href="https://www.feishu.cn/">飞书</a>：字节跳动的在线文档平台，功能强大，简单易用，支持MarkDown，代码格式化，软件流程图，思维导图等。用来构思视频内容，编写解说脚本，存储一些视频中用到的代码等。</p>
+<h1 id="视频制作">视频制作</h1>
+<p><strong>演示工具</strong></p>
+<p>KeyNote，水果家的发布会产品演示工具，界面简洁，动画效果一流。系统自带，免费软件。</p>
+<p><strong>录屏工具</strong></p>
+<p>Omi录屏专家，支持屏幕录制，区域录制，APP录制等。不过笔者平时只用到区域录制的功能。AppStore下载，收费软件。</p>
+<p><strong>键盘工具</strong></p>
+<p>KeyCastr，显示键盘按键，免费软件，homebrew下载即可。</p>
+<p><code>brew install --cask keycastr</code></p>
+<p><strong>鼠标工具</strong></p>
+<p>Cursor Pro，给鼠标加一个光环，方便看到鼠标位置。AppStore下载，收费软件。</p>
+<h1 id="视频剪辑">视频剪辑</h1>
+<p><strong>视频剪辑</strong></p>
+<p>水果家的FCP（FinalCutPro），是真的贵呀，也真的专业，你能想到的功能基本都有，完美配合Mac系统。</p>
+<p><strong>字幕制作</strong></p>
+<p>文字是提前写好的，用【<strong>剪映</strong>】做一次文字语音对齐，导出SRT文件即可，如果想要把SRT字幕文件输入到FCP中制作带字幕的视频，就需要用到 <a href="https://github.com/ticktechman/srt2fcpxml">srt2fcpxml</a> 这个命令行工具做转换了（这是一个笔者基于一个开源软件改过的）。</p>
+<p><strong>语音合成</strong></p>
+<p><a href="https://ttsmaker.com/">TTSMaker</a>，用于文字转语音，各种音色都有，支持简单的语速调节、停顿时间调节等配置，Web免费 APP。</p>
+<blockquote>
+<p>至于为什么不用笔者原声呢，主要是这样效率更高，方便后期修改。另外笔者的声音也是有点难以形容，效果不比生成的语音好。</p>
+</blockquote>
+<h1 id="归档">归档</h1>
+<p>百度云：素材、剪辑项目文件、字幕、最终视频等，都放在这里了。方便多主机资源共享。</p>
+<blockquote>
+<p>得充会员，否则无法上传文件</p>
+</blockquote>
+<h1 id="垃圾清理">垃圾清理</h1>
+<p>自己开发的脚本，主要用于清理FCP生成的渲染数据，这部分非常大，轻轻松松就能到100GB。</p>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#c678dd">function</span> v.fcp.gc<span style="color:#56b6c2">()</span> <span style="color:#56b6c2">{</span>
+</span></span><span style="display:flex;"><span>  find . -type d -name <span style="color:#98c379">&#34;Render Files&#34;</span> -print0 |
+</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">while</span> <span style="color:#e06c75">IFS</span><span style="color:#56b6c2">=</span> <span style="color:#e5c07b">read</span> -r -d <span style="color:#98c379">&#39;&#39;</span> one; <span style="color:#c678dd">do</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;</span><span style="color:#e06c75">$one</span><span style="color:#98c379">&#34;</span>
+</span></span><span style="display:flex;"><span>      rm -rf <span style="color:#98c379">&#34;</span><span style="color:#e06c75">$one</span><span style="color:#98c379">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">done</span>
+</span></span><span style="display:flex;"><span>  find . -name <span style="color:#98c379">&#34;.DS_Store&#34;</span> -print0 |
+</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">while</span> <span style="color:#e06c75">IFS</span><span style="color:#56b6c2">=</span> <span style="color:#e5c07b">read</span> -r -d <span style="color:#98c379">&#39;&#39;</span> one; <span style="color:#c678dd">do</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;</span><span style="color:#e06c75">$one</span><span style="color:#98c379">&#34;</span>
+</span></span><span style="display:flex;"><span>      rm -rf <span style="color:#98c379">&#34;</span><span style="color:#e06c75">$one</span><span style="color:#98c379">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">done</span>
+</span></span><span style="display:flex;"><span>  find . -size <span style="color:#d19a66">0</span> -print0 |
+</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">while</span> <span style="color:#e06c75">IFS</span><span style="color:#56b6c2">=</span> <span style="color:#e5c07b">read</span> -r -d <span style="color:#98c379">&#39;&#39;</span> one; <span style="color:#c678dd">do</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;</span><span style="color:#e06c75">$one</span><span style="color:#98c379">&#34;</span>
+</span></span><span style="display:flex;"><span>      rm -rf <span style="color:#98c379">&#34;</span><span style="color:#e06c75">$one</span><span style="color:#98c379">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">function v.fcp.gc() {
+  find . -type d -name &#34;Render Files&#34; -print0 |
+    while IFS= read -r -d &#39;&#39; one; do
+      echo &#34;$one&#34;
+      rm -rf &#34;$one&#34;
+    done
+  find . -name &#34;.DS_Store&#34; -print0 |
+    while IFS= read -r -d &#39;&#39; one; do
+      echo &#34;$one&#34;
+      rm -rf &#34;$one&#34;
+    done
+  find . -size 0 -print0 |
+    while IFS= read -r -d &#39;&#39; one; do
+      echo &#34;$one&#34;
+      rm -rf &#34;$one&#34;
+    done
+}</div>
+    </div>
+</div>
+<p>把上面的代码放到你的<code>.zshrc</code>或者<code>.bashrc</code>中就可以了，然后可以在任何地方执行<code>v.fcp.gc</code>就可以删除垃圾文件了。</p>
+
+    </div>
+    
+    <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+      
+      <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10" href="/blog/2024/setup-blog-with-github-pages/">上一篇：白嫖一个github博客系统</a>
+      
+      
+      <p></p>
+      
+    </div>
+  </main>
+
+  <div id="page-model-image-diag" class="mx-auto flex items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden" onclick="hideImageDiag(event, this)">
+    <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500" onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">
+  </div>
+
+    <footer>
+  <div class="flex text-sm text-gray-400"> © ticktechman 2024</div>
+</footer>
+
+
+    <script src="/assets/js/dark-mode.js"></script>
+    <script src="/assets/js/menu.js"></script>
+</body>
+</html>

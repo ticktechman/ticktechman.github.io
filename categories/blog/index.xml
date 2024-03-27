@@ -6,8 +6,15 @@
     <description>Recent content in Blog on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 18 Mar 2024 13:42:11 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2024 09:50:16 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的视频制作工具箱</title>
+      <link>https://ticktechman.github.io/blog/2024/video-tools/</link>
+      <pubDate>Wed, 27 Mar 2024 09:50:16 +0800</pubDate>
+      <guid>https://ticktechman.github.io/blog/2024/video-tools/</guid>
+      <description>这是一期工具介绍，做了UP主一段时间了，介绍一下用到的视频制作工具。主力机是一台2023年的MacMini（16G+512G），用于日常视频</description>
+    </item>
     <item>
       <title>白嫖一个github博客系统</title>
       <link>https://ticktechman.github.io/blog/2024/setup-blog-with-github-pages/</link>

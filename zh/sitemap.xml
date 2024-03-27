@@ -2,8 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ticktechman.github.io/categories/blog/</loc>
+    <lastmod>2024-03-27T09:50:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://ticktechman.github.io/en/categories/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://ticktechman.github.io/categories/blog/"
+                />
+  </url><url>
     <loc>https://ticktechman.github.io/categories/</loc>
-    <lastmod>2024-03-18T19:23:13+08:00</lastmod>
+    <lastmod>2024-03-27T09:50:16+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -14,6 +27,35 @@
                 hreflang="zh-CN"
                 href="https://ticktechman.github.io/categories/"
                 />
+  </url><url>
+    <loc>https://ticktechman.github.io/tags/pinned/</loc>
+    <lastmod>2024-03-27T09:50:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://ticktechman.github.io/en/tags/pinned/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://ticktechman.github.io/tags/pinned/"
+                />
+  </url><url>
+    <loc>https://ticktechman.github.io/tags/</loc>
+    <lastmod>2024-03-27T09:50:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://ticktechman.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://ticktechman.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://ticktechman.github.io/blog/2024/video-tools/</loc>
+    <lastmod>2024-03-27T09:50:16+08:00</lastmod>
   </url><url>
     <loc>https://ticktechman.github.io/categories/series/</loc>
     <lastmod>2024-03-18T19:23:13+08:00</lastmod>
@@ -60,45 +102,6 @@
   </url><url>
     <loc>https://ticktechman.github.io/series/play-with-termux/</loc>
     <lastmod>2024-03-18T18:26:42+08:00</lastmod>
-  </url><url>
-    <loc>https://ticktechman.github.io/categories/blog/</loc>
-    <lastmod>2024-03-18T13:42:11+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://ticktechman.github.io/en/categories/blog/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://ticktechman.github.io/categories/blog/"
-                />
-  </url><url>
-    <loc>https://ticktechman.github.io/tags/pinned/</loc>
-    <lastmod>2024-03-18T13:42:11+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://ticktechman.github.io/en/tags/pinned/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://ticktechman.github.io/tags/pinned/"
-                />
-  </url><url>
-    <loc>https://ticktechman.github.io/tags/</loc>
-    <lastmod>2024-03-18T13:42:11+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://ticktechman.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://ticktechman.github.io/tags/"
-                />
   </url><url>
     <loc>https://ticktechman.github.io/blog/2024/setup-blog-with-github-pages/</loc>
     <lastmod>2024-03-18T13:42:11+08:00</lastmod>
