@@ -2,6 +2,53 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ticktechman.github.io/categories/</loc>
+    <lastmod>2024-04-03T16:27:55+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://ticktechman.github.io/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://ticktechman.github.io/categories/"
+                />
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/06/</loc>
+    <lastmod>2024-04-03T16:27:55+08:00</lastmod>
+  </url><url>
+    <loc>https://ticktechman.github.io/categories/series/</loc>
+    <lastmod>2024-04-03T16:27:55+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://ticktechman.github.io/en/categories/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://ticktechman.github.io/categories/series/"
+                />
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/05/</loc>
+    <lastmod>2024-04-03T16:01:32+08:00</lastmod>
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/04/</loc>
+    <lastmod>2024-03-28T19:53:04+08:00</lastmod>
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/03/</loc>
+    <lastmod>2024-03-28T18:51:41+08:00</lastmod>
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/02/</loc>
+    <lastmod>2024-03-28T12:19:03+08:00</lastmod>
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/01/</loc>
+    <lastmod>2024-03-27T20:32:05+08:00</lastmod>
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/</loc>
+    <lastmod>2024-03-27T19:59:19+08:00</lastmod>
+  </url><url>
     <loc>https://ticktechman.github.io/categories/blog/</loc>
     <lastmod>2024-03-27T09:50:16+08:00</lastmod>
     <xhtml:link
@@ -13,19 +60,6 @@
                 rel="alternate"
                 hreflang="zh-CN"
                 href="https://ticktechman.github.io/categories/blog/"
-                />
-  </url><url>
-    <loc>https://ticktechman.github.io/categories/</loc>
-    <lastmod>2024-03-27T09:50:16+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://ticktechman.github.io/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://ticktechman.github.io/categories/"
                 />
   </url><url>
     <loc>https://ticktechman.github.io/tags/pinned/</loc>
@@ -56,19 +90,6 @@
   </url><url>
     <loc>https://ticktechman.github.io/blog/2024/video-tools/</loc>
     <lastmod>2024-03-27T09:50:16+08:00</lastmod>
-  </url><url>
-    <loc>https://ticktechman.github.io/categories/series/</loc>
-    <lastmod>2024-03-18T19:23:13+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://ticktechman.github.io/en/categories/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="https://ticktechman.github.io/categories/series/"
-                />
   </url><url>
     <loc>https://ticktechman.github.io/series/play-with-termux/inside/</loc>
     <lastmod>2024-03-18T19:23:13+08:00</lastmod>

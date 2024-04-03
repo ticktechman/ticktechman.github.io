@@ -6,8 +6,57 @@
     <description>Recent content in Series on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 18 Mar 2024 19:23:13 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 03 Apr 2024 16:27:55 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.github.io/categories/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac新机设置-键盘鼠标</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/06/</link>
+      <pubDate>Wed, 03 Apr 2024 16:27:55 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/06/</guid>
+      <description>界面配置 键盘设置：【系统偏好设置】&amp;gt;【键盘】 按键重复设置到最快，这样在删除字符的时候特别的快 重复前延迟设置为最短，在连续删除字符的时候</description>
+    </item>
+    <item>
+      <title>Mac新机设置-触控板</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/05/</link>
+      <pubDate>Wed, 03 Apr 2024 16:01:32 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/05/</guid>
+      <description>界面配置 轻点代替点击：【系统偏好设置】&amp;gt;【触控板】 有了这个设置，你不需要用力按下触控板，只需要轻轻点击即可。 取消【滚动方向：自然】 这点</description>
+    </item>
+    <item>
+      <title>Mac新机设置-访达</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/04/</link>
+      <pubDate>Thu, 28 Mar 2024 19:53:04 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/04/</guid>
+      <description>界面配置 访达的配置比较零散，大家将就着看吧。 通用设置：打开访达，按[⌘ + ,]，选择【通用】选项卡 精简桌面图标 默认从用户根目录打开窗口 修改侧边</description>
+    </item>
+    <item>
+      <title>Mac新机设置-程序坞</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/03/</link>
+      <pubDate>Thu, 28 Mar 2024 18:51:41 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/03/</guid>
+      <description>清理程序坞(Dock) 默认情况下，你看到的程序坞是这样的： 这里有大量平时用不到的图标，清理的话也很简单，就是拖动图标到空白桌面即可。当然也有</description>
+    </item>
+    <item>
+      <title>Apple ID</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/02/</link>
+      <pubDate>Thu, 28 Mar 2024 12:19:03 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/02/</guid>
+      <description>什么是Apple ID Apple ID 是你用于访问 App Store、iCloud、iMessage 信息、Apple Store 在线商店和 FaceTime 通话等 Apple 服务的个人账户。Appl</description>
+    </item>
+    <item>
+      <title>初识Mac</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/01/</link>
+      <pubDate>Wed, 27 Mar 2024 20:32:05 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/01/</guid>
+      <description>感觉不太一样 如果这是你第一次使用Mac，而你以前是一位Windows用户的话，一定会感觉很不适应。在这里你找不到文件管理器，找不到C盘/D盘</description>
+    </item>
+    <item>
+      <title>Mac入坑指南</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/</link>
+      <pubDate>Wed, 27 Mar 2024 19:59:19 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/</guid>
+      <description></description>
+    </item>
     <item>
       <title>玩转termux | 10.内部实现</title>
       <link>https://ticktechman.github.io/series/play-with-termux/inside/</link>

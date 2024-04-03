@@ -1,5 +1,5 @@
 
-console.log("get in menu.js");
+var log = console.log;
 
 function toggleMainMenu(event) {
   console.log("toggle main menu");
@@ -156,3 +156,109 @@ document.addEventListener("keyup", (event) => {
   }
 });
 
+
+function carousel_left(event, thiz) {
+  console.log("scroll left");
+
+  let carousel = thiz.parentElement.parentElement;
+  if(!carousel) {
+    return;
+  }
+
+  let items = carousel.querySelectorAll(".carousel-item");
+  let n = items.length;
+  let i = 0;
+  if(n <= 1) {
+    items[0].classList.remove('-translate-x-full', 'translate-x-full', 'z-6');
+    items[0].classList.add('translate-x-0', 'z-8');
+    items[0].setAttribute("current", "");
+    return;
+  }
+
+  let cur = n;
+  for(; i<n; i++) {
+    if(items[i].hasAttribute("current")) {
+      cur = i;
+      items[i].removeAttribute("current");
+    } else {
+      items[i].classList.remove('duration-1000');
+      items[i].classList.add('-translate-x-full');
+      items[i].classList.remove('translate-x-full', 'translate-x-0');
+    }
+  }
+  i = i % n;
+
+  window.setTimeout(function(items, cur, n) {
+    let nxt = (cur + 1) % n;
+    items[cur].classList.add("duration-1000");
+    items[cur].classList.remove('translate-x-0', 'z-8');
+    items[cur].classList.add('translate-x-full', 'z-6');
+    items[nxt].classList.add("duration-1000");
+    items[nxt].classList.remove('-translate-x-full', 'z-6');
+    items[nxt].classList.add('translate-x-0', 'z-8');
+    items[nxt].setAttribute("current", "");
+  }, 0, items, cur, n);
+
+  if(event) {
+    event.stopPropagation();
+  }
+}
+
+function carousel_right(event, thiz) {
+  log("scroll right");
+  let carousel = thiz.parentElement.parentElement;
+  if(!carousel) {
+    return;
+  }
+
+  let items = carousel.querySelectorAll(".carousel-item");
+  let n = items.length;
+  let i = 0;
+  if(n <= 1) {
+    items[0].classList.remove('translate-x-full', '-translate-x-full', 'z-6');
+    items[0].classList.add('translate-x-0', 'z-8');
+    items[0].setAttribute("current", "");
+    return;
+  }
+
+  let cur = n;
+  for(; i<n; i++) {
+    if(items[i].hasAttribute("current")) {
+      cur = i;
+      items[i].removeAttribute("current");
+    } else {
+      items[i].classList.remove('duration-1000');
+      items[i].classList.add('translate-x-full');
+      items[i].classList.remove('-translate-x-full', 'translate-x-0');
+    }
+  }
+  i = i % n;
+
+  window.setTimeout(function(items, cur, n) {
+    let nxt = (cur + 1) % n;
+    items[cur].classList.add("duration-1000");
+    items[cur].classList.remove('translate-x-0', 'z-8');
+    items[cur].classList.add('-translate-x-full', 'z-6');
+    items[nxt].classList.add("duration-1000");
+    items[nxt].classList.remove('translate-x-full', 'z-6');
+    items[nxt].classList.add('translate-x-0', 'z-8');
+    items[nxt].setAttribute("current", "");
+  }, 0, items, cur, n);
+
+  if(event) {
+    event.stopPropagation();
+  }
+}
+
+let carousels = document.querySelectorAll(".carousel");
+if(carousels.length > 0) {
+  carousels.forEach(e => {
+    let items = e.querySelectorAll(".carousel-item");
+    if(items.length <= 0) {
+      return;
+    }
+    items[items.length - 1].setAttribute("current", "");
+    carousel_right(null, e.querySelector('svg[name="right"]'));
+  });
+
+}
