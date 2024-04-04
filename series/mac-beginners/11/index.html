@@ -16,7 +16,7 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mac新机设置-打印机</title>
+  <title>Mac新机设置-共享文件</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
@@ -97,11 +97,11 @@
   
   <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/mac-beginners/images/default.jpg" alt="">
   
-  <h2 class="pt-4 text-center">Mac新机设置-打印机</h2>
+  <h2 class="pt-4 text-center">Mac新机设置-共享文件</h2>
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/04/04</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数198</span>
+    <span class="px-1 py-2">字数423</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读1分钟</span>
   </h4>
@@ -109,50 +109,71 @@
 
   
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
-    <h1 id="添加打印机">添加打印机</h1>
-<p>打印机在日常办公中使用频繁，使用下面方法来给Mac电脑添加打印机设备：</p>
+    <h1 id="开启文件共享">开启文件共享</h1>
+<p>如果你是一位Windows用户，一定使用过文件共享，但Mac电脑如何与windows用户共享文件呢？</p>
+<p>Mac上可以开启SMB服务来与PC或者其他Mac电脑共享文件，可以通过下面的界面开启SMB服务：</p>
 <div class="carousel">
   
 
 <div class="carousel-item ease-in-out w-full duration-1000 translate-x-full">
-  <img src='/series/mac-beginners/images/printer-1.png' />
+  <img src='/series/mac-beginners/images/share-1.png' />
   <div class="comments" style="scrollbar-width: thin;">
     <ol>
-<li>【系统设置】&gt;【打印机与扫描仪】</li>
+<li>创建共享目录</li>
 </ol>
-<p>点击【添加打印机】按钮</p>
 
   </div>
 </div>
 
 <div class="carousel-item ease-in-out w-full duration-1000 translate-x-full">
-  <img src='/series/mac-beginners/images/printer-2.png' />
+  <img src='/series/mac-beginners/images/share-2.png' />
   <div class="comments" style="scrollbar-width: thin;">
     <ol start="2">
-<li>选择需要添加的打印机设备，点击【添加】</li>
+<li>创建共享用户：【系统设置】&gt;【用户与群组】</li>
 </ol>
-<p>这里一般都可以正常搜索到同一网段中的打印机设备</p>
+<p>点击【添加账户】按钮，为共享文件创建一个新的用户。注意这里的【新账户】选择【仅限共享】，然后输入用户名和密码后，点击【创建用户】即可。</p>
 
   </div>
 </div>
 
 <div class="carousel-item ease-in-out w-full duration-1000 translate-x-full">
-  <img src='/series/mac-beginners/images/printer-4.png' />
+  <img src='/series/mac-beginners/images/share-3.png' />
   <div class="comments" style="scrollbar-width: thin;">
     <ol start="3">
-<li>手动添加</li>
+<li>开启SMB服务：【系统设置】&gt;【通用】&gt;【共享】&gt;【文件共享】</li>
 </ol>
-<p>如果步骤2中无法搜到想要的打印机，也可以手动输入IP地址添加</p>
 
   </div>
 </div>
 
 <div class="carousel-item ease-in-out w-full duration-1000 translate-x-full">
-  <img src='/series/mac-beginners/images/printer-3.png' />
+  <img src='/series/mac-beginners/images/share-4.png' />
   <div class="comments" style="scrollbar-width: thin;">
     <ol start="4">
-<li>添加完成后，就可以看到图中所示的设备图标，可以在上面第一个红框区域中，将刚刚连接的打印机设为默认打印机。</li>
+<li>设置共享目录</li>
 </ol>
+<p>添加【+】按钮，添加步骤1中创建的文件夹</p>
+
+  </div>
+</div>
+
+<div class="carousel-item ease-in-out w-full duration-1000 translate-x-full">
+  <img src='/series/mac-beginners/images/share-5.png' />
+  <div class="comments" style="scrollbar-width: thin;">
+    <ol start="5">
+<li>设置共享用户</li>
+</ol>
+
+  </div>
+</div>
+
+<div class="carousel-item ease-in-out w-full duration-1000 translate-x-full">
+  <img src='/series/mac-beginners/images/share-6.png' />
+  <div class="comments" style="scrollbar-width: thin;">
+    <ol start="6">
+<li>验证</li>
+</ol>
+<p>在windows系统中，打开【资源管理器】，在地址栏中输入：<code>\\192.168.1.105</code>（这里的<code>192.168.1.105</code>需要替换为Mac电脑的IP地址），然后按下回车键。系统会提示输入用户名和密码，就是我们在上面步骤2中创建的用户和密码，输入完成后，按下回车键，就可以看到我们共享的文件夹了。</p>
 
   </div>
 </div>
@@ -181,11 +202,10 @@
   <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/mac-beginners/09/">上一篇：Mac新机设置-如何隐藏文件</a>
+      href="/series/mac-beginners/10/">上一篇：Mac新机设置-打印机</a>
     
     
-    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/mac-beginners/11/">下一篇：Mac新机设置-共享文件</a>
+    <p></p>
     
   </div>
 </main>

@@ -189,7 +189,8 @@ function carousel_left(event, thiz) {
   i = i % n;
 
   window.setTimeout(function(items, cur, n) {
-    let nxt = (cur + 1) % n;
+    let nxt = cur - 1 < 0 ? n - 1 : cur - 1;
+    // log("next=", nxt, "cur=", cur, "n=", n);
     items[cur].classList.add("duration-1000");
     items[cur].classList.remove('translate-x-0', 'z-8');
     items[cur].classList.add('translate-x-full', 'z-6');
