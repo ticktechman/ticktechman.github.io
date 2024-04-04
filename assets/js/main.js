@@ -1,8 +1,8 @@
-
 var log = console.log;
+var loge = console.error;
 
 function toggleMainMenu(event) {
-  console.log("toggle main menu");
+  log("toggle main menu");
   var menu = document.getElementById("main-menu-hidden");
   if (menu.classList.contains("menu-shown")) {
     menu.classList.remove("menu-shown");
@@ -15,7 +15,7 @@ function toggleMainMenu(event) {
 }
 
 function toggleLanguageMenu(event) {
-  console.log("toggle language menu");
+  log("toggle language menu");
   var menu = document.getElementById("language-ul");
   if (menu.classList.contains("menu-shown")) {
     menu.classList.remove("menu-shown");
@@ -74,13 +74,13 @@ function copyCode(elem) {
     }, 1500);
 
   } else {
-    console.error("can not access clipboard");
+    loge("can not access clipboard");
   }
 }
 
 
 function imageZoomIn(ev, e) {
-  console.log("image zoom in");
+  log("image zoom in");
   if (e.classList.contains("max-w-max")) {
     e.classList.remove("max-w-max");
     e.classList.remove("max-h-max");
@@ -112,7 +112,7 @@ function resetImageProp(e) {
 }
 
 function hideImageDiag(ev, e) {
-  console.log("hide image diag");
+  log("hide image diag");
   e.classList.add("hidden");
   let img = e.getElementsByTagName("img");
   if (img.length > 0) {
@@ -127,7 +127,7 @@ function largeImageClick(ev) {
 }
 
 function showImageDiag(e) {
-  console.log("show image diag");
+  log("show image diag");
   e.classList.remove("hidden");
   return true;
 }
@@ -158,7 +158,7 @@ document.addEventListener("keyup", (event) => {
 
 
 function carousel_left(event, thiz) {
-  console.log("scroll left");
+  log("scroll left");
 
   let carousel = thiz.parentElement.parentElement;
   if(!carousel) {
@@ -260,5 +260,4 @@ if(carousels.length > 0) {
     items[items.length - 1].setAttribute("current", "");
     carousel_right(null, e.querySelector('svg[name="right"]'));
   });
-
 }
