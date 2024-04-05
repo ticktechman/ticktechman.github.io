@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ticktechman.github.io/categories/</loc>
-    <lastmod>2024-04-04T18:20:15+08:00</lastmod>
+    <lastmod>2024-04-05T20:21:35+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -15,11 +15,11 @@
                 href="https://ticktechman.github.io/categories/"
                 />
   </url><url>
-    <loc>https://ticktechman.github.io/series/mac-beginners/11/</loc>
-    <lastmod>2024-04-04T18:20:15+08:00</lastmod>
+    <loc>https://ticktechman.github.io/series/mac-beginners/14/</loc>
+    <lastmod>2024-04-05T20:21:35+08:00</lastmod>
   </url><url>
     <loc>https://ticktechman.github.io/categories/series/</loc>
-    <lastmod>2024-04-04T18:20:15+08:00</lastmod>
+    <lastmod>2024-04-05T20:21:35+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -30,6 +30,15 @@
                 hreflang="zh-CN"
                 href="https://ticktechman.github.io/categories/series/"
                 />
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/13/</loc>
+    <lastmod>2024-04-05T19:54:41+08:00</lastmod>
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/12/</loc>
+    <lastmod>2024-04-05T19:24:43+08:00</lastmod>
+  </url><url>
+    <loc>https://ticktechman.github.io/series/mac-beginners/11/</loc>
+    <lastmod>2024-04-04T18:20:15+08:00</lastmod>
   </url><url>
     <loc>https://ticktechman.github.io/series/mac-beginners/10/</loc>
     <lastmod>2024-04-04T16:37:06+08:00</lastmod>

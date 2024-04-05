@@ -16,7 +16,7 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>开篇</title>
+  <title>Mac程序员-sudo免密码</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
@@ -32,12 +32,12 @@
       </li>
       <li>
         <a href='/blog'
-          class='current-menu'>博客
+          class=''>博客
         </a>
       </li>
       <li>
         <a href='/series'
-          class=''>专栏
+          class='current-menu'>专栏
         </a>
       </li>
       <li>
@@ -95,13 +95,13 @@
   
 <main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
   
-  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/assets/images/banner/default.jpg" alt="">
+  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/mac-beginners/images/default.jpg" alt="">
   
-  <h2 class="pt-4 text-center">开篇</h2>
+  <h2 class="pt-4 text-center">Mac程序员-sudo免密码</h2>
   <h4 class="text-center text-gray-400 text-sm mb-3">
-    <span class="px-1 py-2">2024/03/18</span>
+    <span class="px-1 py-2">2024/04/05</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数312</span>
+    <span class="px-1 py-2">字数220</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读1分钟</span>
   </h4>
@@ -109,25 +109,53 @@
 
   
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
-    <p>刚刚（2024/3/18）新建了一套自己的博客系统，基于<a href="https://gohugo.io/">hugo</a>和<a href="https://tailwindcss.com/">tailwindcss</a>，纯手工打造。</p>
-<p><strong>1. 为什么要自己搭建？</strong></p>
-<p>原因只有一个，就是所有内容自己可控，不受平台影响，全凭自己喜好。只需要一点点动手能力就可以，只要你不闲麻烦，喜欢折腾，也可以自己动手DIY一套。</p>
-<p><strong>2. 为什么开始写博客？</strong></p>
-<p>一直以来脑袋里面的东西都比较零散，想用写作的方式来记录和整理思绪，同时把一些将来可能重复使用的内容记录下来，方便自己看。当然如果这些内容对你也有点用处，那就再好不过了。</p>
-<p><strong>3. 有哪些内容？</strong></p>
-<p>90%的文章都是技术类的，内容涉及工具、编程语言，工程实践，环境搭建等，主要是一些学习总结，也会有少量的技术思考。</p>
-<p><strong>4. 适合哪些人看？</strong></p>
-<p>程序员族群，菜鸟或者老鸟。</p>
+    <h1 id="免密码执行sudo">免密码执行sudo</h1>
+<p>默认情况下，在Mac上每次需要root权限，都需要用到sudo命令，执行这个命令需要两个条件：</p>
+<ol>
+<li>当前用户是管理员用户</li>
+<li>正确输入当前用户的密码</li>
+</ol>
+<p>然而每次执行sudo都输入密码，严重影响效率。可以通过下面的方法，免除每次输入密码的限制：</p>
+<ol>
+<li>将如下内容添加到<code>/etc/sudoers</code>文件最后：</li>
+</ol>
+<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4">
+        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
+        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <pre tabindex="0"><code class="language-conf" data-lang="conf">your-user-name ALL=(ALL) NOPASSWD: ALL</code></pre>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">your-user-name ALL=(ALL) NOPASSWD: ALL</div>
+    </div>
+</div>
+<blockquote>
+<ul>
+<li>这里的<code>your-user-name</code>需要替换为你的Mac用户名</li>
+<li>文件<code>/etc/sudoers</code>是一个系统特权文件，修改它需要root权限</li>
+</ul>
+</blockquote>
 
   </div>
   
   <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     
-    <p></p>
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/mac-beginners/11/">上一篇：Mac新机设置-共享文件</a>
     
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/blog/2024/setup-blog-with-github-pages/">下一篇：白嫖一个github博客系统</a>
+      href="/series/mac-beginners/13/">下一篇：Mac程序员-ssh免密码登陆</a>
     
   </div>
 </main>
