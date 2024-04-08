@@ -6,8 +6,29 @@
     <description>Recent content in ticktechman on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 05 Apr 2024 21:26:06 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 07 Apr 2024 16:07:40 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac使用-windows用户适应手册</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/18/</link>
+      <pubDate>Sun, 07 Apr 2024 16:07:40 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/18/</guid>
+      <description>如果你是一位windows用户，刚刚入手了一台Mac电脑，一定会有些不适应，这篇文章就来告诉你这两个系统有哪些不同，以及应该如何适应新的Ma</description>
+    </item>
+    <item>
+      <title>Mac程序员-常用软件</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/17/</link>
+      <pubDate>Sun, 07 Apr 2024 11:22:43 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/17/</guid>
+      <description>这是一期Mac软件推荐，主要面向程序员族群。 xcode 用途：开发工具集 费用：免费 安装：AppStore或者终端命令 xcode-select --install iterm2 用途：mac上好用的终端工具</description>
+    </item>
+    <item>
+      <title>Mac软件安装-常用软件</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/16/</link>
+      <pubDate>Sun, 07 Apr 2024 09:32:49 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/16/</guid>
+      <description>这是一期Mac上的常用软件推荐，面向初学者。 office软件 Microsoft 365： 对于从Windows迁移的用户，零学习成本，但Mac上的体验要比Win</description>
+    </item>
     <item>
       <title>Mac软件安装-有哪些方式</title>
       <link>https://ticktechman.github.io/series/mac-beginners/15/</link>
