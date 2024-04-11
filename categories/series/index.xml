@@ -6,8 +6,106 @@
     <description>Recent content in Series on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 07 Apr 2024 16:07:40 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Apr 2024 08:15:34 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.github.io/categories/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac使用-几个不成熟的小建议</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/32/</link>
+      <pubDate>Thu, 11 Apr 2024 08:15:34 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/32/</guid>
+      <description>Mac是很好的生产力工具，当然这也取决于如何使用它。有些人拿来装上windows来用，有人拿来装上Linux（比如Linus Torvalds</description>
+    </item>
+    <item>
+      <title>Mac使用-重装系统</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/31/</link>
+      <pubDate>Wed, 10 Apr 2024 15:36:41 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/31/</guid>
+      <description>在上一期《Mac使用-制作USB安装盘》中，我们知道了如何制作一个USB安装盘，这一期，我们就要真的动手进行重装系统了。这并不复杂，甚至可以</description>
+    </item>
+    <item>
+      <title>Mac使用-制作USB安装盘</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/30/</link>
+      <pubDate>Wed, 10 Apr 2024 11:16:23 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/30/</guid>
+      <description>Mac系统需要重装吗？答案是90%的场景下不需要。那剩下的10%的场景，可能需要，例如：系统起不来了，中毒了，装了很多软件，懒得清理，或者你</description>
+    </item>
+    <item>
+      <title>Mac程序员-推荐几个不错的编程字体</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/29/</link>
+      <pubDate>Wed, 10 Apr 2024 10:01:08 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/29/</guid>
+      <description>使用等宽字编码基本是程序员的共识，等宽字的好处是每个字符的宽度一样，方便做代码对齐，对齐对编码风格太重要了，每次看到不对齐的代码，会让人心生</description>
+    </item>
+    <item>
+      <title>Mac使用-几个可能有用的快捷键</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/28/</link>
+      <pubDate>Wed, 10 Apr 2024 09:27:58 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/28/</guid>
+      <description>先贴一张键盘的布局图，方便各位查看： 系统相关的快捷键 切换虚拟桌面：Ctrl + 左/右方向键 切换应用：Command + Tab键 切换输入法：Ctr</description>
+    </item>
+    <item>
+      <title>Mac使用-几个可能有用的手势</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/27/</link>
+      <pubDate>Wed, 10 Apr 2024 09:08:14 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/27/</guid>
+      <description>两指 缩放：捏合表示缩小，张开表示放大，一般用来做图片和网页的缩放 滚动：上下或者左右滑动，实现窗口滚动（上下/左右）； 三指 三指拖移：光标放到窗</description>
+    </item>
+    <item>
+      <title>Mac使用-多屏支起来</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/26/</link>
+      <pubDate>Tue, 09 Apr 2024 17:24:44 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/26/</guid>
+      <description>当下的办公室环境中，两个显示器基本是标配了。在Mac上使用多显示器，需要注意哪些呢？主要有下面几点 物理连接的问题 现在的Mac系统，无论是Ma</description>
+    </item>
+    <item>
+      <title>Mac程序员-开启ssh服务</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/25/</link>
+      <pubDate>Tue, 09 Apr 2024 16:30:35 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/25/</guid>
+      <description>ssh服务是类unix系统的非常重要的一个远程访问服务，开启后，可以在另外一台终端上登陆到电脑上，实现远程操作，包括远程执行命令，安装软件，</description>
+    </item>
+    <item>
+      <title>Mac使用-与Android怎么互传数据</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/24/</link>
+      <pubDate>Tue, 09 Apr 2024 13:18:17 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/24/</guid>
+      <description>iPhone隶属苹果生态，和Mac的数据互通机制都是自家的技术，用起来行云流水。但Android手机仍然是移动市场的主力，而且不少Mac用户</description>
+    </item>
+    <item>
+      <title>Mac使用-与iPhone数据互传</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/23/</link>
+      <pubDate>Tue, 09 Apr 2024 10:36:23 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/23/</guid>
+      <description>如果你是iPhone用户，同时也有Mac电脑，数据互传是很自然的需求。有下面两种方式来做文档和图片共享： Mac到iPhone 【隔空投送】 打开</description>
+    </item>
+    <item>
+      <title>Mac使用-怎么和Windows共用U盘</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/22/</link>
+      <pubDate>Tue, 09 Apr 2024 09:32:24 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/22/</guid>
+      <description>你的U盘在Windows系统上用的好好的，但是到了Mac上提示无法写入文件，这是怎么回事呢？大概率是因为你在格式化U盘的时候，用的是NTFS</description>
+    </item>
+    <item>
+      <title>Mac使用-没有多屏，就来个多桌面吧</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/21/</link>
+      <pubDate>Mon, 08 Apr 2024 17:11:13 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/21/</guid>
+      <description>Mac原生支持多桌面的，意思是你可以创建多个虚拟桌面，然后将某个App放到一个特定的桌面中，例如：浏览网页在桌面1，写代码在桌面2，发邮件在</description>
+    </item>
+    <item>
+      <title>Mac使用-邮箱用起来</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/20/</link>
+      <pubDate>Mon, 08 Apr 2024 15:33:49 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/20/</guid>
+      <description>Mac系统默认的邮箱朴实，没什么花俏的功能，简单好用。这里简单介绍如何使用系统默认的【邮件】App收发邮件： 添加账户 这里需要输入邮箱地址和密</description>
+    </item>
+    <item>
+      <title>Mac使用-电脑配置对吗</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/19/</link>
+      <pubDate>Mon, 08 Apr 2024 15:04:20 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/19/</guid>
+      <description>对于Windows用户来说，拿到电脑的第一件事可能就是看电脑配置了，得看看是不是和自己下单的一致。但是Mac电脑上如何查看配置呢？可以通过下</description>
+    </item>
     <item>
       <title>Mac使用-windows用户适应手册</title>
       <link>https://ticktechman.github.io/series/mac-beginners/18/</link>
