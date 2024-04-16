@@ -6,8 +6,36 @@
     <description>Recent content in Mac入坑指南 on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 11 Apr 2024 08:15:34 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Apr 2024 09:03:33 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.github.io/series/mac-beginners/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac程序员-定制自己的nerd fonts</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/36/</link>
+      <pubDate>Tue, 16 Apr 2024 09:03:33 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/36/</guid>
+      <description>先简单介绍一下Nerd Fonts，它是一套图形字符集，可以在终端命令行窗口上，显示各种图标，图标颜色&amp;amp;大小和终端字体保持一致，这就可</description>
+    </item>
+    <item>
+      <title>Mac使用-备份App配置的N种方式</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/35/</link>
+      <pubDate>Fri, 12 Apr 2024 17:13:38 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/35/</guid>
+      <description>在Mac上，我们花费了不少时间来配置系统App和一些三方的App，配置完成后，用起来也比较顺手，但是换了另外一台电脑，如果再重新配置一遍，肯</description>
+    </item>
+    <item>
+      <title>Mac使用-完美终端</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/34/</link>
+      <pubDate>Thu, 11 Apr 2024 21:43:16 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/34/</guid>
+      <description>Mac最大的效率工具就是它的终端命令，打造一个好用的终端，对很多程序员来说大有裨益。下面有两张图，各位看下更喜欢哪张？ 系统默认终端 这时Mac</description>
+    </item>
+    <item>
+      <title>Mac使用-字体库安装与备份</title>
+      <link>https://ticktechman.github.io/series/mac-beginners/33/</link>
+      <pubDate>Thu, 11 Apr 2024 19:58:00 +0800</pubDate>
+      <guid>https://ticktechman.github.io/series/mac-beginners/33/</guid>
+      <description>安装字体库 Mac系统的字体安装非常简单，双击下载的ttf或者otf字体库文件，点击【安装】按钮即可，安装完成后，可以在系统中看到，同时在其它</description>
+    </item>
     <item>
       <title>Mac使用-几个不成熟的小建议</title>
       <link>https://ticktechman.github.io/series/mac-beginners/32/</link>
