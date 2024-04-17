@@ -2,80 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>玩转termux on Ticktechman&#39;s Blog</title>
-    <link>https://ticktechman.github.io/series/play-with-termux/</link>
+    <link>https://ticktechman.tech/series/play-with-termux/</link>
     <description>Recent content in 玩转termux on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 18 Mar 2024 19:23:13 +0800</lastBuildDate>
-    <atom:link href="https://ticktechman.github.io/series/play-with-termux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ticktechman.tech/series/play-with-termux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>玩转termux | 10.内部实现</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/inside/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/inside/</link>
       <pubDate>Mon, 18 Mar 2024 19:23:13 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/inside/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/inside/</guid>
       <description>这是笔者的一个嗜好，喜欢研究软件的内部实现。今天我们就来扒一扒termux，看看它是如何做到在Android系统上搭建一套Linux系统的，</description>
     </item>
     <item>
       <title>玩转termux | 9.外网访问</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/access-from-wlan/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/access-from-wlan/</link>
       <pubDate>Mon, 18 Mar 2024 19:08:03 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/access-from-wlan/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/access-from-wlan/</guid>
       <description>为什么需要外网访问 当你的手机放在家里或者其他固定地方，但想要在任何有网络的地方都能访问，例如你在手机上托管了一个博客系统、一个数据库、一个g</description>
     </item>
     <item>
       <title>玩转termux | 8.搭建PostgreSQL数据库</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-postgresql-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-postgresql-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:07:01 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-postgresql-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-postgresql-server/</guid>
       <description>什么是PostgreSQL PostgreSQL是一个开源的对象-关系数据库管理系统RDBMS，在类似BSD许可与MIT许可的PostgreS</description>
     </item>
     <item>
       <title>玩转termux | 7.搭建redis数据库</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-redis-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-redis-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:06:49 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-redis-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-redis-server/</guid>
       <description>什么是redis Redis是一个使用ANSI C编写的开源、支持网络、基于内存、分布式、可选持久性的键值对存储数据库。根据月度排行网站DB-E</description>
     </item>
     <item>
       <title>玩转termux | 6.搭建web服务</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-web-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-web-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:06:20 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-web-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-web-server/</guid>
       <description>本文我们以nginx为例，介绍如何在termux上搭建一个web服务器 什么是nginx Nginx是异步框架的网页服务器，也可以用作反向代理、</description>
     </item>
     <item>
       <title>玩转termux | 5.搭建svn服务</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-svn-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-svn-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:06:16 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-svn-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-svn-server/</guid>
       <description>SVN也是一个代码管理工具，一般用来存储二进制的文件，例如word文档，图片或者压缩包等，自带权限管理功能。笔者一般用它来作为文档配置库用，</description>
     </item>
     <item>
       <title>玩转termux | 4.搭建git服务</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-git-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-git-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:02:35 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-git-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-git-server/</guid>
       <description>说明：本文只搭建基于ssh的简单git服务，没有权限管理等一些复杂操作，不会用到gitlab这种大型的git服务软件，不感兴趣的读者可以跳过</description>
     </item>
     <item>
       <title>玩转termux | 3.搭建ssh服务</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-ssh-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-ssh-server/</link>
       <pubDate>Mon, 18 Mar 2024 18:56:32 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-ssh-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-ssh-server/</guid>
       <description>准备工作 在安装所有软件之前，需要先使用下面的命令更新系统 1 2 3 4 5 6 7 apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade 用过u</description>
     </item>
     <item>
       <title>玩转termux | 2.立即安装</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/how-to-install-termux/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/how-to-install-termux/</link>
       <pubDate>Mon, 18 Mar 2024 18:51:26 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/how-to-install-termux/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/how-to-install-termux/</guid>
       <description>安装 在github上可以找到最新的安装包：https://github.com/termux/termux-app/releases 选择这个</description>
     </item>
     <item>
       <title>玩转termux | 1.什么是termux</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/what-is-termux/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/what-is-termux/</link>
       <pubDate>Mon, 18 Mar 2024 18:34:12 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/what-is-termux/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/what-is-termux/</guid>
       <description>能做什么 简单来说，termux是一个android应用，实现了一个控制台界面和一个Linux最小根文件系统，整个APK大小才30MB（基于目</description>
     </item>
   </channel>

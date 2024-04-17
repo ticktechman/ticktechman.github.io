@@ -2,353 +2,353 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ticktechman on Ticktechman&#39;s Blog</title>
-    <link>https://ticktechman.github.io/</link>
+    <link>https://ticktechman.tech/</link>
     <description>Recent content in ticktechman on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 16 Apr 2024 09:03:33 +0800</lastBuildDate>
-    <atom:link href="https://ticktechman.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ticktechman.tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mac程序员-定制自己的nerd fonts</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/36/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/36/</link>
       <pubDate>Tue, 16 Apr 2024 09:03:33 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/36/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/36/</guid>
       <description>先简单介绍一下Nerd Fonts，它是一套图形字符集，可以在终端命令行窗口上，显示各种图标，图标颜色&amp;amp;大小和终端字体保持一致，这就可</description>
     </item>
     <item>
       <title>Mac使用-备份App配置的N种方式</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/35/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/35/</link>
       <pubDate>Fri, 12 Apr 2024 17:13:38 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/35/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/35/</guid>
       <description>在Mac上，我们花费了不少时间来配置系统App和一些三方的App，配置完成后，用起来也比较顺手，但是换了另外一台电脑，如果再重新配置一遍，肯</description>
     </item>
     <item>
       <title>Mac使用-完美终端</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/34/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/34/</link>
       <pubDate>Thu, 11 Apr 2024 21:43:16 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/34/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/34/</guid>
       <description>Mac最大的效率工具就是它的终端命令，打造一个好用的终端，对很多程序员来说大有裨益。下面有两张图，各位看下更喜欢哪张？ 系统默认终端 这时Mac</description>
     </item>
     <item>
       <title>Mac使用-字体库安装与备份</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/33/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/33/</link>
       <pubDate>Thu, 11 Apr 2024 19:58:00 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/33/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/33/</guid>
       <description>安装字体库 Mac系统的字体安装非常简单，双击下载的ttf或者otf字体库文件，点击【安装】按钮即可，安装完成后，可以在系统中看到，同时在其它</description>
     </item>
     <item>
       <title>Mac使用-几个不成熟的小建议</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/32/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/32/</link>
       <pubDate>Thu, 11 Apr 2024 08:15:34 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/32/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/32/</guid>
       <description>Mac是很好的生产力工具，当然这也取决于如何使用它。有些人拿来装上windows来用，有人拿来装上Linux（比如Linus Torvalds</description>
     </item>
     <item>
       <title>Mac使用-重装系统</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/31/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/31/</link>
       <pubDate>Wed, 10 Apr 2024 15:36:41 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/31/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/31/</guid>
       <description>在上一期《Mac使用-制作USB安装盘》中，我们知道了如何制作一个USB安装盘，这一期，我们就要真的动手进行重装系统了。这并不复杂，甚至可以</description>
     </item>
     <item>
       <title>Mac使用-制作USB安装盘</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/30/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/30/</link>
       <pubDate>Wed, 10 Apr 2024 11:16:23 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/30/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/30/</guid>
       <description>Mac系统需要重装吗？答案是90%的场景下不需要。那剩下的10%的场景，可能需要，例如：系统起不来了，中毒了，装了很多软件，懒得清理，或者你</description>
     </item>
     <item>
       <title>Mac程序员-推荐几个不错的编程字体</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/29/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/29/</link>
       <pubDate>Wed, 10 Apr 2024 10:01:08 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/29/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/29/</guid>
       <description>使用等宽字编码基本是程序员的共识，等宽字的好处是每个字符的宽度一样，方便做代码对齐，对齐对编码风格太重要了，每次看到不对齐的代码，会让人心生</description>
     </item>
     <item>
       <title>Mac使用-几个可能有用的快捷键</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/28/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/28/</link>
       <pubDate>Wed, 10 Apr 2024 09:27:58 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/28/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/28/</guid>
       <description>先贴一张键盘的布局图，方便各位查看： 系统相关的快捷键 切换虚拟桌面：Ctrl + 左/右方向键 切换应用：Command + Tab键 切换输入法：Ctr</description>
     </item>
     <item>
       <title>Mac使用-几个可能有用的手势</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/27/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/27/</link>
       <pubDate>Wed, 10 Apr 2024 09:08:14 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/27/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/27/</guid>
       <description>两指 缩放：捏合表示缩小，张开表示放大，一般用来做图片和网页的缩放 滚动：上下或者左右滑动，实现窗口滚动（上下/左右）； 三指 三指拖移：光标放到窗</description>
     </item>
     <item>
       <title>Mac使用-多屏支起来</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/26/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/26/</link>
       <pubDate>Tue, 09 Apr 2024 17:24:44 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/26/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/26/</guid>
       <description>当下的办公室环境中，两个显示器基本是标配了。在Mac上使用多显示器，需要注意哪些呢？主要有下面几点 物理连接的问题 现在的Mac系统，无论是Ma</description>
     </item>
     <item>
       <title>Mac程序员-开启ssh服务</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/25/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/25/</link>
       <pubDate>Tue, 09 Apr 2024 16:30:35 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/25/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/25/</guid>
       <description>ssh服务是类unix系统的非常重要的一个远程访问服务，开启后，可以在另外一台终端上登陆到电脑上，实现远程操作，包括远程执行命令，安装软件，</description>
     </item>
     <item>
       <title>Mac使用-与Android怎么互传数据</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/24/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/24/</link>
       <pubDate>Tue, 09 Apr 2024 13:18:17 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/24/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/24/</guid>
       <description>iPhone隶属苹果生态，和Mac的数据互通机制都是自家的技术，用起来行云流水。但Android手机仍然是移动市场的主力，而且不少Mac用户</description>
     </item>
     <item>
       <title>Mac使用-与iPhone数据互传</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/23/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/23/</link>
       <pubDate>Tue, 09 Apr 2024 10:36:23 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/23/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/23/</guid>
       <description>如果你是iPhone用户，同时也有Mac电脑，数据互传是很自然的需求。有下面两种方式来做文档和图片共享： Mac到iPhone 【隔空投送】 打开</description>
     </item>
     <item>
       <title>Mac使用-怎么和Windows共用U盘</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/22/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/22/</link>
       <pubDate>Tue, 09 Apr 2024 09:32:24 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/22/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/22/</guid>
       <description>你的U盘在Windows系统上用的好好的，但是到了Mac上提示无法写入文件，这是怎么回事呢？大概率是因为你在格式化U盘的时候，用的是NTFS</description>
     </item>
     <item>
       <title>Mac使用-没有多屏，就来个多桌面吧</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/21/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/21/</link>
       <pubDate>Mon, 08 Apr 2024 17:11:13 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/21/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/21/</guid>
       <description>Mac原生支持多桌面的，意思是你可以创建多个虚拟桌面，然后将某个App放到一个特定的桌面中，例如：浏览网页在桌面1，写代码在桌面2，发邮件在</description>
     </item>
     <item>
       <title>Mac使用-邮箱用起来</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/20/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/20/</link>
       <pubDate>Mon, 08 Apr 2024 15:33:49 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/20/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/20/</guid>
       <description>Mac系统默认的邮箱朴实，没什么花俏的功能，简单好用。这里简单介绍如何使用系统默认的【邮件】App收发邮件： 添加账户 这里需要输入邮箱地址和密</description>
     </item>
     <item>
       <title>Mac使用-电脑配置对吗</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/19/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/19/</link>
       <pubDate>Mon, 08 Apr 2024 15:04:20 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/19/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/19/</guid>
       <description>对于Windows用户来说，拿到电脑的第一件事可能就是看电脑配置了，得看看是不是和自己下单的一致。但是Mac电脑上如何查看配置呢？可以通过下</description>
     </item>
     <item>
       <title>Mac使用-windows用户适应手册</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/18/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/18/</link>
       <pubDate>Sun, 07 Apr 2024 16:07:40 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/18/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/18/</guid>
       <description>如果你是一位windows用户，刚刚入手了一台Mac电脑，一定会有些不适应，这篇文章就来告诉你这两个系统有哪些不同，以及应该如何适应新的Ma</description>
     </item>
     <item>
       <title>Mac程序员-常用软件</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/17/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/17/</link>
       <pubDate>Sun, 07 Apr 2024 11:22:43 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/17/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/17/</guid>
       <description>这是一期Mac软件推荐，主要面向程序员族群。 xcode 用途：开发工具集 费用：免费 安装：AppStore或者终端命令 xcode-select --install iterm2 用途：mac上好用的终端工具</description>
     </item>
     <item>
       <title>Mac软件安装-常用软件</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/16/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/16/</link>
       <pubDate>Sun, 07 Apr 2024 09:32:49 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/16/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/16/</guid>
       <description>这是一期Mac上的常用软件推荐，面向初学者。 office软件 Microsoft 365： 对于从Windows迁移的用户，零学习成本，但Mac上的体验要比Win</description>
     </item>
     <item>
       <title>Mac软件安装-有哪些方式</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/15/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/15/</link>
       <pubDate>Fri, 05 Apr 2024 21:26:06 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/15/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/15/</guid>
       <description>安装途径 在Mac系统上，安装软件有下面三种方式： 应用商店：AppStore 这是初学者的首选方式，大部分App在AppStore上都可以下载到</description>
     </item>
     <item>
       <title>Mac程序员-禁用.DS_Store文件</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/14/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/14/</link>
       <pubDate>Fri, 05 Apr 2024 20:21:35 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/14/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/14/</guid>
       <description>.DS_Store文件是做什么用的？ .DS_Store 文件的主要作用，是存储当前文件夹在桌面显示相关方面的一些自定义属性，包括文件图标的位置、文件夹上次打开</description>
     </item>
     <item>
       <title>Mac程序员-ssh免密码登陆</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/13/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/13/</link>
       <pubDate>Fri, 05 Apr 2024 19:54:41 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/13/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/13/</guid>
       <description>免密码登陆 对于大部分程序员来说，ssh的使用频率非常高，每次登陆都输入密码非常繁琐，使用下面的方法可以免密码登陆： 1 2 3 4 5 ## 1. generate key. if you already have</description>
     </item>
     <item>
       <title>Mac程序员-sudo免密码</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/12/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/12/</link>
       <pubDate>Fri, 05 Apr 2024 19:24:43 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/12/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/12/</guid>
       <description>免密码执行sudo 默认情况下，在Mac上每次需要root权限，都需要用到sudo命令，执行这个命令需要两个条件： 当前用户是管理员用户 正确输入</description>
     </item>
     <item>
       <title>Mac新机设置-共享文件</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/11/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/11/</link>
       <pubDate>Thu, 04 Apr 2024 18:20:15 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/11/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/11/</guid>
       <description>开启文件共享 如果你是一位Windows用户，一定使用过文件共享，但Mac电脑如何与windows用户共享文件呢？ Mac上可以开启SMB服务来</description>
     </item>
     <item>
       <title>Mac新机设置-打印机</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/10/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/10/</link>
       <pubDate>Thu, 04 Apr 2024 16:37:06 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/10/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/10/</guid>
       <description>添加打印机 打印机在日常办公中使用频繁，使用下面方法来给Mac电脑添加打印机设备： 【系统设置】&amp;gt;【打印机与扫描仪】 点击【添加打印机】按钮</description>
     </item>
     <item>
       <title>Mac新机设置-如何隐藏文件</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/09/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/09/</link>
       <pubDate>Thu, 04 Apr 2024 16:14:33 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/09/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/09/</guid>
       <description>显示隐藏文件&amp;amp;文件夹 默认情况下，你看到的访达中的内容类似上面图示： 显示隐藏文件后的结果：快捷键【Command + J】，这个快捷键用来</description>
     </item>
     <item>
       <title>Mac新机设置-如何使用简单密码</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/08/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/08/</link>
       <pubDate>Thu, 04 Apr 2024 10:37:56 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/08/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/08/</guid>
       <description>开启简单密码策略 Mac默认的密码策略比较复杂，对字符数量和类型都有要求，想要使用简单密码，需要使用下面的命令清理密码策略，打开系统的终端程序</description>
     </item>
     <item>
       <title>Mac新机设置-显示</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/07/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/07/</link>
       <pubDate>Wed, 03 Apr 2024 21:43:32 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/07/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/07/</guid>
       <description>显示设置 现在的Mac电脑，屏幕分辨率都很高，一般都有4K。如果使用外接的Pro Display XDR，分辨率更是高达6K(6016 x 3384)。如果直接按</description>
     </item>
     <item>
       <title>Mac新机设置-键盘鼠标</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/06/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/06/</link>
       <pubDate>Wed, 03 Apr 2024 16:27:55 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/06/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/06/</guid>
       <description>界面配置 键盘设置：【系统偏好设置】&amp;gt;【键盘】 按键重复设置到最快，这样在删除字符的时候特别的快 重复前延迟设置为最短，在连续删除字符的时候</description>
     </item>
     <item>
       <title>Mac新机设置-触控板</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/05/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/05/</link>
       <pubDate>Wed, 03 Apr 2024 16:01:32 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/05/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/05/</guid>
       <description>界面配置 轻点代替点击：【系统偏好设置】&amp;gt;【触控板】 有了这个设置，你不需要用力按下触控板，只需要轻轻点击即可。 取消【滚动方向：自然】 这点</description>
     </item>
     <item>
       <title>Mac新机设置-访达</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/04/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/04/</link>
       <pubDate>Thu, 28 Mar 2024 19:53:04 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/04/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/04/</guid>
       <description>界面配置 访达的配置比较零散，大家将就着看吧。 通用设置：打开访达，按[⌘ + ,]，选择【通用】选项卡 精简桌面图标 默认从用户根目录打开窗口 修改侧边</description>
     </item>
     <item>
       <title>Mac新机设置-程序坞</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/03/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/03/</link>
       <pubDate>Thu, 28 Mar 2024 18:51:41 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/03/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/03/</guid>
       <description>清理程序坞(Dock) 默认情况下，你看到的程序坞是这样的： 这里有大量平时用不到的图标，清理的话也很简单，就是拖动图标到空白桌面即可。当然也有</description>
     </item>
     <item>
       <title>Apple ID</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/02/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/02/</link>
       <pubDate>Thu, 28 Mar 2024 12:19:03 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/02/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/02/</guid>
       <description>什么是Apple ID Apple ID 是你用于访问 App Store、iCloud、iMessage 信息、Apple Store 在线商店和 FaceTime 通话等 Apple 服务的个人账户。Appl</description>
     </item>
     <item>
       <title>初识Mac</title>
-      <link>https://ticktechman.github.io/series/mac-beginners/01/</link>
+      <link>https://ticktechman.tech/series/mac-beginners/01/</link>
       <pubDate>Wed, 27 Mar 2024 20:32:05 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/mac-beginners/01/</guid>
+      <guid>https://ticktechman.tech/series/mac-beginners/01/</guid>
       <description>感觉不太一样 如果这是你第一次使用Mac，而你以前是一位Windows用户的话，一定会感觉很不适应。在这里你找不到文件管理器，找不到C盘/D盘</description>
     </item>
     <item>
       <title>我的视频制作工具箱</title>
-      <link>https://ticktechman.github.io/blog/2024/video-tools/</link>
+      <link>https://ticktechman.tech/blog/2024/video-tools/</link>
       <pubDate>Wed, 27 Mar 2024 09:50:16 +0800</pubDate>
-      <guid>https://ticktechman.github.io/blog/2024/video-tools/</guid>
+      <guid>https://ticktechman.tech/blog/2024/video-tools/</guid>
       <description>这是一期工具介绍，做UP主一段时间了，介绍一下用到的视频制作工具。主力机是一台2023年的MacMini（16G+512G），用于日常视频制</description>
     </item>
     <item>
       <title>玩转termux | 10.内部实现</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/inside/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/inside/</link>
       <pubDate>Mon, 18 Mar 2024 19:23:13 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/inside/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/inside/</guid>
       <description>这是笔者的一个嗜好，喜欢研究软件的内部实现。今天我们就来扒一扒termux，看看它是如何做到在Android系统上搭建一套Linux系统的，</description>
     </item>
     <item>
       <title>玩转termux | 9.外网访问</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/access-from-wlan/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/access-from-wlan/</link>
       <pubDate>Mon, 18 Mar 2024 19:08:03 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/access-from-wlan/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/access-from-wlan/</guid>
       <description>为什么需要外网访问 当你的手机放在家里或者其他固定地方，但想要在任何有网络的地方都能访问，例如你在手机上托管了一个博客系统、一个数据库、一个g</description>
     </item>
     <item>
       <title>玩转termux | 8.搭建PostgreSQL数据库</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-postgresql-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-postgresql-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:07:01 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-postgresql-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-postgresql-server/</guid>
       <description>什么是PostgreSQL PostgreSQL是一个开源的对象-关系数据库管理系统RDBMS，在类似BSD许可与MIT许可的PostgreS</description>
     </item>
     <item>
       <title>玩转termux | 7.搭建redis数据库</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-redis-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-redis-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:06:49 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-redis-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-redis-server/</guid>
       <description>什么是redis Redis是一个使用ANSI C编写的开源、支持网络、基于内存、分布式、可选持久性的键值对存储数据库。根据月度排行网站DB-E</description>
     </item>
     <item>
       <title>玩转termux | 6.搭建web服务</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-web-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-web-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:06:20 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-web-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-web-server/</guid>
       <description>本文我们以nginx为例，介绍如何在termux上搭建一个web服务器 什么是nginx Nginx是异步框架的网页服务器，也可以用作反向代理、</description>
     </item>
     <item>
       <title>玩转termux | 5.搭建svn服务</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-svn-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-svn-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:06:16 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-svn-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-svn-server/</guid>
       <description>SVN也是一个代码管理工具，一般用来存储二进制的文件，例如word文档，图片或者压缩包等，自带权限管理功能。笔者一般用它来作为文档配置库用，</description>
     </item>
     <item>
       <title>玩转termux | 4.搭建git服务</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-git-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-git-server/</link>
       <pubDate>Mon, 18 Mar 2024 19:02:35 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-git-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-git-server/</guid>
       <description>说明：本文只搭建基于ssh的简单git服务，没有权限管理等一些复杂操作，不会用到gitlab这种大型的git服务软件，不感兴趣的读者可以跳过</description>
     </item>
     <item>
       <title>玩转termux | 3.搭建ssh服务</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/setup-ssh-server/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/setup-ssh-server/</link>
       <pubDate>Mon, 18 Mar 2024 18:56:32 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/setup-ssh-server/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/setup-ssh-server/</guid>
       <description>准备工作 在安装所有软件之前，需要先使用下面的命令更新系统 1 2 3 4 5 6 7 apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade 用过u</description>
     </item>
     <item>
       <title>玩转termux | 2.立即安装</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/how-to-install-termux/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/how-to-install-termux/</link>
       <pubDate>Mon, 18 Mar 2024 18:51:26 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/how-to-install-termux/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/how-to-install-termux/</guid>
       <description>安装 在github上可以找到最新的安装包：https://github.com/termux/termux-app/releases 选择这个</description>
     </item>
     <item>
       <title>玩转termux | 1.什么是termux</title>
-      <link>https://ticktechman.github.io/series/play-with-termux/what-is-termux/</link>
+      <link>https://ticktechman.tech/series/play-with-termux/what-is-termux/</link>
       <pubDate>Mon, 18 Mar 2024 18:34:12 +0800</pubDate>
-      <guid>https://ticktechman.github.io/series/play-with-termux/what-is-termux/</guid>
+      <guid>https://ticktechman.tech/series/play-with-termux/what-is-termux/</guid>
       <description>能做什么 简单来说，termux是一个android应用，实现了一个控制台界面和一个Linux最小根文件系统，整个APK大小才30MB（基于目</description>
     </item>
     <item>
       <title>白嫖一个github博客系统</title>
-      <link>https://ticktechman.github.io/blog/2024/setup-blog-with-github-pages/</link>
+      <link>https://ticktechman.tech/blog/2024/setup-blog-with-github-pages/</link>
       <pubDate>Mon, 18 Mar 2024 13:42:11 +0800</pubDate>
-      <guid>https://ticktechman.github.io/blog/2024/setup-blog-with-github-pages/</guid>
+      <guid>https://ticktechman.tech/blog/2024/setup-blog-with-github-pages/</guid>
       <description>你现在看到的这个博客系统，就是托管在了github上，对于纯静态网站来说，github可能是性价比非常高的选择，非常适合纯纯的写作者朋友。 为</description>
     </item>
     <item>
       <title>开篇</title>
-      <link>https://ticktechman.github.io/blog/2024/starting-here/</link>
+      <link>https://ticktechman.tech/blog/2024/starting-here/</link>
       <pubDate>Mon, 18 Mar 2024 11:00:32 +0800</pubDate>
-      <guid>https://ticktechman.github.io/blog/2024/starting-here/</guid>
+      <guid>https://ticktechman.tech/blog/2024/starting-here/</guid>
       <description>刚刚（2024/3/18）新建了一套自己的博客系统，基于hugo和tailwindcss，纯手工打造。 1. 为什么要自己搭建？ 原因只有一个，就是</description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pinned on Ticktechman&#39;s Blog</title>
-    <link>https://ticktechman.github.io/en/tags/pinned/</link>
+    <link>https://ticktechman.tech/en/tags/pinned/</link>
     <description>Recent content in Pinned on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Fri, 22 Mar 2024 19:53:15 +0800</lastBuildDate>
-    <atom:link href="https://ticktechman.github.io/en/tags/pinned/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ticktechman.tech/en/tags/pinned/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Starting Here</title>
-      <link>https://ticktechman.github.io/en/blog/2024/starting-here/</link>
+      <link>https://ticktechman.tech/en/blog/2024/starting-here/</link>
       <pubDate>Fri, 22 Mar 2024 19:53:15 +0800</pubDate>
-      <guid>https://ticktechman.github.io/en/blog/2024/starting-here/</guid>
+      <guid>https://ticktechman.tech/en/blog/2024/starting-here/</guid>
       <description>Some days ago, I setup this blog website with hugo and tailwindcss. And all code is written from scratch.&#xA;1. Why build it myself?&#xA;There&amp;rsquo;s only one reason: to have full control over all the content, unaffected by any platform, solely based on personal preferences. It only requires a bit of hands-on capability. And you can DIY your own system too.&#xA;2. Why start blogging?&#xA;My thoughts have always been somewhat scattered, and I wanted to use writing as a means to record and organize them, while also documenting some content that might be reused in the future for my own reference.</description>
     </item>
   </channel>
