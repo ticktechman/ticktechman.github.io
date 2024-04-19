@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git技术盘点 on Ticktechman&#39;s Blog</title>
+    <link>https://ticktechman.tech/series/git/</link>
+    <description>Recent content in Git技术盘点 on Ticktechman&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 19 Apr 2024 16:58:07 +0800</lastBuildDate>
+    <atom:link href="https://ticktechman.tech/series/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git基本概念-其它</title>
+      <link>https://ticktechman.tech/series/git/05/</link>
+      <pubDate>Fri, 19 Apr 2024 16:58:07 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/05/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Git基本概念-仓库、暂存区、工作区</title>
+      <link>https://ticktechman.tech/series/git/04/</link>
+      <pubDate>Fri, 19 Apr 2024 12:08:21 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/04/</guid>
+      <description>概念解释 仓库：顾名思义，就是存储数据的地方，Git仓库中存储着用户数据（代码，文本等），历史记录、提交信息、分支/标签信息等，对应.git目</description>
+    </item>
+    <item>
+      <title>Git使用-极简配置</title>
+      <link>https://ticktechman.tech/series/git/03/</link>
+      <pubDate>Fri, 19 Apr 2024 09:16:42 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/03/</guid>
+      <description>配置级别 首先我们介绍一下Git配置的级别，以及各个级别之间的关系。下图是Git配置的级别： 上图中可以看到4个级别的配置，影响的范围也逐渐增加</description>
+    </item>
+    <item>
+      <title>Git软件安装</title>
+      <link>https://ticktechman.tech/series/git/02/</link>
+      <pubDate>Thu, 18 Apr 2024 18:53:22 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/02/</guid>
+      <description>安装Git Git支持全平台，包括Windows、Linux、macOS系统，下面我们以三个平台为例，介绍如何安装Git： 1. Windows 下载安装包，双击</description>
+    </item>
+    <item>
+      <title>Git简史</title>
+      <link>https://ticktechman.tech/series/git/01/</link>
+      <pubDate>Thu, 18 Apr 2024 16:06:45 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/01/</guid>
+      <description>本文简单介绍一下git的历史，看看这个众多程序员都在用的工具，是如何诞生的。 人物： Linus Torvalds Andrew Tridgell Larry McVoy Junio Hamano 时间线： 时间回到2002年，当时Linus</description>
+    </item>
+  </channel>
+</rss>
