@@ -109,15 +109,31 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/04/19</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数0</span>
+    <span class="px-1 py-2">字数794</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">阅读0分钟</span>
+    <span class="px-1 py-2">阅读2分钟</span>
   </h4>
   <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
 
   
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
-    
+    <h1 id="分支branch标签tag">分支(Branch)&amp;标签(Tag)</h1>
+<p><img alt="Git分支与标签" src="/series/git/images/git-concepts.003.webp"></p>
+<ul>
+<li>分支：分支代表了一个独立的开发线路，支持动态演进。当你创建了一个分支，你可以在上面提交代码、创建标签、限制访问权限、下载特定分支的代码等。一般仓库中都有一个主分支（master/main），其他分支都是从主分支或者其他分支上创建的。常见的分支有开发分支、特性分支、bugfix分支。分支可以只存在于本地，也可以推送到远端服务器；可以对两个分支进行merge和rebase操作。</li>
+<li>标签：相当于一个静态版本快照，包含一个名字和一个描述信息（可选），不可独立演进（即不能提交代码），一般用于版本发布。</li>
+</ul>
+<p>在Git中，可以通过<code>git branch -a</code>查看当前仓库的所有分支，包含本地和远端；通过<code>git tag -l</code>查看所有标签信息；</p>
+<h1 id="作者author与提交者committer">作者（Author）与提交者（Committer）</h1>
+<ul>
+<li>作者：指编写原始更改或代码的人。在多人协作的项目中，author 是实际做出代码改动的人。</li>
+<li>提交者：指将更改最终提交到 Git 仓库中的人。在一些情况下，author 和 committer 可能是同一人，但在一些协作环境中（例如，代码审查后的合并操作），committer 可能是负责审查和合并其他人更改的人。</li>
+</ul>
+<p>在Git库中，可以通过<code>git cat-file -p &lt;commit-id&gt;</code>查看一个修改的作者与提交者信息。</p>
+<h1 id="提交记录">提交记录</h1>
+<p>用户的每次修改，都会产生一条提交记录，用户可以为本次提交添加一些描述信息，每个提交记录中包含一些元数据信息，包括：作者、时间、描述信息、上一个版本的ID等。Git就是通过提交记录，来把对代码的修改联系起来，形成一个串联的历史记录。每个提交记录对应一个历史版本，用一个十六进制的ID（例如2c29cc6c80ac19d6b329d44b3f84fe1e82ec167f）来标识。用户可以切换到其中的某个版本进行版本回退或修改bug。</p>
+<p>上图中的每个节点，都代表一条提交记录。在Git库中，可以执行<code>git log</code>查看提交记录</p>
+
   </div>
   
   <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">

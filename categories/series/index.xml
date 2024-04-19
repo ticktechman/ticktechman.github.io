@@ -13,7 +13,7 @@
       <link>https://ticktechman.tech/series/git/05/</link>
       <pubDate>Fri, 19 Apr 2024 16:58:07 +0800</pubDate>
       <guid>https://ticktechman.tech/series/git/05/</guid>
-      <description></description>
+      <description>分支(Branch)&amp;amp;标签(Tag) 分支：分支代表了一个独立的开发线路，支持动态演进。当你创建了一个分支，你可以在上面提交代码、创建</description>
     </item>
     <item>
       <title>Git基本概念-仓库、暂存区、工作区</title>
