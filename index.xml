@@ -6,8 +6,50 @@
     <description>Recent content in ticktechman on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 19 Apr 2024 16:58:07 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 21 Apr 2024 16:21:10 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git常见问题-如何回退远端库的代码</title>
+      <link>https://ticktechman.tech/series/git/11/</link>
+      <pubDate>Sun, 21 Apr 2024 16:21:10 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/11/</guid>
+      <description>错误的代码被提交到代码库上，这种情况并不少见。只要能够尽快发现，就不会造成太大问题。今天我们就来看看，如何将远端库上的代码会退到上一个版本。</description>
+    </item>
+    <item>
+      <title>Git常见问题-如何解决冲突</title>
+      <link>https://ticktechman.tech/series/git/10/</link>
+      <pubDate>Sun, 21 Apr 2024 10:57:09 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/10/</guid>
+      <description>场景 在Git操作中，冲突一般出现在执行git merge或者git rebase操作后，出现冲突的原因一般是两个人修改了同一文件的同一区域，Gi</description>
+    </item>
+    <item>
+      <title>Git常见问题-推送出错了怎么办？</title>
+      <link>https://ticktechman.tech/series/git/09/</link>
+      <pubDate>Sun, 21 Apr 2024 10:00:39 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/09/</guid>
+      <description>原因 在push失败的时候，你通常看到的情况是这样的： bash 1 2 3 4 5 6 7 8 9 git push To /Users/ticktech/usr/playground/git/demo.git ! [rejected] master -&amp;gt; master (fetch first) error: failed to push some refs to &amp;#39;/Users/ticktech/usr/playground/git/demo.git&amp;#39; hint: Updates were rejected because the remote contains work that you do not hint: have</description>
+    </item>
+    <item>
+      <title>Git常见问题-提交了一个垃圾文件怎么办</title>
+      <link>https://ticktechman.tech/series/git/08/</link>
+      <pubDate>Sun, 21 Apr 2024 09:16:01 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/08/</guid>
+      <description>场景 在日常操作中，错误的提交了一个本不属于代码库的文件或目录，几乎每个人都犯过。想要删掉这些文件或目录，可以有以下几种选择： 只删除文件，但不</description>
+    </item>
+    <item>
+      <title>Git常见问题-如何放弃本地修改</title>
+      <link>https://ticktechman.tech/series/git/07/</link>
+      <pubDate>Sat, 20 Apr 2024 15:53:48 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/07/</guid>
+      <description>当我们在说放弃本地修改的时候，我们是在说如下几种场景： 只在工作区中做了修改 如果需要全部撤销：git reset --hard HEAD 如果只撤销个别文件：git checkout &amp;lt;file1&amp;gt; 在工作</description>
+    </item>
+    <item>
+      <title>Git使用-极简工作流</title>
+      <link>https://ticktechman.tech/series/git/06/</link>
+      <pubDate>Sat, 20 Apr 2024 12:51:48 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/06/</guid>
+      <description>工作流 这是一个Git极简工作流，对于刚刚上手Git的小伙伴很实用。 下载代码（clone）：git clone &amp;lt;your-repo-url&amp;gt; 创建分支（branch）：git checkout -b dev 修</description>
+    </item>
     <item>
       <title>Git基本概念-其它</title>
       <link>https://ticktechman.tech/series/git/05/</link>
@@ -209,7 +251,7 @@
       <link>https://ticktechman.tech/series/mac-beginners/13/</link>
       <pubDate>Fri, 05 Apr 2024 19:54:41 +0800</pubDate>
       <guid>https://ticktechman.tech/series/mac-beginners/13/</guid>
-      <description>免密码登陆 对于大部分程序员来说，ssh的使用频率非常高，每次登陆都输入密码非常繁琐，使用下面的方法可以免密码登陆： 1 2 3 4 5 ## 1. generate key. if you already have</description>
+      <description>免密码登陆 对于大部分程序员来说，ssh的使用频率非常高，每次登陆都输入密码非常繁琐，使用下面的方法可以免密码登陆： bash 1 2 3 4 5 ## 1. generate key. if you already</description>
     </item>
     <item>
       <title>Mac程序员-sudo免密码</title>
@@ -356,7 +398,7 @@
       <link>https://ticktechman.tech/series/play-with-termux/setup-ssh-server/</link>
       <pubDate>Mon, 18 Mar 2024 18:56:32 +0800</pubDate>
       <guid>https://ticktechman.tech/series/play-with-termux/setup-ssh-server/</guid>
-      <description>准备工作 在安装所有软件之前，需要先使用下面的命令更新系统 1 2 3 4 5 6 7 apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade 用过u</description>
+      <description>准备工作 在安装所有软件之前，需要先使用下面的命令更新系统 bash 1 2 3 4 5 6 7 apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade 用过</description>
     </item>
     <item>
       <title>玩转termux | 2.立即安装</title>

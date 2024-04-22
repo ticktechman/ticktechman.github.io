@@ -109,7 +109,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/03/18</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数809</span>
+    <span class="px-1 py-2">字数816</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读2分钟</span>
   </h4>
@@ -119,11 +119,12 @@
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     <h1 id="准备工作">准备工作</h1>
 <p>在安装所有软件之前，需要先使用下面的命令更新系统</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -169,11 +170,12 @@ apt upgrade</div>
 </blockquote>
 <h1 id="安装">安装</h1>
 <p>接下来就可以安装ssh服务了，这里需要额外安装一个vim文本编辑器，因为后续的配置阶段需要修改配置文件。</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -203,11 +205,12 @@ apt upgrade</div>
 <li>修改默认密码：<code>passwd</code></li>
 <li>启动服务：<code>sshd</code></li>
 </ul>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -241,11 +244,12 @@ sshd</div>
 </div>
 <h1 id="测试">测试</h1>
 <p>服务启动之后，就可以在电脑上测试连接是否正常了，由于不是root用户，termux无法正常使用22端口，因此termux默认将端口修改为了8022，使用下面的命令测试连接是否正常</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -272,11 +276,12 @@ sshd</div>
 <p>替换上面的username为上面<code>whoami</code>的输出结果，termux-ip-address为<code>ifconfig</code>命令的输出的局域网IP地址；</p>
 </blockquote>
 <p>不想要每次都输入这么一大串内容，也可以在你的电脑上增加一个ssh配置</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -318,11 +323,12 @@ Host termux
     </div>
 </div>
 <p>然后使用: <code>ssh termux</code> 命令就可以连接了。如果还是觉得每次输入密码很麻烦，使用下面的命令实现免密码登陆</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -348,11 +354,12 @@ Host termux
 <h1 id="配置自启动">配置自启动</h1>
 <p>经过上面的一套操作，ssh可以正常访问了，但每次退出应用，服务就跟着退出了，并且每次重启APP，服务不会自动启动。如果每次启动应用，都需要先执行sshd命令才能连接ssh那就太不方便了。</p>
 <p>增加下面的配置，会在你启动APP之后，自动启动ssh服务。在<code>$HOME/.bashrc</code>文件中添加下面两条命令：</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">

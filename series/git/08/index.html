@@ -21,10 +21,10 @@
   
   <meta charset="UTF-8">
   
-  <meta name="description" content="redis也是可以的">
+  <meta name="description" content="本地误提交了一个文件或一整个目录，要怎么办？">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>玩转termux | 7.搭建redis数据库</title>
+  <title>Git常见问题-提交了一个垃圾文件怎么办</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
@@ -103,54 +103,25 @@
   
 <main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
   
-  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/play-with-termux/images/server.webp" alt="">
+  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
   
-  <h2 class="pt-4 text-center">玩转termux | 7.搭建redis数据库</h2>
+  <h2 class="pt-4 text-center">Git常见问题-提交了一个垃圾文件怎么办</h2>
   <h4 class="text-center text-gray-400 text-sm mb-3">
-    <span class="px-1 py-2">2024/03/18</span>
+    <span class="px-1 py-2">2024/04/21</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数594</span>
+    <span class="px-1 py-2">字数479</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">阅读2分钟</span>
+    <span class="px-1 py-2">阅读1分钟</span>
   </h4>
   <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
 
   
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
-    <h1 id="什么是redis">什么是redis</h1>
-<p>Redis是一个使用ANSI C编写的开源、支持网络、基于内存、分布式、可选持久性的键值对存储数据库。根据月度排行网站DB-Engines.com的数据，Redis是最流行的键值对存储数据库。</p>
-<p>—— 维基百科</p>
-<p>这样的一个内存数据库，如果运行在手机上是一种什么体验？</p>
-<h1 id="安装">安装</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4 flex flex-row">
-        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
-        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
-        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
-        <div class=" font-mono grow text-center">bash</div>
-    </div>
-    <div class="flex flex-row mx-4 my-3">
-        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
-        
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install -y redis</span></span></code></pre></td></tr></table>
-</div>
-</div>
-        </div>
-        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
-            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
-                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
-            </svg>
-            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
-        </div>
-        <div class="hidden">apt install -y redis</div>
-    </div>
-</div>
-<h1 id="配置--启动服务">配置 &amp; 启动服务</h1>
+    <h1 id="场景">场景</h1>
+<p>在日常操作中，错误的提交了一个本不属于代码库的文件或目录，几乎每个人都犯过。想要删掉这些文件或目录，可以有以下几种选择：</p>
+<ol>
+<li>只删除文件，但不删除历史记录</li>
+</ol>
 <div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
@@ -167,18 +138,12 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir redis <span style="color:#56b6c2">&amp;&amp;</span> <span style="color:#e5c07b">cd</span> redis
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git rm &lt;file&gt;
+</span></span><span style="display:flex;"><span>git rm -r &lt;directory&gt;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## copy a sample configuration </span>
-</span></span><span style="display:flex;"><span>cp <span style="color:#e06c75">$PREFIX</span>/etc/redis.conf ./
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## modify some conf items in it</span>
-</span></span><span style="display:flex;"><span>vim redis.conf</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#98c379">&#34;remove file or directory&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -188,66 +153,16 @@
             </svg>
             <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
         </div>
-        <div class="hidden">mkdir redis &amp;&amp; cd redis
+        <div class="hidden">git rm &lt;file&gt;
+git rm -r &lt;directory&gt;
 
-## copy a sample configuration 
-cp $PREFIX/etc/redis.conf ./
-
-## modify some conf items in it
-vim redis.conf</div>
+git commit -m &#34;remove file or directory&#34;</div>
     </div>
 </div>
-<p>修改下面的几个配置项</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4 flex flex-row">
-        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
-        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
-        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
-        <div class=" font-mono grow text-center">conf</div>
-    </div>
-    <div class="flex flex-row mx-4 my-3">
-        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
-        
-        <pre tabindex="0"><code class="language-conf" data-lang="conf">## replace ${your-termux-ip} with the real one
-bind ${your-termux-ip} 127.0.0.1
-
-## make redis server a daemon process
-daemonize yes
-
-## log file and database file name
-logfile &#34;redis.log&#34;
-dbfilename redis.rdb
-
-## password when connect to redis server
-requirepass ${redis-password}</code></pre>
-        </div>
-        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
-            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
-                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
-            </svg>
-            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
-        </div>
-        <div class="hidden">## replace ${your-termux-ip} with the real one
-bind ${your-termux-ip} 127.0.0.1
-
-## make redis server a daemon process
-daemonize yes
-
-## log file and database file name
-logfile &#34;redis.log&#34;
-dbfilename redis.rdb
-
-## password when connect to redis server
-requirepass ${redis-password}</div>
-    </div>
-</div>
-<ul>
-<li>增加一个本地局域网地址的bind，用于其他主机访问redis数据库</li>
-<li>服务已精灵进程运行，不影响控制台退出</li>
-<li>日志文件以及数据库文件（虽然redis是内存数据库，但也支持将数据存储到磁盘，方便下次退出重启的时候恢复）</li>
-<li>访问服务器的密码，客户端连接的时候需要</li>
-</ul>
-<p>接下来就可以启动服务了</p>
+<p>注意：上面的操作，只在最新版本中删除了对应的文件和目录，在git库中，切换到上一个版本，文件和目录依然存在。</p>
+<ol start="2">
+<li>既要删除文件，还要删除历史记录</li>
+</ol>
 <div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
@@ -263,7 +178,7 @@ requirepass ${redis-password}</div>
 <pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> redis <span style="color:#56b6c2">&amp;&amp;</span> redis-server redis.conf</span></span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git reset HEAD^</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -273,11 +188,13 @@ requirepass ${redis-password}</div>
             </svg>
             <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
         </div>
-        <div class="hidden">cd redis &amp;&amp; redis-server redis.conf</div>
+        <div class="hidden">git reset HEAD^</div>
     </div>
 </div>
-<h1 id="验证">验证</h1>
-<p>在电脑上实现安装redis客户端，然后执行下面的命令验证服务是否正常运行</p>
+<p>上面的命令执行完毕后，工作区中的内容不会被更新。</p>
+<ol start="3">
+<li>在同一个提交中，既包含有效修改，也包含垃圾文件</li>
+</ol>
 <div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
@@ -291,9 +208,15 @@ requirepass ${redis-password}</div>
         <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>redis-cli -h <span style="color:#98c379">${</span><span style="color:#e06c75">your</span>-termux-ip<span style="color:#98c379">}</span> -a <span style="color:#98c379">${</span><span style="color:#e06c75">redis</span>-password<span style="color:#98c379">}</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git reset HEAD^
+</span></span><span style="display:flex;"><span>rm -rf &lt;file or directory&gt;
+</span></span><span style="display:flex;"><span>git add file1 file2 file3
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#98c379">&#34;commit msg&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -303,28 +226,72 @@ requirepass ${redis-password}</div>
             </svg>
             <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
         </div>
-        <div class="hidden">redis-cli -h ${your-termux-ip} -a ${redis-password}</div>
+        <div class="hidden">git reset HEAD^
+rm -rf &lt;file or directory&gt;
+git add file1 file2 file3
+git commit -m &#34;commit msg&#34;</div>
     </div>
 </div>
-<blockquote>
-<p>同样替换里面的IP地址以及密码（这个密码就是上面redis.conf配置文件中配置的那个）</p>
-</blockquote>
-<h1 id="有什么用">有什么用？</h1>
-<ul>
-<li>练习库使用：练习redis命令，客户端库，网络连接异常测试等</li>
-<li>即开即用，用作临时库使用，用完删除就可以了。</li>
-</ul>
+<p>上面的reset操作由于没有更新工作区中的文件，因此可以继续执行<code>git commit</code>命令，将有效的修改继续提交到库中。</p>
+<h1 id="多做一步">多做一步</h1>
+<p>如果垃圾文件是随时可能产生的，例如编译中间文件（例如.o文件），文件系统生成的辅助文件（例如Mac系统中的.DS_Store），最好通过下面的方式告知git，在每次检查的时候忽略掉这些文件或者目录：</p>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
+</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
+</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
+</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7
+</span></span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex; background-color:#3d4148"><span>vim .gitignore
+</span></span><span style="display:flex;"><span>file1
+</span></span><span style="display:flex;"><span>directory1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex; background-color:#3d4148"><span>git status -s
+</span></span><span style="display:flex; background-color:#3d4148"><span>git add .gitignore
+</span></span><span style="display:flex; background-color:#3d4148"><span>git commit -m <span style="color:#98c379">&#34;ignore some files and directories&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">vim .gitignore
+file1
+directory1
+
+git status -s
+git add .gitignore
+git commit -m &#34;ignore some files and directories&#34;</div>
+    </div>
+</div>
 
   </div>
   
   <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/play-with-termux/setup-web-server/">上一篇：玩转termux | 6.搭建web服务</a>
+      href="/series/git/07/">上一篇：Git常见问题-如何放弃本地修改</a>
     
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/play-with-termux/setup-postgresql-server/">下一篇：玩转termux | 8.搭建PostgreSQL数据库</a>
+      href="/series/git/09/">下一篇：Git常见问题-推送出错了怎么办？</a>
     
   </div>
 </main>

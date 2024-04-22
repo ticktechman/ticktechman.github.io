@@ -109,7 +109,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/03/18</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数1616</span>
+    <span class="px-1 py-2">字数1618</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读4分钟</span>
   </h4>
@@ -151,11 +151,12 @@
 <p>通过这个子项目：termux-packages(<a href="https://github.com/termux/termux-packages">https://github.com/termux/termux-packages</a>)，这里有全部三方软件包的编译脚本和patch，它不但可以编译生成一个最小根文件系统，还能生成所有三方软件包，共计1000+个。</p>
 <p>这个项目中也有编译好的最小根文件系统压缩包：bootstrap-xxx.zip，在这个地址可以找到 <a href="https://github.com/termux/termux-packages/releases">https://github.com/termux/termux-packages/releases</a>。</p>
 <p>一个典型的最小根文件系统目录结构是这样的:</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -209,11 +210,12 @@
 <li><strong>如何将一个根文件系统装进APK的？</strong></li>
 </ol>
 <p>这个项目termux-app (<a href="https://github.com/termux/termux-app">https://github.com/termux/termux-app</a>)负责生成我们用到的termux.apk，在这个项目中，<code>app/src/main/cpp</code>目录负责将上面的bootstrap-xxx.zip打包为libtermux-bootstrap.so动态库给APK使用，实现的代码在一个termux-bootstrap-zip.S汇编代码中：</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">asm</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">

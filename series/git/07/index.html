@@ -21,15 +21,15 @@
   
   <meta charset="UTF-8">
   
-  <meta name="description" content="专栏目录入口地址，不包含单个博客">
+  <meta name="description" content="代码在本地做了修改，但有问题，要怎么撤销这些修改？">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>专栏</title>
+  <title>Git常见问题-如何放弃本地修改</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
-  <header class=" fixed ">
+  <header class="">
   <div name="bar">
     <a href='/'><img name="logo" src="/assets/images/logo.webp"></a>
     <ul name="menu-h-area">
@@ -101,73 +101,94 @@
   </div>
 </header>
   
-
-<main class="mt-16 w-full bg-slate-50 dark:bg-slate-900 pb-4 dark:border-none">
-
-  <h1 class="pt-4 text-center">专栏</h1>
-  <hr class="w-48 mt-2 mb-6">
+<main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
+  
+  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
+  
+  <h2 class="pt-4 text-center">Git常见问题-如何放弃本地修改</h2>
+  <h4 class="text-center text-gray-400 text-sm mb-3">
+    <span class="px-1 py-2">2024/04/20</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">字数849</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">阅读2分钟</span>
+  </h4>
+  <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
 
   
+  <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    <p>当我们在说放弃本地修改的时候，我们是在说如下几种场景：</p>
+<ol>
+<li><strong>只在工作区中做了修改</strong>
+<ul>
+<li>如果需要全部撤销：<code>git reset --hard HEAD</code></li>
+<li>如果只撤销个别文件：<code>git checkout &lt;file1&gt;</code></li>
+</ul>
+</li>
+<li><strong>在工作区中修改了，并且添加到了暂存区，但还没有commit</strong>
+<ul>
+<li>先从暂存区中剔除：<code>git reset &lt;file&gt;</code></li>
+<li>再按照场景1中的方法继续处理</li>
+</ul>
+</li>
+<li><strong>已经执行commit操作</strong>
+<ul>
+<li>先将撤销最近一次commit：<code>git reset HEAD^</code></li>
+<li>然后按照场景1中的方法继续处理</li>
+</ul>
+</li>
+<li><strong>已经commit了两次，但第一次有问题，第二次没问题（这个比较麻烦）</strong>，
+有3种方案可选：
+<ul>
+<li>方案1：在最新的版本上修改掉问题，再commit一次；这样在历史记录中会有一个错误的commit；</li>
+<li>方案2：回退这两个修改，修改后，整合成一个commit提交；
+<ul>
+<li>先保存之前的两个修改：<code>git format-patch HEAD^^</code>，备份用，修改完成后就删掉；</li>
+<li>先回退到两个版本之前：<code>git reset HEAD^^</code>，这个命令会将HEAD回退到两个版本之前，但工作区中的内容还是最新版本，也就是说，现在工作区中的文件是两次修改的总和。</li>
+<li>在此基础上修改问题，然后执行<code>git commit</code>提交到本地仓库；这样的好处是提交记录是干净的。坏处是，提交不够原子性。</li>
+</ul>
+</li>
+<li>方案3：保存2个修改的patch，回退版本到修改前，逐个打patch，在过程中根据需要，修改其中的问题。
+<ul>
+<li>先保存之前的两个修改：<code>git format-patch HEAD^^</code>，备份用，修改完成后就删掉；</li>
+<li>先回退到两个版本之前：<code>git reset --hard HEAD^^</code>；</li>
+<li>逐个打patch
+<ul>
+<li>第一个patch：<code>git apply 0001-xxxx.patch</code>，然后修改问题，之后执行<code>git commit</code>；</li>
+<li>第二个patch：<code>git am 0002-xxx.patch</code>
+<blockquote>
+<p>注意这里第一个命令用的<code>git apply命令</code>，这个命令不会直接生成一个commit，第二个用的<code>git am</code>命令，这个会直接生成commit；这刚好是我们需要的结果。同时，这个方案也有局限性，就是在两次修改了同一个文件的时候，可能会出现冲突，需要手动修复。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>关于场景4中，第一种方案最简单直接，适合怕麻烦的大多数人。第二种方案略显麻烦，适合有轻度代码洁癖的人。第三种方案最复杂，适合有强迫症和重度洁癖“患者”。</p>
+
+  </div>
   
-   
+  <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     
-      
-        
-      
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/06/">上一篇：Git使用-极简工作流</a>
     
-  
-
-  
-    <div class="grid grid-cols-1 m-4 gap-2 md:grid-cols-2 xl:grid-cols-4">
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/git/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/git/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">Git技术盘点 (11)</h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          记录从Git小白到专家的成长之路
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/mac-beginners/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/mac-beginners/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">Mac入坑指南 (36)</h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          入坑mac的新手指南，系统设置，软件推荐，软件配置，命令行环境等，老鸟勿入
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/play-with-termux/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/play-with-termux/images/termux.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">玩转termux (10)</h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          你的老手机还在吃灰吗？拿来做个服务器不香吗？ssh、git、svn、web, redis, postgresql ...
-          
-        </p>
-      </a>
-    </div>
-  
-</div>
-
-  
-
+    
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/08/">下一篇：Git常见问题-提交了一个垃圾文件怎么办</a>
+    
+  </div>
 </main>
 
+<div id="page-model-image-diag"
+  class="mx-auto flex items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden"
+  onclick="hideImageDiag(event, this)">
+  <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500"
+    onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">
+</div>
 
   <footer>
   <div class="flex text-sm text-gray-400"> © ticktechman 2024</div>

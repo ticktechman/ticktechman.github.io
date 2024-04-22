@@ -109,7 +109,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/04/05</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数561</span>
+    <span class="px-1 py-2">字数565</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读2分钟</span>
   </h4>
@@ -119,11 +119,12 @@
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     <h1 id="免密码登陆">免密码登陆</h1>
 <p>对于大部分程序员来说，ssh的使用频率非常高，每次登陆都输入密码非常繁琐，使用下面的方法可以免密码登陆：</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -164,11 +165,12 @@ ssh-copy-id user@remote-server</div>
 <p>这样就可以直接登陆到远程服务器了。</p>
 <h1 id="起个别名更方便">起个别名更方便</h1>
 <p>如果觉得每次都需要用户名和IP地址很麻烦，也可以通过下面的方法，给每个服务器创建一个别名，里面包含服务器的IP地址和用户名信息：</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">conf</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -199,11 +201,12 @@ ssh-copy-id user@remote-server</div>
 <p>然后就可以执行: <code>ssh s1</code>来测试效果了。</p>
 <h1 id="去掉烦人的新服务器提示信息">去掉烦人的新服务器提示信息</h1>
 <p>在每次访问要一个新的服务器的时候，都会有如下的提示信息，需要输入<code>yes</code>才可以继续:</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -239,11 +242,12 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?</div>
     </div>
 </div>
 <p>这个当然也可以去掉，只需要在<code>/etc/ssh/ssh_config</code>中如下配置即可：</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">conf</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">

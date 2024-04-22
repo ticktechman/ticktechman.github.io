@@ -109,7 +109,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/04/05</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数339</span>
+    <span class="px-1 py-2">字数341</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读1分钟</span>
   </h4>
@@ -120,11 +120,12 @@
     <h1 id="ds_store文件是做什么用的">.DS_Store文件是做什么用的？</h1>
 <p>.DS_Store 文件的主要作用，是存储当前文件夹在桌面显示相关方面的一些自定义属性，包括文件图标的位置、文件夹上次打开时窗口的大小、展现形式和位置等。访达会在访问过的每个目录下创建一个这样的文件，因为文件名以&rsquo;.&lsquo;开头，是个隐藏文件，所以一般看不到它。</p>
 <h1 id="如何禁用">如何禁用</h1>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -164,11 +165,12 @@ defaults write com.apple.desktopservices DSDontWriteLocalDotFiles -bool true</di
 </blockquote>
 <h1 id="删除已有的">删除已有的</h1>
 <p>使用上面的命令只会阻止新的.DS_Store文件生成，但不会删除已经存在的.DS_Store文件，如果需要删除，则要首先进入删除的目录下，执行下面的命令：</p>
-<div class="flex flex-col bg-[#282c34] m-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4">
-        <div class="rounded-full size-3 inline-block bg-red-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-yellow-400 ml-0.5"></div>
-        <div class="rounded-full size-3 inline-block bg-green-400 ml-0.5"></div>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">

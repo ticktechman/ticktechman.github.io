@@ -62,7 +62,7 @@
       <link>https://ticktechman.tech/series/play-with-termux/setup-ssh-server/</link>
       <pubDate>Mon, 18 Mar 2024 18:56:32 +0800</pubDate>
       <guid>https://ticktechman.tech/series/play-with-termux/setup-ssh-server/</guid>
-      <description>准备工作 在安装所有软件之前，需要先使用下面的命令更新系统 1 2 3 4 5 6 7 apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade 用过u</description>
+      <description>准备工作 在安装所有软件之前，需要先使用下面的命令更新系统 bash 1 2 3 4 5 6 7 apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade apt update ## change repo to the local fastest one termux-change-repo ## upgrade system apt upgrade 用过</description>
     </item>
     <item>
       <title>玩转termux | 2.立即安装</title>
