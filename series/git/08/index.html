@@ -160,6 +160,7 @@ git commit -m &#34;remove file or directory&#34;</div>
     </div>
 </div>
 <p>注意：上面的操作，只在最新版本中删除了对应的文件和目录，在git库中，切换到上一个版本，文件和目录依然存在。</p>
+<hr>
 <ol start="2">
 <li>既要删除文件，还要删除历史记录</li>
 </ol>
@@ -192,6 +193,7 @@ git commit -m &#34;remove file or directory&#34;</div>
     </div>
 </div>
 <p>上面的命令执行完毕后，工作区中的内容不会被更新。</p>
+<hr>
 <ol start="3">
 <li>在同一个提交中，既包含有效修改，也包含垃圾文件</li>
 </ol>
@@ -297,7 +299,7 @@ git commit -m &#34;ignore some files and directories&#34;</div>
 </main>
 
 <div id="page-model-image-diag"
-  class="mx-auto flex items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden"
+  class="mx-auto items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden"
   onclick="hideImageDiag(event, this)">
   <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500"
     onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">

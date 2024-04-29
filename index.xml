@@ -6,8 +6,57 @@
     <description>Recent content in ticktechman on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 21 Apr 2024 16:21:10 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Apr 2024 14:31:54 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git使用-典型git工作流</title>
+      <link>https://ticktechman.tech/series/git/18/</link>
+      <pubDate>Sun, 28 Apr 2024 14:31:54 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/18/</guid>
+      <description>下面是一个典型Git工作流，和之前的《Git使用-极简工作流》相比，要复杂一丢丢： 创建本地开发分支：git checkout -b localdev origin/master 功能开发或者bugfix 提</description>
+    </item>
+    <item>
+      <title>Git使用-哪种分支发布策略适合我</title>
+      <link>https://ticktechman.tech/series/git/17/</link>
+      <pubDate>Fri, 26 Apr 2024 20:33:28 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/17/</guid>
+      <description>个人开发者 对于个人开发者或者这个仓库只有你一个人在用，分支策略可以非常简单，一个主干开发分支，用于日常代码提交，需要发布版本的时候，建立一个</description>
+    </item>
+    <item>
+      <title>Git使用-如何证明你的修改是你的</title>
+      <link>https://ticktechman.tech/series/git/16/</link>
+      <pubDate>Thu, 25 Apr 2024 10:37:37 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/16/</guid>
+      <description>在Git中，用户名和邮箱是可以随意配置的，如果有人冒充你的邮箱和用户名，Git是不会做限制的，那如何证明这个修改是你做的？这就用到了数字签名</description>
+    </item>
+    <item>
+      <title>Git使用-如何做代码合并</title>
+      <link>https://ticktechman.tech/series/git/15/</link>
+      <pubDate>Tue, 23 Apr 2024 14:26:08 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/15/</guid>
+      <description>区别：merge和rebase Git提供了两种代码合并方式，merge和rebase，我们先看看这两种方式有什么区别？ 代码合并前的状态 top</description>
+    </item>
+    <item>
+      <title>Git常见问题-如何修改最后一次的提交信息</title>
+      <link>https://ticktechman.tech/series/git/14/</link>
+      <pubDate>Mon, 22 Apr 2024 10:26:46 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/14/</guid>
+      <description>修改 在执行git commit操作的时候，偶尔会出现描述信息填写的不对或者根本没写的情况，这种情况不但在新手中会出现，就算使用了很多年的git</description>
+    </item>
+    <item>
+      <title>Git常见问题-如何查看远端仓库的信息</title>
+      <link>https://ticktechman.tech/series/git/13/</link>
+      <pubDate>Mon, 22 Apr 2024 10:02:42 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/13/</guid>
+      <description>在使用了一段时间后，可能不记得远端仓库的地址了，要怎么查看？当然除了这个，可能还想看看远端仓库的其他信息，例如有哪些分支或者标签，下面的命令</description>
+    </item>
+    <item>
+      <title>Git常见问题-如何创建一个远端分支或者标签</title>
+      <link>https://ticktechman.tech/series/git/12/</link>
+      <pubDate>Mon, 22 Apr 2024 09:38:34 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/12/</guid>
+      <description>创建 在日常使用中，远端分支一般用来团队共同开发一个新特性，远端标签一般用来发布版本使用，那如何在远端仓库建立一个分支和标签呢？使用下面的命令</description>
+    </item>
     <item>
       <title>Git常见问题-如何回退远端库的代码</title>
       <link>https://ticktechman.tech/series/git/11/</link>

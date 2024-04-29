@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8H7XPB6TV4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8H7XPB6TV4');
+  </script>
+  
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745756499567894"
+    crossorigin="anonymous"></script>
+  
+  <meta charset="UTF-8">
+  
+  <meta name="description" content="业界有各种分支策略，要怎么选？">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git使用-哪种分支发布策略适合我</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+  <header class="">
+  <div name="bar">
+    <a href='/'><img name="logo" src="/assets/images/logo.webp"></a>
+    <ul name="menu-h-area">
+      <li>
+        <a href='/'
+          class=''>主页
+        </a>
+      </li>
+      <li>
+        <a href='/blog'
+          class=''>博客
+        </a>
+      </li>
+      <li>
+        <a href='/series'
+          class='current-menu'>专栏
+        </a>
+      </li>
+      <li>
+        <a href='/archive'
+          class=''>归档
+        </a>
+      </li>
+      <li>
+        <a href='/about'
+          class=''>关于
+        </a>
+      </li>
+    </ul>
+    <div class="flex flow-col space-x-4 items-center place-content-center">
+      <button id="btn-menu" class="flex md:hidden" onclick="toggleMainMenu(event)">
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"></path>
+        </svg>
+      </button>
+      <div id="main-menu-hidden" class="menu-hidden duration-300">
+        <ul id="main-menu-ul">
+          <li><a href='/'>主页</a></li>
+          <li><a href='/blog'>博客</a></li>
+          <li><a href='/series'>专栏</a></li>
+          <li><a href='/archive'>归档</a></li>
+          <li><a href='/about'>关于</a></li>
+        </ul>
+      </div>
+      <button class="flex">
+        <img id="language-selection" src="/assets/images/icon/lang-zh.svg" width="32"
+          onclick="toggleLanguageMenu(event)" />
+        <ul id="language-ul" class="menu-hidden duration-300">
+          <li><a href='/'><img src="/assets/images/icon/lang-zh.svg" width="32" /></a></li>
+          <li><a href='/en'><img src="/assets/images/icon/lang-en.svg" width="32" /></a></li>
+        </ul>
+      </button>
+      <button class="flex" id="dark-mode">
+        <svg class="w-6 h-6 block dark:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          p-id="7091" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path fill="currentcolor"
+            d="M512 783.945143a261.997714 261.997714 0 0 0 192.292571-79.725714A261.997714 261.997714 0 0 0 783.945143 512a261.997714 261.997714 0 0 0-79.725714-192.292571A261.997714 261.997714 0 0 0 512 240.054857c-36.790857 0-74.386286 8.484571-112.64 25.526857 46.811429 21.211429 84.699429 54.125714 113.737143 98.742857 28.964571 44.617143 43.52 93.842286 43.52 147.675429 0 53.833143-14.555429 103.058286-43.52 147.675429a263.899429 263.899429 0 0 1-113.664 98.742857A275.894857 275.894857 0 0 0 512 783.945143z m363.300571-422.765714L1024 512l-148.699429 150.820571v212.48H662.820571L512 1024l-150.820571-148.699429H148.699429V662.820571L0 512l148.699429-150.820571V148.699429h212.48L512 0l150.820571 148.699429h212.48v212.48z"
+            p-id="7092"></path>
+        </svg>
+        <svg class="w-6 h-6 hidden dark:block" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          p-id="5081" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path fill="currentcolor"
+            d="M502.518519 246.518519a256 256 0 1 0 0 512 256 256 0 0 0 0-512z m0 94.814814a161.185185 161.185185 0 1 1 0 322.370371 161.185185 161.185185 0 0 1 0-322.370371zM512 9.481481a48.545185 48.545185 0 0 1 48.279704 43.538963l0.227555 4.968297v72.628148a48.545185 48.545185 0 0 1-96.786963 4.968296l-0.227555-4.93037V57.950815C463.454815 31.213037 485.224296 9.481481 512 9.481481zM867.365926 156.634074a48.545185 48.545185 0 0 1 3.299555 64.967111l-3.337481 3.678815-51.351704 51.351704a48.545185 48.545185 0 0 1-71.945481-64.929185l3.337481-3.678815 51.351704-51.351704c18.962963-18.962963 49.682963-18.962963 68.645926 0zM1014.518519 512a48.545185 48.545185 0 0 1-43.538963 48.279704l-4.968297 0.227555h-72.628148a48.545185 48.545185 0 0 1-4.968296-96.786963l4.93037-0.227555h72.666074c26.775704 0 48.507259 21.731556 48.50726 48.507259zM867.365926 867.365926a48.545185 48.545185 0 0 1-64.967111 3.299555l-3.678815-3.337481-51.351704-51.351704a48.545185 48.545185 0 0 1 64.929185-71.945481l3.678815 3.337481 51.351704 51.351704c18.962963 18.962963 18.962963 49.682963 0 68.645926zM512 1014.518519a48.545185 48.545185 0 0 1-48.279704-43.538963l-0.227555-4.968297v-72.628148a48.545185 48.545185 0 0 1 96.786963-4.968296l0.227555 4.93037v72.666074A48.545185 48.545185 0 0 1 512 1014.518519zM156.634074 867.365926a48.545185 48.545185 0 0 1-3.299555-64.967111l3.337481-3.678815 51.351704-51.351704a48.545185 48.545185 0 0 1 71.945481 64.929185l-3.337481 3.678815-51.351704 51.351704c-18.962963 18.962963-49.682963 18.962963-68.645926 0zM9.481481 512a48.545185 48.545185 0 0 1 43.538963-48.279704l4.968297-0.227555h100.882963a48.545185 48.545185 0 0 1 4.968296 96.786963l-4.93037 0.227555H58.026667A48.545185 48.545185 0 0 1 9.481481 512zM156.634074 156.634074a48.545185 48.545185 0 0 1 64.967111-3.299555l3.678815 3.337481 51.351704 51.351704a48.545185 48.545185 0 0 1-64.929185 71.945481l-3.678815-3.337481L156.672 225.28c-18.962963-18.962963-18.962963-49.682963 0-68.645926z"
+            p-id="5082"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+  
+<main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
+  
+  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
+  
+  <h2 class="pt-4 text-center">Git使用-哪种分支发布策略适合我</h2>
+  <h4 class="text-center text-gray-400 text-sm mb-3">
+    <span class="px-1 py-2">2024/04/26</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">字数507</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">阅读2分钟</span>
+  </h4>
+  <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
+
+  
+  <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    <h1 id="个人开发者">个人开发者</h1>
+<p><img src="/series/git/images/git-branch.001.webp"></p>
+<p>对于个人开发者或者这个仓库只有你一个人在用，分支策略可以非常简单，一个主干开发分支，用于日常代码提交，需要发布版本的时候，建立一个发布分支，如果发布出现bug，则先在主干上提交，再cherry-pick到发布分支。你可能注意到了，上面的分支是带版本号的，这里用的是“语义化版本”命名规则，只包含主版本和次版本号。如果有bugfix，只需要增加tag来标识小版本变更就可以了，不需要新建分支，同时修改的范围也好控制，不至于引入主干上过多无关修改。</p>
+<h1 id="小型团队10人以内">小型团队10人以内</h1>
+<p><img src="/series/git/images/git-branch.002.webp"></p>
+<p>主干开发，分支发布策略同样适用，对于大的特性（开发周期大于一个月），建立单独的特性开发分支，开发完成后，【rebase】到主干上。特性发布后，删除特性分支。</p>
+<h1 id="中大型团队">中大型团队</h1>
+<p><img src="/series/git/images/git-branch.003.webp">
+首先按照业务分仓，保持各个仓库业务独立，使用规范化的API来做业务隔离。同时使用多仓库管理工具（google repo或者使用git submodule）来管理多仓库之间的依赖。在一个业务发布时，除了记录本业务仓库的版本信息，还需要记录依赖仓库的版本信息，google repo和git submodule都提供了类似的功能。在仓库内部依然可以使用主干开发分支发布的策略。</p>
+<p><strong>相关链接</strong>：</p>
+<ul>
+<li><a href="https://gerrit.googlesource.com/git-repo">https://gerrit.googlesource.com/git-repo</a></li>
+</ul>
+
+  </div>
+  
+  <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/16/">上一篇：Git使用-如何证明你的修改是你的</a>
+    
+    
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/18/">下一篇：Git使用-典型git工作流</a>
+    
+  </div>
+</main>
+
+<div id="page-model-image-diag"
+  class="mx-auto items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden"
+  onclick="hideImageDiag(event, this)">
+  <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500"
+    onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">
+</div>
+
+  <footer>
+  <div class="flex text-sm text-gray-400"> © ticktechman 2024</div>
+  
+</footer>
+  <script src="/assets/js/dark-mode.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
