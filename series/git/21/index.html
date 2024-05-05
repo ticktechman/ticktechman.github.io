@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.124.0">
   
   
   
@@ -22,21 +21,21 @@
   
   <meta charset="UTF-8">
   
-  <meta name="description" content="主页">
+  <meta name="description" content="Git库上的代码突然出现问题，想快点确定哪次提交导致的问题，要怎么做？">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ticktechman</title>
+  <title>高效git-快速定位问题版本</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
-  <header class=" fixed ">
+  <header class="">
   <div name="bar">
     <a href='/'><img name="logo" src="/assets/images/logo.webp"></a>
     <ul name="menu-h-area">
       <li>
         <a href='/'
-          class='current-menu'>主页
+          class=''>主页
         </a>
       </li>
       <li>
@@ -46,7 +45,7 @@
       </li>
       <li>
         <a href='/series'
-          class=''>专栏
+          class='current-menu'>专栏
         </a>
       </li>
       <li>
@@ -102,126 +101,71 @@
   </div>
 </header>
   
-
-<main class="mt-16 w-full bg-slate-50 dark:bg-slate-900 pb-4 dark:border-none">
-      
-    <h1 class="pt-4 text-center">置顶</h1>
-    <hr class="w-48 my-2">
-
-    <div class="grid grid-cols-1 m-4 gap-2 md:grid-cols-2 xl:grid-cols-4">
+<main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
   
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/blog/2024/video-tools/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/assets/images/banner/bg-1.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">我的视频制作工具箱 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          UP主的视频制作工具箱，包括视频制作，剪辑，字幕，鼠标工具，键盘工具等
-          
-        </p>
-      </a>
-    </div>
+  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
   
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/blog/2024/setup-blog-with-github-pages/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/assets/images/banner/bg-4.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">白嫖一个github博客系统 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          免费的域名&amp;托管，还支持自定义域名，你不想来一套吗？
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/blog/2024/starting-here/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/assets/images/banner/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">开篇 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          新博客系统开始营业啦～
-          
-        </p>
-      </a>
-    </div>
-  
-</div>
+  <h2 class="pt-4 text-center">高效git-快速定位问题版本</h2>
+  <h4 class="text-center text-gray-400 text-sm mb-3">
+    <span class="px-1 py-2">2024/04/29</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">字数473</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">阅读1分钟</span>
+  </h4>
+  <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
 
+  
+  <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    <p>这种事经常发生，但是估计没人想要做这种问题定位，不但没有技术含量，而且无聊。比较有效的方案是：</p>
+<ol>
+<li>确定范围，可以参考每日编译的版本和测试结果。如果没有的话，可以以周为单位或者几天为单位，按时间间隔线性递减；</li>
+<li>在范围内采用使用二分查找，每次取范围内的中间点版本，重新BUILD和测试；</li>
+<li>重复步骤2，直到定位到问题版本为止；</li>
+</ol>
+<hr>
+<p>为了保证问题的快速定位，日常的功夫要做足，通过下面的工程化实践来解决：</p>
+<ol>
+<li>每日编译 / 按commit编译，生成软件版本；</li>
+<li>自动化部署到测试环境；</li>
+<li>自动化测试，记录测试结果和版本信息；如果有问题发生，邮件主送代码提交者，并抄送全员；</li>
+<li>至少保留最近一个30天的历史记录；</li>
+<li>所有开发者都可以访问上述信息；</li>
+<li>工具支撑：
+<ul>
+<li>针对问题，编写一个自动化的测试用例</li>
+<li>一个通用工具根据二分法切换版本，并BUILD版本</li>
+<li>将软件安装到测试环境，执行上面的测试用例，根据测试结果决定后续操作；
+<ul>
+<li>测试通过：向时间增加方向取版本；</li>
+<li>测试失败：向时间减小方向取版本；</li>
+</ul>
+</li>
+<li>重复上面的步骤，直到找到最近一次失败的版本为止（结束条件：前一个版本成功，后一个版本失败，这个失败的版本就是我们要找的版本）；</li>
+</ul>
+</li>
+</ol>
 
-    <h1 class="pt-4 text-center">最新</h1>
-    <hr class="w-48 my-2">
+  </div>
+  
+  <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/20/">上一篇：高效Git-命令别名</a>
     
     
-    <div class="grid grid-cols-1 m-4 gap-2 md:grid-cols-2 xl:grid-cols-4">
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/git/22/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/git/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">高效Git-如何快速下载代码 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          如果你只想看代码，如何快速下载到你想要的那部分
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/git/21/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/git/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">高效git-快速定位问题版本 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          Git库上的代码突然出现问题，想快点确定哪次提交导致的问题，要怎么做？
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/git/20/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/git/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">高效Git-命令别名 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          另一种更加简单的扩展方式
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/git/19/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/git/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">高效Git-自定义命令 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          如果Git丰富的命令还不能满足你的需求，那就自己写一个吧
-          
-        </p>
-      </a>
-    </div>
-  
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/22/">下一篇：高效Git-如何快速下载代码</a>
+    
+  </div>
+</main>
+
+<div id="page-model-image-diag"
+  class="mx-auto items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden"
+  onclick="hideImageDiag(event, this)">
+  <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500"
+    onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">
 </div>
-
-
-  </main>
-
 
   <footer>
   <div class="flex text-sm text-gray-400"> © ticktechman 2024</div>

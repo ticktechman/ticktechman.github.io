@@ -21,10 +21,10 @@
   
   <meta charset="UTF-8">
   
-  <meta name="description" content="如何顺利的提交代码到git仓库">
+  <meta name="description" content="另一种更加简单的扩展方式">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Git使用-典型git工作流</title>
+  <title>高效Git-命令别名</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
@@ -105,11 +105,11 @@
   
   <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
   
-  <h2 class="pt-4 text-center">Git使用-典型git工作流</h2>
+  <h2 class="pt-4 text-center">高效Git-命令别名</h2>
   <h4 class="text-center text-gray-400 text-sm mb-3">
-    <span class="px-1 py-2">2024/04/28</span>
+    <span class="px-1 py-2">2024/04/29</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数327</span>
+    <span class="px-1 py-2">字数370</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读1分钟</span>
   </h4>
@@ -117,41 +117,86 @@
 
   
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
-    <p>下面是一个典型Git工作流，和之前的<a href="/series/git/06/">《Git使用-极简工作流》</a>相比，要复杂一丢丢：
-<img alt="git规范化流程" src="/series/git/images/git-standard.001.webp"></p>
-<ol>
-<li>创建本地开发分支：<code>git checkout -b localdev origin/master</code></li>
-<li>功能开发或者bugfix</li>
-<li>提交代码：<code>git commit -am &quot;fix: tcp connection timeout&quot;</code></li>
-<li>获取最新代码：<code>git checkout master &amp;&amp; git fetch</code></li>
-<li>rebase到最新版本：<code>git checkout localdev &amp;&amp; git rebase master</code></li>
-<li>执行本地测试用例</li>
-<li>测试通过后，推送到远端：<code>git push origin localdev:master</code></li>
-</ol>
-<hr>
-<p>上面执行<code>git commit</code>操作的时候，可以根据具体的修改内容，对commit消息进行分类：</p>
-<ol>
-<li>fix: 解决已知问题</li>
-<li>feature: 新特性开发</li>
-<li>doc：修改文档</li>
-<li>styling：修改代码风格</li>
-<li>refact：重构代码架构</li>
-</ol>
-<p>有了这些消息前缀，除了可以明确修改意图，还可以使用工具来生成版本<code>CHNAGELOG</code>文件，一举两得。</p>
-<blockquote>
-<p>可以使用上面的字符串作为提交信息前缀，如果是普通阶段性提交，可以不带前缀字符串。</p>
-</blockquote>
+    <p>除了自己开发一个扩展命令（<a href="/series/git/19/">高效Git-自定义命令</a>），还可以利用命令别名，就是给已知命令+固定参数创建一个新的别名，你只需要输入很简单的参数，就可以实现复杂参数实现的功能。下面举几个例子：</p>
+<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">cfg</div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cfg" data-lang="cfg"><span style="display:flex;"><span><span style="color:#c678dd">[alias]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">st</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">status -s
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  ci = commit
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  co = checkout
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  br = branch -vv
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  cl = clean -fd
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  df = diff
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  lg = log --name-status
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  ll = log --oneline
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  llg = log --oneline --graph
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  ls = ls-tree HEAD
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  lv = log --pretty=&#39;%C(auto)%h %G? %ad %an - %d%s&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  cat = cat-file -p
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  c = clone --depth=1</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">[alias]
+  st = status -s
+  ci = commit
+  co = checkout
+  br = branch -vv
+  cl = clean -fd
+  df = diff
+  lg = log --name-status
+  ll = log --oneline
+  llg = log --oneline --graph
+  ls = ls-tree HEAD
+  lv = log --pretty=&#39;%C(auto)%h %G? %ad %an - %d%s&#39;
+  cat = cat-file -p
+  c = clone --depth=1</div>
+    </div>
+</div>
+<p>可以把上面的内容，放到你的<code>$HOME/.gitconfig</code>文件中，就可以立即生效了。然后，进入到任何git仓库目录，输入<code>git &lt;alias&gt;</code>就可以调用对应的命令（这里的<code>&lt;alias&gt;</code>就是上面配置文件中等号左侧的字符串，例如<code>st</code>、<code>co</code>等）。另外，这些别名也同样支持TAB键补全。</p>
 
   </div>
   
   <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/git/17/">上一篇：Git使用-哪种分支发布策略适合我</a>
+      href="/series/git/19/">上一篇：高效Git-自定义命令</a>
     
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/git/19/">下一篇：高效Git-自定义命令</a>
+      href="/series/git/21/">下一篇：高效git-快速定位问题版本</a>
     
   </div>
 </main>
