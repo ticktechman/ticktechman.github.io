@@ -21,10 +21,10 @@
   
   <meta charset="UTF-8">
   
-  <meta name="description" content="Git库上的代码突然出现问题，想快点确定哪次提交导致的问题，要怎么做？">
+  <meta name="description" content="哪些内容可以放到代码库里，哪些最好不要放，几个不成熟的小建议">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>高效git-快速定位问题版本</title>
+  <title>Git建议-代码库里放什么</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
@@ -105,11 +105,11 @@
   
   <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
   
-  <h2 class="pt-4 text-center">高效git-快速定位问题版本</h2>
+  <h2 class="pt-4 text-center">Git建议-代码库里放什么</h2>
   <h4 class="text-center text-gray-400 text-sm mb-3">
-    <span class="px-1 py-2">2024/04/29</span>
+    <span class="px-1 py-2">2024/05/20</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数508</span>
+    <span class="px-1 py-2">字数710</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读2分钟</span>
   </h4>
@@ -117,48 +117,40 @@
 
   
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
-    <blockquote>
-<p>Git库上的代码突然出现问题，想快点确定哪次提交导致的问题，要怎么做？</p>
-</blockquote>
-<p>这种事经常发生，但是估计没人想要做这种问题定位，不但没有技术含量，而且无聊。比较有效的方案是：</p>
+    <p>我们在做项目的时候，会遇到各种各样的文件，除了代码之外，还有其它，比如：三方库、图片、视频、编译脚本、部署脚本等等。这么多文件都放到git里吗？下面是可能遇到的文件类型以及处理方式的建议，请参考：</p>
 <ol>
-<li>确定范围，可以参考每日编译的版本和测试结果。如果没有的话，可以以周为单位或者几天为单位，按时间间隔线性递减；</li>
-<li>在范围内采用使用二分查找，每次取范围内的中间点版本，重新BUILD和测试；</li>
-<li>重复步骤2，直到定位到问题版本为止；</li>
+<li>功能代码 - git管理；</li>
+<li>三方库 - 如果不需要修改，则存储二进制库到git LFS中管理，如果需要修改，则以源码的方式放到git库中，如果三方库是从源码编译生成，则最好写好一个编译脚本（包含编译命令，参数）放到git中统一维护；</li>
+<li>编译脚本 - git管理；</li>
+<li>部署脚本 - git管理；</li>
+<li>图片&amp;视频 - 这类文件一般是作为App或者Web页面的资源使用，建议放到使用git LFS来管理，保持代码库轻量化；</li>
+<li>编译环境 - 编译环境搭建脚本放到git中维护，包括操作系统版本，编译器版本，依赖库的版本等；</li>
+<li>运行环境 - 运行环境搭建脚本放到git中维护，包括操作系统版本，依赖库等；</li>
+<li>测试代码 - git管理；</li>
+<li>lint以及style检查脚本 - git管理；</li>
+<li>软件发布包 - 单独的归档服务器维护，不适合放到git中；</li>
+<li>编辑器配置 - git管理（可选），例如<code>.vimrc, .editorconfig, vscode.json</code>等；</li>
+<li>文档 - git管理，可以采用markdown格式，文本格式，支持编辑、查看以及导出pdf等功能；</li>
 </ol>
 <hr>
-<p>为了保证问题的快速定位，日常的功夫要做足，通过下面的工程化实践来解决：</p>
-<ol>
-<li>每日编译 / 按commit编译，生成软件版本；</li>
-<li>自动化部署到测试环境；</li>
-<li>自动化测试，记录测试结果和版本信息；如果有问题发生，邮件主送代码提交者，并抄送全员；</li>
-<li>至少保留最近一个30天的历史记录；</li>
-<li>所有开发者都可以访问上述信息；</li>
-<li>工具支撑：
+<p>一个简单的原则就是：</p>
 <ul>
-<li>针对问题，编写一个自动化的测试用例</li>
-<li>一个通用工具根据二分法切换版本，并BUILD版本</li>
-<li>将软件安装到测试环境，执行上面的测试用例，根据测试结果决定后续操作；
-<ul>
-<li>测试通过：向时间增加方向取版本；</li>
-<li>测试失败：向时间减小方向取版本；</li>
+<li>文本文件放到git中直接管理，</li>
+<li>二进制文件（尤其是大文件）使用git LFS来管理，避免源码库过大。</li>
 </ul>
-</li>
-<li>重复上面的步骤，直到找到最近一次失败的版本为止（结束条件：前一个版本成功，后一个版本失败，这个失败的版本就是我们要找的版本）；</li>
-</ul>
-</li>
-</ol>
+<hr>
+<p>总的来说，和项目有关的所有内容，全部纳入配置管理系统中，从环境搭建、软件开发、系统集成、软件测试、部署运行、文档编写等，全流程跟踪，让所有成员都有一个统一的开发运行环境。关于环境的搭建，如果可以的话，采用docker的方式（编译环境和运行环境）可能是一个比较理想的选择。</p>
 
   </div>
   
   <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/git/20/">上一篇：高效Git-命令别名</a>
+      href="/series/git/24/">上一篇：Git使用-像专家一样写commit message</a>
     
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/git/22/">下一篇：高效Git-如何快速下载代码</a>
+      href="/series/git/26/">下一篇：Git使用-系统差异</a>
     
   </div>
 </main>

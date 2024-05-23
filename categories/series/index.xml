@@ -6,8 +6,57 @@
     <description>Recent content in Series on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 15 May 2024 10:52:55 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 23 May 2024 10:29:31 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.tech/categories/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git使用-多仓库管理之repo</title>
+      <link>https://ticktechman.tech/series/git/30/</link>
+      <pubDate>Thu, 23 May 2024 10:29:31 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/30/</guid>
+      <description>在《Git使用-多仓库管理之submodule》中，我们介绍了使用git原生的submodule机制来管理多个仓库以及版本依赖关系，今天我们</description>
+    </item>
+    <item>
+      <title>Git使用-多仓库管理之submodule</title>
+      <link>https://ticktechman.tech/series/git/29/</link>
+      <pubDate>Wed, 22 May 2024 19:29:53 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/29/</guid>
+      <description>除了美国一些大的科技公司，例如Google、facebook、Netflix等在使用单一大仓库的方式来管理代码，很多中小科技企业更喜欢用多个</description>
+    </item>
+    <item>
+      <title>Git使用-如何兼顾日常开发和紧急问题修复</title>
+      <link>https://ticktechman.tech/series/git/28/</link>
+      <pubDate>Wed, 22 May 2024 09:26:06 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/28/</guid>
+      <description>做过一段时间的软件开发后，程序员伙伴们基本上都会遇到这样的情况：你正在开发新功能，老板说有一个紧急问题需要修复，让你尽快处理一下。这个时候你</description>
+    </item>
+    <item>
+      <title>Git使用-忽略那些无关文件</title>
+      <link>https://ticktechman.tech/series/git/27/</link>
+      <pubDate>Wed, 22 May 2024 08:41:01 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/27/</guid>
+      <description>在项目开发中，会生成一些临时目录或者文件，例如编译过程中生成的.o文件、软件发布包、nodejs的node_modules目录、MacOS系</description>
+    </item>
+    <item>
+      <title>Git使用-系统差异</title>
+      <link>https://ticktechman.tech/series/git/26/</link>
+      <pubDate>Mon, 20 May 2024 21:07:29 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/26/</guid>
+      <description>Git最开始是为Linux内核开发准备的，用来维护内核代码，后来用的人越来越多，就支持了更多的操作系统，例如Windows系统和MacOS。</description>
+    </item>
+    <item>
+      <title>Git建议-代码库里放什么</title>
+      <link>https://ticktechman.tech/series/git/25/</link>
+      <pubDate>Mon, 20 May 2024 16:24:28 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/25/</guid>
+      <description>我们在做项目的时候，会遇到各种各样的文件，除了代码之外，还有其它，比如：三方库、图片、视频、编译脚本、部署脚本等等。这么多文件都放到git里</description>
+    </item>
+    <item>
+      <title>Git使用-像专家一样写commit message</title>
+      <link>https://ticktechman.tech/series/git/24/</link>
+      <pubDate>Sun, 19 May 2024 12:15:43 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/24/</guid>
+      <description>用途 Git Commit消息的原始用途是给每次修改增加一个说明信息，让程序员知道修改的意图和内容。除了这个，Commit消息当然也可以用作它用，这</description>
+    </item>
     <item>
       <title>Git使用-利用钩子实现自动化</title>
       <link>https://ticktechman.tech/series/git/23/</link>
@@ -27,7 +76,7 @@
       <link>https://ticktechman.tech/series/git/21/</link>
       <pubDate>Mon, 29 Apr 2024 14:13:37 +0800</pubDate>
       <guid>https://ticktechman.tech/series/git/21/</guid>
-      <description>这种事经常发生，但是估计没人想要做这种问题定位，不但没有技术含量，而且无聊。比较有效的方案是： 确定范围，可以参考每日编译的版本和测试结果。如</description>
+      <description>Git库上的代码突然出现问题，想快点确定哪次提交导致的问题，要怎么做？ 这种事经常发生，但是估计没人想要做这种问题定位，不但没有技术含量，而且</description>
     </item>
     <item>
       <title>高效Git-命令别名</title>
