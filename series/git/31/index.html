@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-	<meta name="generator" content="Hugo 0.124.0">
   
   
   
@@ -22,21 +21,21 @@
   
   <meta charset="UTF-8">
   
-  <meta name="description" content="主页">
+  <meta name="description" content="git服务器要如何选？github、gitlab、...">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ticktechman</title>
+  <title>Git服务器-如何选择适合自己的git服务</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
-  <header class=" fixed ">
+  <header class="">
   <div name="bar">
     <a href='/'><img name="logo" src="/assets/images/logo.webp"></a>
     <ul name="menu-h-area">
       <li>
         <a href='/'
-          class='current-menu'>主页
+          class=''>主页
         </a>
       </li>
       <li>
@@ -46,7 +45,7 @@
       </li>
       <li>
         <a href='/series'
-          class=''>专栏
+          class='current-menu'>专栏
         </a>
       </li>
       <li>
@@ -102,140 +101,99 @@
   </div>
 </header>
   
+<main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
+  
+  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
+  
+  <h2 class="pt-4 text-center">Git服务器-如何选择适合自己的git服务</h2>
+  <h4 class="text-center text-gray-400 text-sm mb-3">
+    <span class="px-1 py-2">2024/05/24</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">字数560</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">阅读2分钟</span>
+  </h4>
+  <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
 
-<main class="mt-16 w-full bg-slate-50 dark:bg-slate-900 pb-4 dark:border-none">
-      
-    <h1 class="pt-4 text-center">置顶</h1>
-    <hr class="w-48 my-2">
+  
+  <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    <h1 id="考虑因素">考虑因素</h1>
+<p>选择git服务器时，需要考虑下面几个因素：</p>
+<ul>
+<li>部署模式：私有部署、云部署、外部云服务</li>
+<li>成本：服务器、存储、人力、带宽、外部服务费用等</li>
+<li>访问速度：代码库大小以及并发数量</li>
+<li>权限管理：用户分组、权限控制</li>
+<li>代码review：基于web的代码review机制</li>
+<li>外部系统联动：Jenkins、Jira、外部扩展能力</li>
+</ul>
+<h1 id="有哪些选择">有哪些选择</h1>
+<ol>
+<li><a href="https://gitlab.com">gitlab</a>
+<ul>
+<li>这是私有部署的首选；不建议使用它的云服务；</li>
+<li>上面的因素都支持；</li>
+<li>UI设计也不错，符合现代人的审美；
+<img alt="gitlab" src="/series/git/images/gitserver.001.webp"></li>
+</ul>
+</li>
+<li><a href="https://gerrit-review.googlesource.com/">gerrit</a>
+<ul>
+<li>Google为Android系统开发的git服务器，私有部署的第二选择；</li>
+<li>功能非常强大，大部分Android手机厂商都在使用这个系统管理Android代码；</li>
+<li>不能在线浏览代码，没有wiki系统；</li>
+<li>UI设计比较简陋，不嫌弃的话，可以选择；
+<img alt="gerrit" src="/series/git/images/gitserver.002.webp"></li>
+</ul>
+</li>
+<li><a href="https://bitbucket.org/">bitbucket</a>
+<ul>
+<li>Atlassian公司产品，支持代码托管和私有部署；</li>
+<li>功能基本都有，和Jira、Trello系统完美适配；</li>
+<li>UI设计也不错，和gitlab不相上下；
+<img alt="gerrit" src="/series/git/images/gitserver.003.webp"></li>
+</ul>
+</li>
+<li><a href="https://github.com">github</a>
+<ul>
+<li>现在是微软的产品了，大部分程序员都熟悉，没有适应成本；</li>
+<li>支持私有部署和代码托管，公司规模小的时候直接使用他们的服务比较合适，后续再考虑私有部署；</li>
+<li>国内直接访问github有问题，需要科学上网；</li>
+<li>UI中规中矩；
+<img alt="gerrit" src="/series/git/images/gitserver.004.webp"></li>
+</ul>
+</li>
+<li><a href="https://coding.net/">coding</a>
+<ul>
+<li>国人开发的git服务，类似gitlab，国内访问无障碍；</li>
+<li>支持私有部署；</li>
+<li>功能有点复杂，特色不算突出；</li>
+<li>UI类似gitlab，符合现代审美；
+<img alt="gerrit" src="/series/git/images/gitserver.005.webp"></li>
+</ul>
+</li>
+</ol>
 
-    <div class="grid grid-cols-1 m-4 gap-2 md:grid-cols-2 xl:grid-cols-4">
+  </div>
   
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/blog/2024/04/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/assets/images/banner/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">基于Nginx的HTTP Basic认证服务 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          如何基于Nginx搭建认证服务
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/blog/2024/video-tools/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/assets/images/banner/bg-1.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">我的视频制作工具箱 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          UP主的视频制作工具箱，包括视频制作，剪辑，字幕，鼠标工具，键盘工具等
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/blog/2024/setup-blog-with-github-pages/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/assets/images/banner/bg-4.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">白嫖一个github博客系统 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          免费的域名&amp;托管，还支持自定义域名，你不想来一套吗？
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/blog/2024/starting-here/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/assets/images/banner/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">开篇 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          新博客系统开始营业啦～
-          
-        </p>
-      </a>
-    </div>
-  
-</div>
-
-
-    <h1 class="pt-4 text-center">最新</h1>
-    <hr class="w-48 my-2">
+  <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/30/">上一篇：Git使用-多仓库管理之repo</a>
     
     
-    <div class="grid grid-cols-1 m-4 gap-2 md:grid-cols-2 xl:grid-cols-4">
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/git/34/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/git/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">Git服务器-给gerrit搭建一个LDAP认证服务 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          使用LDAP来给Gerrit做用户登录，看起来有点正规了
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/blog/2024/04/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/assets/images/banner/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">基于Nginx的HTTP Basic认证服务 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          如何基于Nginx搭建认证服务
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/git/33/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/git/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">Git服务器-使用gerrit搭建私有git服务 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          虽然UI设计不算优秀，但好在功能强大，完全免费
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/git/32/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/git/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">Git服务器-使用gitlab搭建私有git服务 </h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          对于小团队，gitlab是首选，这篇文章告诉你如何基于gitlab搭建一个git服务
-          
-        </p>
-      </a>
-    </div>
-  
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/32/">下一篇：Git服务器-使用gitlab搭建私有git服务</a>
+    
+  </div>
+</main>
+
+<div id="page-model-image-diag"
+  class="mx-auto items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden"
+  onclick="hideImageDiag(event, this)">
+  <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500"
+    onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">
 </div>
-
-
-  </main>
-
 
   <footer>
   <div class="flex text-sm text-gray-400"> © ticktechman 2024</div>

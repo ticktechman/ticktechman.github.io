@@ -6,8 +6,36 @@
     <description>Recent content in Series on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 23 May 2024 10:29:31 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2024 20:07:32 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.tech/categories/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git服务器-给gerrit搭建一个LDAP认证服务</title>
+      <link>https://ticktechman.tech/series/git/34/</link>
+      <pubDate>Wed, 29 May 2024 20:07:32 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/34/</guid>
+      <description>在上期《Git服务器-使用gerrit搭建私有git服务》中，我们用nginx搭建了一个HTTP认证服务，用来给gerrit做用户登录，看起</description>
+    </item>
+    <item>
+      <title>Git服务器-使用gerrit搭建私有git服务</title>
+      <link>https://ticktechman.tech/series/git/33/</link>
+      <pubDate>Sat, 25 May 2024 08:06:07 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/33/</guid>
+      <description>Gerrit是Google为Android系统开发的Code Review系统，内部同时集成了git服务，UI界面长这样： 下面我们就来介绍，如</description>
+    </item>
+    <item>
+      <title>Git服务器-使用gitlab搭建私有git服务</title>
+      <link>https://ticktechman.tech/series/git/32/</link>
+      <pubDate>Fri, 24 May 2024 18:02:50 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/32/</guid>
+      <description>gitlab有两个版本可以安装： gitlab-ee：企业版，也可以免费使用，只是功能受限；好处是可以升级为：Premium或Ultimate</description>
+    </item>
+    <item>
+      <title>Git服务器-如何选择适合自己的git服务</title>
+      <link>https://ticktechman.tech/series/git/31/</link>
+      <pubDate>Fri, 24 May 2024 09:11:36 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/31/</guid>
+      <description>考虑因素 选择git服务器时，需要考虑下面几个因素： 部署模式：私有部署、云部署、外部云服务 成本：服务器、存储、人力、带宽、外部服务费用等 访问速</description>
+    </item>
     <item>
       <title>Git使用-多仓库管理之repo</title>
       <link>https://ticktechman.tech/series/git/30/</link>
@@ -20,7 +48,7 @@
       <link>https://ticktechman.tech/series/git/29/</link>
       <pubDate>Wed, 22 May 2024 19:29:53 +0800</pubDate>
       <guid>https://ticktechman.tech/series/git/29/</guid>
-      <description>除了美国一些大的科技公司，例如Google、facebook、Netflix等在使用单一大仓库的方式来管理代码，很多中小科技企业更喜欢用多个</description>
+      <description>除了美国一些大的科技公司，例如Google、Facebook、Netflix等在使用单一大仓库的方式来管理代码，很多中小科技企业更喜欢用多个</description>
     </item>
     <item>
       <title>Git使用-如何兼顾日常开发和紧急问题修复</title>
