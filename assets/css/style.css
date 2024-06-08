@@ -988,6 +988,10 @@ video {
   width: 4rem;
 }
 
+.w-2\/3 {
+  width: 66.666667%;
+}
+
 .w-4\/5 {
   width: 80%;
 }
@@ -1633,6 +1637,10 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
