@@ -21,10 +21,10 @@
   
   <meta charset="UTF-8">
   
-  <meta name="description" content="如何基于Nginx搭建认证服务">
+  <meta name="description" content="Git对于文本文件的管理非常有效，但大的二进制文件要怎么管理？">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>基于Nginx的HTTP Basic认证服务</title>
+  <title>Git进阶-如何管理非文本文件</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
@@ -40,12 +40,12 @@
       </li>
       <li>
         <a href='/blog'
-          class='current-menu'>博客
+          class=''>博客
         </a>
       </li>
       <li>
         <a href='/series'
-          class=''>专栏
+          class='current-menu'>专栏
         </a>
       </li>
       <li>
@@ -103,64 +103,34 @@
   
 <main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
   
-  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/assets/images/banner/default.webp" alt="">
+  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
   
-  <h2 class="pt-4 text-center">基于Nginx的HTTP Basic认证服务</h2>
+  <h2 class="pt-4 text-center">Git进阶-如何管理非文本文件</h2>
   <h4 class="text-center text-gray-400 text-sm mb-3">
-    <span class="px-1 py-2">2024/05/26</span>
+    <span class="px-1 py-2">2024/06/03</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数845</span>
+    <span class="px-1 py-2">字数1877</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">阅读2分钟</span>
+    <span class="px-1 py-2">阅读4分钟</span>
   </h4>
   <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
 
   
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
-    <p>本文讲述如何基于ubuntu系统 &amp; nginx搭建一个基础的HTTP Basic Auth服务，可以用于为其他程序提供基于用户名和密码的认证服务，例如为gerrit提供登陆登出。这样当用户使用浏览器访问某个需要认证的URL地址的时候，就会弹出一个用户名和密码的对话框，要求用户输入验证信息，验证通过后才可以继续访问。这大概是最简单的认证机制了，如果需要的话，请继续往下看。</p>
-<h1 id="安装nginx">安装nginx</h1>
-<p>环境：ubuntu-24.04 ，nginx-1.24.0</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
-    <div class="mt-2 mx-4 flex flex-row">
-        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
-        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
-        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
-        <div class=" font-mono grow text-center">bash</div>
-    </div>
-    <div class="flex flex-row mx-4 my-3">
-        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
-        
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 安装依赖工具</span>
-</span></span><span style="display:flex;"><span>sudo apt install -y apache2-utils
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 安装nginx</span>
-</span></span><span style="display:flex;"><span>sudo apt install -y nginx</span></span></code></pre></td></tr></table>
-</div>
-</div>
-        </div>
-        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
-            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
-                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
-            </svg>
-            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
-        </div>
-        <div class="hidden">## 安装依赖工具
-sudo apt install -y apache2-utils
-
-## 安装nginx
-sudo apt install -y nginx</div>
-    </div>
-</div>
-<h1 id="配置用户名和密码">配置用户名和密码</h1>
+    <h1 id="为什么有这个需求">为什么有这个需求</h1>
+<p>有些小伙伴可能会好奇，为什么要把非文本文件纳入到git中管理，我们平时写的代码不都是文本文件吗？但是大千世界，无奇不有，下面的这几种情况还真是需要git来管理非文本文件：</p>
+<ul>
+<li>前端开发的资源文件，大部分都是高清的图片资源，尤其是移动端开发，需要适配不同的屏幕尺寸，同时UI设计师们可能随时修改资源文件</li>
+<li>后端同学用到了一个供应商开发的库文件，不提供源码，只有二进制形式，文件很大，前期修改频繁</li>
+<li>嵌入式开发里面用到了一个特定版本的编译器。例如手机厂商在开发android系统时，git库里面就有类似这种编译器的软件</li>
+</ul>
+<p>有的小伙伴可能会说，如果有需求的话，直接放进去不就可以了，为什么要特殊处理。其实这话也不算错，前提是这样的文件小且修改不频繁。因为Git对于非文本文件是全量存储，也就是每个版本都有一个完整的拷贝，同时git仓库默认会把所有的历史版本下载到本地，如果文件很大且修改频繁，就会导致整个git仓库巨大无比，进而下载起来非常的慢，幸福感直线下降。</p>
+<h1 id="如何解决">如何解决</h1>
+<p>可惜的是，原生Git并没有解决这个问题，问题是被Atlassian、Github以及部分开源爱好者解决的，这就是Git LFS(Large File Storage)-大文件存储。它是一个Git插件，需要单独安装。有了它，你就可以用Git来管理那些大的二进制文件，而不必担心版本更新导致的Git库爆仓的问题。它使用了一种指针的机制来记录版本信息，同时将实际文件存放到另外一个目录中，在Git克隆的过程中，不会下载所有历史版本，而是根据需要，下载特定的某个版本，默认只下载最新版本。</p>
+<h1 id="效率高吗为什么">效率高吗？为什么？</h1>
+<p>相对于原生的Git管理方式，LFS的方式由于不需要一次性的下载所有历史版本，首次下载速度不会有很大影响。但是由于历史版本还在远端，如果需要切换不同的版本，就会临时下载对应的版本，这样实际上是把下载的过程在时间维度上离散化了。对于不关心历史版本的人来说，降低了下载时长。</p>
+<h1 id="具体怎么做">具体怎么做</h1>
+<h2 id="安装">安装</h2>
 <div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
@@ -183,14 +153,14 @@ sudo apt install -y nginx</div>
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 创建一个密码文件/etc/nginx/.htpasswd，同时创建一个用户: ticktech，密码：ticktech123</span>
-</span></span><span style="display:flex;"><span>sudo htpasswd -b -c /etc/nginx/.htpasswd ticktech ticktech123
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## mac系统</span>
+</span></span><span style="display:flex;"><span>brew install git-lfs
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 继续创建一个用户: ticktechman，密码：ticktechman123</span>
-</span></span><span style="display:flex;"><span>sudo htpasswd -b /etc/nginx/.htpasswd ticktechman ticktechman123
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## ubuntu系统安装</span>
+</span></span><span style="display:flex;"><span>sudo apt install git-lfs
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查看文件内容</span>
-</span></span><span style="display:flex;"><span>sudo cat /etc/nginx/.htpasswd</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 当前用户启用lfs（用户级设置）</span>
+</span></span><span style="display:flex;"><span>git lfs install</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -200,23 +170,23 @@ sudo apt install -y nginx</div>
             </svg>
             <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
         </div>
-        <div class="hidden">## 创建一个密码文件/etc/nginx/.htpasswd，同时创建一个用户: ticktech，密码：ticktech123
-sudo htpasswd -b -c /etc/nginx/.htpasswd ticktech ticktech123
+        <div class="hidden">## mac系统
+brew install git-lfs
 
-## 继续创建一个用户: ticktechman，密码：ticktechman123
-sudo htpasswd -b /etc/nginx/.htpasswd ticktechman ticktechman123
+## ubuntu系统安装
+sudo apt install git-lfs
 
-## 查看文件内容
-sudo cat /etc/nginx/.htpasswd</div>
+## 当前用户启用lfs（用户级设置）
+git lfs install</div>
     </div>
 </div>
-<h1 id="配置nginx服务">配置nginx服务</h1>
+<h2 id="跟踪取消跟踪文件">跟踪/取消跟踪文件</h2>
 <div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
-        <div class=" font-mono grow text-center">cfg</div>
+        <div class=" font-mono grow text-center">bash</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
@@ -237,22 +207,40 @@ sudo cat /etc/nginx/.htpasswd</div>
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cfg" data-lang="cfg"><span style="display:flex;"><span><span style="color:#7f848e">## file: /etc/nginx/site-enabled/default</span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 添加如下内容</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">server {</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">listen 4080 default_server;        ## 这里配置端口，默认80</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">listen [::]:4080 default_server;   ## 这里配置端口，默认80</span>
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪根目录下的所有png文件，但不包含子目录</span>
+</span></span><span style="display:flex;"><span>$ git lfs track <span style="color:#98c379">&#39;*.png&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪所有目录下的png文件</span>
+</span></span><span style="display:flex;"><span>$ git lfs track <span style="color:#98c379">&#39;**/*.png&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪res目录下的所有文件，包含子目录</span>
+</span></span><span style="display:flex;"><span>$ git lfs track <span style="color:#98c379">&#39;res/**&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪res目录下的所有文件，不包含子目录</span>
+</span></span><span style="display:flex;"><span>$ git lfs track <span style="color:#98c379">&#39;res/*&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪根目录下的所有已经存在的zip文件，后续新增的不算（因为你的shell会将*.zip转译为所有已经存在的zip文件列表）</span>
+</span></span><span style="display:flex;"><span>$ git lfs track *.zip
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">location /login {</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#7f848e"># First attempt to serve request as file, then</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#7f848e"># as directory, then fall back to displaying a 404.</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e06c75">try_files $uri $uri/</span> <span style="color:#56b6c2">=</span><span style="color:#98c379">404;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">        auth_basic &#34;Gerrit Code Review&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">        auth_basic_user_file /etc/nginx/.htpasswd;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">    }</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">}</span></span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 取消对所有ogg文件的跟踪</span>
+</span></span><span style="display:flex;"><span>git lfs untrack <span style="color:#98c379">&#39;*.ogg&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 由于跟踪的规则记录在.gitattributes文件中，因此修改规则需要保存对这个文件的修改</span>
+</span></span><span style="display:flex;"><span>git add .gitattributes
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 推送到远端仓库</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查看lfs管理了哪些文件</span>
+</span></span><span style="display:flex;"><span>git lfs ls-files</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -262,23 +250,33 @@ sudo cat /etc/nginx/.htpasswd</div>
             </svg>
             <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
         </div>
-        <div class="hidden">## file: /etc/nginx/site-enabled/default
-## 添加如下内容
-server {
-    listen 4080 default_server;        ## 这里配置端口，默认80
-    listen [::]:4080 default_server;   ## 这里配置端口，默认80
+        <div class="hidden">## 跟踪根目录下的所有png文件，但不包含子目录
+$ git lfs track &#39;*.png&#39;
+## 跟踪所有目录下的png文件
+$ git lfs track &#39;**/*.png&#39;
+## 跟踪res目录下的所有文件，包含子目录
+$ git lfs track &#39;res/**&#39;
+## 跟踪res目录下的所有文件，不包含子目录
+$ git lfs track &#39;res/*&#39;
+## 跟踪根目录下的所有已经存在的zip文件，后续新增的不算（因为你的shell会将*.zip转译为所有已经存在的zip文件列表）
+$ git lfs track *.zip
 
-    location /login {
-        # First attempt to serve request as file, then
-        # as directory, then fall back to displaying a 404.
-        try_files $uri $uri/ =404;
-        auth_basic &#34;Gerrit Code Review&#34;;
-        auth_basic_user_file /etc/nginx/.htpasswd;
-    }
-}</div>
+## 取消对所有ogg文件的跟踪
+git lfs untrack &#39;*.ogg&#39;
+
+## 由于跟踪的规则记录在.gitattributes文件中，因此修改规则需要保存对这个文件的修改
+git add .gitattributes
+git add .
+
+## 推送到远端仓库
+git push
+
+## 查看lfs管理了哪些文件
+git lfs ls-files</div>
     </div>
 </div>
-<p>测试配置，重启服务</p>
+<h2 id="切换版本">切换版本</h2>
+<p>和日常的切换版本一样，不需要额外的命令：</p>
 <div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
@@ -292,11 +290,9 @@ server {
         <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nginx -t -c /etc/nginx/nginx.conf
-</span></span><span style="display:flex;"><span>sudo service nginx restart</span></span></code></pre></td></tr></table>
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout &lt;HASH&gt;</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -306,23 +302,39 @@ server {
             </svg>
             <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
         </div>
-        <div class="hidden">sudo nginx -t -c /etc/nginx/nginx.conf
-sudo service nginx restart</div>
+        <div class="hidden">git checkout &lt;HASH&gt;</div>
     </div>
 </div>
-<h1 id="测试">测试</h1>
-<p>打开浏览器，访问地址：<code>http://192.168.1.107:4080/login</code>（替换掉地址中的IP和端口为你的nginx服务器地址和端口），会出现下面图中的提示，输入用户名和密码后，正常访问网页了。</p>
-<p><img alt="nginx-basic-auth" src="/blog/2024/images/04.001.webp"></p>
+<p>在切换版本的时候，<code>.git/lfs/</code>目录下会下载历史版本，同时将工作目录中的内容切换为对应的版本。</p>
+<h1 id="疑问">疑问</h1>
+<ol>
+<li><strong>对于已经处于Git管理的二进制文件，是否可以使用LFS管理？</strong></li>
+</ol>
+<p>可以，但使用LFS之前的历史记录不受影响。但使用LFS之后，新的文件版本会被放到LFS中进行管理，后续克隆仓库的时候，只克隆一个版本。</p>
+<ol start="2">
+<li><strong>Git服务端支持吗？</strong></li>
+</ol>
+<p>现有的服务端软件都支持LFS，只是免费托管的仓库，对LFS的存储空间有限制，例如Github可以免费使用2GB空间。</p>
+<ol start="3">
+<li><strong>为什么LFS没有直接合入Git主线，而要用插件的方式单独安装</strong></li>
+</ol>
+<p>具体原因不详，不过小编猜测，LFS的解决方式和Git分布式版本管理的理念不符，因为默认LFS无法离线切换版本，需要联网才行。另外就是如果按照Git的分布式设计理念，其实这个问题无解（既要分布式离线可用，又要库占用的空间小），所以思来想去，还是不要放到主线版本里吧。</p>
+<h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://git-lfs.com/">https://git-lfs.com/</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/git-lfs">https://www.atlassian.com/git/tutorials/git-lfs</a></li>
+</ul>
 
   </div>
   
   <div class="mx-auto flex flex-row justify-between mt-14 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/blog/2024/video-tools/">上一篇：我的视频制作工具箱</a>
+      href="/series/git/34/">上一篇：Git服务器-给gerrit搭建一个LDAP认证服务</a>
     
     
-    <p></p>
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/36/">下一篇：Git进阶-删除垃圾大文件</a>
     
   </div>
 </main>

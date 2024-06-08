@@ -13,7 +13,7 @@
       <link>https://ticktechman.tech/blog/2024/04/</link>
       <pubDate>Sun, 26 May 2024 09:37:56 +0800</pubDate>
       <guid>https://ticktechman.tech/blog/2024/04/</guid>
-      <description>本文讲述如何基于ubuntu系统 &amp;amp; nginx搭建一个基础的HTTP Basic Auth服务，可以用于为其他程序提供认证服务，例如（gerrit服务）。</description>
+      <description>本文讲述如何基于ubuntu系统 &amp;amp; nginx搭建一个基础的HTTP Basic Auth服务，可以用于为其他程序提供基于用户名和密码的认证服务，例如为g</description>
     </item>
     <item>
       <title>我的视频制作工具箱</title>
