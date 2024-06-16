@@ -6,8 +6,22 @@
     <description>Recent content in Git技术盘点 on Ticktechman&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 07 Jun 2024 18:01:15 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Jun 2024 09:43:51 +0800</lastBuildDate>
     <atom:link href="https://ticktechman.tech/series/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git原理-探究rename规则</title>
+      <link>https://ticktechman.tech/series/git/44/</link>
+      <pubDate>Thu, 13 Jun 2024 09:43:51 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/44/</guid>
+      <description>在《Git原理-探寻日志记录》中我们看到，其实git是可以判断文件是否被改了个名字： bash 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 git log --name-status commit dc91f7f38cdb3c8876a7bfd38020e2a64f33015d (HEAD -&amp;gt; master, origin/master) Author: ticktechman</description>
+    </item>
+    <item>
+      <title>Git原理-垃圾回收</title>
+      <link>https://ticktechman.tech/series/git/41/</link>
+      <pubDate>Mon, 10 Jun 2024 10:10:55 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/41/</guid>
+      <description>Git也有垃圾回收吗？是的，真的有，git gc执行的就是垃圾回收的事情，这不是一个常用的命令，很少人会用到。接下来我们就看看Git是如何做垃</description>
+    </item>
     <item>
       <title>Git原理-细说引用文件</title>
       <link>https://ticktechman.tech/series/git/40/</link>

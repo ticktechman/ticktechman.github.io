@@ -262,3 +262,16 @@ if(carousels.length > 0) {
     carousel_right(null, e.querySelector('svg[name="right"]'));
   });
 }
+
+function coffee(thiz) {
+  log("coffee");
+  if(!thiz || !thiz.parentElement) {
+    return;
+  }
+  let img = thiz.parentElement.getElementsByTagName("img");
+  log(img);
+  if(img.length != 1) {
+    return;
+  }
+  img[0].classList.toggle("hidden");
+}

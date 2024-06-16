@@ -839,6 +839,10 @@ video {
   margin-top: 1rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -1018,6 +1022,10 @@ video {
 
 .w-\[220px\] {
   width: 220px;
+}
+
+.w-\[280px\] {
+  width: 280px;
 }
 
 .w-\[32px\] {
@@ -2486,6 +2494,11 @@ video {
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .text-white {

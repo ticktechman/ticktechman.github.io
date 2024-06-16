@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8H7XPB6TV4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-8H7XPB6TV4');
+  </script>
+  
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745756499567894"
+    crossorigin="anonymous"></script>
+  
+  <meta charset="UTF-8">
+  
+  <meta name="description" content="Git也有垃圾回收吗？">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git原理-垃圾回收</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+  <header class="">
+  <div name="bar">
+    <a href='/'><img name="logo" src="/assets/images/logo.webp"></a>
+    <ul name="menu-h-area">
+      <li>
+        <a href='/'
+          class=''>主页
+        </a>
+      </li>
+      <li>
+        <a href='/blog'
+          class=''>博客
+        </a>
+      </li>
+      <li>
+        <a href='/series'
+          class='current-menu'>专栏
+        </a>
+      </li>
+      <li>
+        <a href='/archive'
+          class=''>归档
+        </a>
+      </li>
+      <li>
+        <a href='/about'
+          class=''>关于
+        </a>
+      </li>
+    </ul>
+    <div class="flex flow-col space-x-4 items-center place-content-center">
+      <button id="btn-menu" class="flex md:hidden" onclick="toggleMainMenu(event)">
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"></path>
+        </svg>
+      </button>
+      <div id="main-menu-hidden" class="menu-hidden duration-300">
+        <ul id="main-menu-ul">
+          <li><a href='/'>主页</a></li>
+          <li><a href='/blog'>博客</a></li>
+          <li><a href='/series'>专栏</a></li>
+          <li><a href='/archive'>归档</a></li>
+          <li><a href='/about'>关于</a></li>
+        </ul>
+      </div>
+      <button class="flex">
+        <img id="language-selection" src="/assets/images/icon/lang-zh.svg" width="32"
+          onclick="toggleLanguageMenu(event)" />
+        <ul id="language-ul" class="menu-hidden duration-300">
+          <li><a href='/'><img src="/assets/images/icon/lang-zh.svg" width="32" /></a></li>
+          <li><a href='/en'><img src="/assets/images/icon/lang-en.svg" width="32" /></a></li>
+        </ul>
+      </button>
+      <button class="flex" id="dark-mode">
+        <svg class="w-6 h-6 block dark:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          p-id="7091" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path fill="currentcolor"
+            d="M512 783.945143a261.997714 261.997714 0 0 0 192.292571-79.725714A261.997714 261.997714 0 0 0 783.945143 512a261.997714 261.997714 0 0 0-79.725714-192.292571A261.997714 261.997714 0 0 0 512 240.054857c-36.790857 0-74.386286 8.484571-112.64 25.526857 46.811429 21.211429 84.699429 54.125714 113.737143 98.742857 28.964571 44.617143 43.52 93.842286 43.52 147.675429 0 53.833143-14.555429 103.058286-43.52 147.675429a263.899429 263.899429 0 0 1-113.664 98.742857A275.894857 275.894857 0 0 0 512 783.945143z m363.300571-422.765714L1024 512l-148.699429 150.820571v212.48H662.820571L512 1024l-150.820571-148.699429H148.699429V662.820571L0 512l148.699429-150.820571V148.699429h212.48L512 0l150.820571 148.699429h212.48v212.48z"
+            p-id="7092"></path>
+        </svg>
+        <svg class="w-6 h-6 hidden dark:block" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          p-id="5081" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path fill="currentcolor"
+            d="M502.518519 246.518519a256 256 0 1 0 0 512 256 256 0 0 0 0-512z m0 94.814814a161.185185 161.185185 0 1 1 0 322.370371 161.185185 161.185185 0 0 1 0-322.370371zM512 9.481481a48.545185 48.545185 0 0 1 48.279704 43.538963l0.227555 4.968297v72.628148a48.545185 48.545185 0 0 1-96.786963 4.968296l-0.227555-4.93037V57.950815C463.454815 31.213037 485.224296 9.481481 512 9.481481zM867.365926 156.634074a48.545185 48.545185 0 0 1 3.299555 64.967111l-3.337481 3.678815-51.351704 51.351704a48.545185 48.545185 0 0 1-71.945481-64.929185l3.337481-3.678815 51.351704-51.351704c18.962963-18.962963 49.682963-18.962963 68.645926 0zM1014.518519 512a48.545185 48.545185 0 0 1-43.538963 48.279704l-4.968297 0.227555h-72.628148a48.545185 48.545185 0 0 1-4.968296-96.786963l4.93037-0.227555h72.666074c26.775704 0 48.507259 21.731556 48.50726 48.507259zM867.365926 867.365926a48.545185 48.545185 0 0 1-64.967111 3.299555l-3.678815-3.337481-51.351704-51.351704a48.545185 48.545185 0 0 1 64.929185-71.945481l3.678815 3.337481 51.351704 51.351704c18.962963 18.962963 18.962963 49.682963 0 68.645926zM512 1014.518519a48.545185 48.545185 0 0 1-48.279704-43.538963l-0.227555-4.968297v-72.628148a48.545185 48.545185 0 0 1 96.786963-4.968296l0.227555 4.93037v72.666074A48.545185 48.545185 0 0 1 512 1014.518519zM156.634074 867.365926a48.545185 48.545185 0 0 1-3.299555-64.967111l3.337481-3.678815 51.351704-51.351704a48.545185 48.545185 0 0 1 71.945481 64.929185l-3.337481 3.678815-51.351704 51.351704c-18.962963 18.962963-49.682963 18.962963-68.645926 0zM9.481481 512a48.545185 48.545185 0 0 1 43.538963-48.279704l4.968297-0.227555h100.882963a48.545185 48.545185 0 0 1 4.968296 96.786963l-4.93037 0.227555H58.026667A48.545185 48.545185 0 0 1 9.481481 512zM156.634074 156.634074a48.545185 48.545185 0 0 1 64.967111-3.299555l3.678815 3.337481 51.351704 51.351704a48.545185 48.545185 0 0 1-64.929185 71.945481l-3.678815-3.337481L156.672 225.28c-18.962963-18.962963-18.962963-49.682963 0-68.645926z"
+            p-id="5082"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+  
+<main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
+  
+  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
+  
+  <h2 class="pt-4 text-center">Git原理-垃圾回收</h2>
+  <h4 class="text-center text-gray-400 text-sm mb-3">
+    <span class="px-1 py-2">2024/06/10</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">字数798</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">阅读2分钟</span>
+  </h4>
+  <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
+
+  
+  <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    <p>Git也有垃圾回收吗？是的，真的有，<code>git gc</code>执行的就是垃圾回收的事情，这不是一个常用的命令，很少人会用到。接下来我们就看看Git是如何做垃圾回收的。</p>
+<h1 id="垃圾回收">垃圾回收</h1>
+<p>首先我们看看Git的垃圾回收都做了一些什么事情：</p>
+<div class="carousel">
+  
+<div class="carousel-item ease-in-out w-full duration-1000 translate-x-full">
+  <img src='/series/git/images/gc.001.webp' />
+  <div class="comments" style="scrollbar-width: thin;">
+    <ol>
+<li>数据打包</li>
+</ol>
+<ul>
+<li>对象文件打包，当零散的数据文件到达约6700个的时候，将会被打包成pack文件，之所以是约等于，是因为git并不会对所有目录进行文件数统计，只选取了17开头的对象目录进行文件数统计，因为这样消耗资源更少；</li>
+<li>pack文件打包，是的，如果pack文件超过了50个，git还会对这些文件进行合并，打包到一个pack文件中；</li>
+<li>引用文件打包，因为如果分支或者tag文件过多，会严重消耗进程的文件描述符资源，打包后的内容会放到packed-refs文件中，原有的引用文件会被清除；</li>
+</ul>
+
+  </div>
+</div>
+<div class="carousel-item ease-in-out w-full duration-1000 translate-x-full">
+  <img src='/series/git/images/gc.002.webp' />
+  <div class="comments" style="scrollbar-width: thin;">
+    <ol start="2">
+<li>清理垃圾数据</li>
+</ol>
+<p>当对象没有被引用的的时候，就意味着这些对象不可达的，需要被清理掉，避免占用过多资源。</p>
+
+  </div>
+</div>
+<div class="carousel-item ease-in-out w-full duration-1000 translate-x-full">
+  <img src='/series/git/images/gc.003.webp' />
+  <div class="comments" style="scrollbar-width: thin;">
+    <ol start="3">
+<li>清理过期数据</li>
+</ol>
+<ul>
+<li>reflog：用户操作的历史记录，让用户可以会退，大部分情况下无用；</li>
+<li>worktree：残留的worktree元数据，工作目录被删除后，这些元数据也需要被清理；</li>
+<li>rerere metadata：rerere命令的cache数据，本来是用于自动merge代码的，当没有这个需求的时候，这些数据就可以被清除掉；</li>
+</ul>
+
+  </div>
+</div>
+
+  
+
+  <div class="z-12 w-full absolute top-1/3 flex flex-row justify-between ">
+    
+    <svg name="left" class="m-2 cursor-pointer" onclick="carousel_left(event, this)" width="32" height="32"
+      viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+      <path style="fill:#888;fill-opacity:1;fill-rule:evenodd;stroke:#fff;stroke-width:1.88976;stroke-opacity:1"
+        d="m 30.554843,43.284079 c 0.687984,0 1.375176,-0.263847 1.902345,-0.791015 1.054336,-1.054337 1.054336,-2.752304 0,-3.806641 L 17.765782,23.995017 32.457188,9.3055642 c 1.054336,-1.0543365 1.054336,-2.752305 0,-3.8066415 -1.054337,-1.0543365 -2.752305,-1.0543358 -3.806641,7e-7 L 12.156406,21.993064 c -0.55262,0.552621 -0.811837,1.283099 -0.785156,2.003906 -0.02668,0.720807 0.232536,1.449332 0.785156,2.001953 l 16.494141,16.494141 c 0.527168,0.527167 1.216314,0.791015 1.904296,0.791015 z" />
+    </svg>
+    
+    <svg name="right" class="m-2 cursor-pointer" onclick="carousel_right(event, this)" width="32" height="32"
+      viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+      <path style="fill:#888;fill-opacity:1;fill-rule:evenodd;stroke:#fff;stroke-width:1.88976;stroke-opacity:1"
+        d="m 16.683301,-10.523738 c -0.486478,0.486478 -0.785828,1.1589645 -0.785828,1.904493 0,1.491057 1.200644,2.6917014 2.691701,2.6917014 H 39.36596 l -0.0014,20.7754046 c 0,1.491057 1.200645,2.691702 2.691702,2.691702 1.491057,0 2.691701,-1.200645 2.691701,-2.691702 V -8.478376 c 0,-0.781524 -0.333232,-1.4813441 -0.861786,-1.972165 -0.490821,-0.528554 -1.18926,-0.860405 -1.970784,-0.860405 H 18.589174 c -0.745528,0 -1.419396,0.300731 -1.905873,0.787208 z"
+        transform="rotate(45)" />
+    </svg>
+  </div>
+</div>
+<h1 id="触发时机">触发时机</h1>
+<ol>
+<li>自动触发：</li>
+</ol>
+<ul>
+<li>客户端：当用户执行<code>git commit</code>时，触发<code>git maintenance</code>，进而触发<code>git gc</code></li>
+<li>服务端：当服务端收到客户端push的数据时，会触发<code>git receive-pack</code>进而触发<code>git gc</code>
+<img src="/series/git/images/gc.004.webp"></li>
+</ul>
+<ol start="2">
+<li>手动触发：
+执行<code>git gc</code>命令</li>
+</ol>
+<h1 id="子命令">子命令</h1>
+<p>除了使用<code>git gc</code>来清理垃圾数据，git还提供了下面的几个子命令来逐项清理数据；
+<img src="/series/git/images/gc.005.webp"></p>
+<ul>
+<li><code>git pack-refs</code>：打包引用文件</li>
+<li><code>git rerere gc</code>：清理rerere命令缓存</li>
+<li><code>git worktree prune</code>：清理worktree元数据</li>
+<li><code>git prune</code>：清理不可达对象</li>
+<li><code>git reflog expire</code>清理操作日志记录</li>
+<li><code>git repack</code>：打包数据对象文件</li>
+</ul>
+
+  </div>
+  
+
+  <div class="mx-auto flex flex-row justify-between mt-8 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/40/">上一篇：Git原理-细说引用文件</a>
+    
+    
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/44/">下一篇：Git原理-探究rename规则</a>
+    
+  </div>
+  
+  <div class="flex flex-col mt-2 mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    <p class="mx-auto font-bold text-red-500 cursor-pointer" onclick="coffee(this);">【文章不错，鼓励一下】</p>
+    <img src="/assets/images/like.webp" class="mx-auto w-[280px] rounded-md border shadow hidden">
+  </div>
+  
+</main>
+
+<div id="page-model-image-diag"
+  class="mx-auto items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden"
+  onclick="hideImageDiag(event, this)">
+  <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500"
+    onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">
+</div>
+
+  <footer>
+  <div class="flex text-sm text-gray-400"> © ticktechman 2024</div>
+  
+</footer>
+  <script src="/assets/js/dark-mode.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
