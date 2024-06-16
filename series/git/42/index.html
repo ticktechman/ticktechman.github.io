@@ -21,15 +21,15 @@
   
   <meta charset="UTF-8">
   
-  <meta name="description" content="专栏目录入口地址，不包含单个博客">
+  <meta name="description" content="当我们向代码库中添加文件的时候，git都做了点什么？">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>专栏</title>
+  <title>Git原理-代码入库</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
-  <header class=" fixed ">
+  <header class="">
   <div name="bar">
     <a href='/'><img name="logo" src="/assets/images/logo.webp"></a>
     <ul name="menu-h-area">
@@ -101,73 +101,70 @@
   </div>
 </header>
   
-
-<main class="mt-16 w-full bg-slate-50 dark:bg-slate-900 pb-4 dark:border-none">
-
-  <h1 class="pt-4 text-center">专栏</h1>
-  <hr class="w-48 mt-2 mb-6">
+<main class="pb-16 w-full bg-slate-50 dark:bg-slate-900 dark:border-none">
+  
+  <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
+  
+  <h2 class="pt-4 text-center">Git原理-代码入库</h2>
+  <h4 class="text-center text-gray-400 text-sm mb-3">
+    <span class="px-1 py-2">2024/06/11</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">字数765</span>
+    <span class="px-1 py-2">|</span>
+    <span class="px-1 py-2">阅读2分钟</span>
+  </h4>
+  <hr class="w-4/5 sm:w-4/5 md:w-2/3 xl:w-1/2">
 
   
+  <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    <blockquote>
+<p>导读：有没有想过这个问题：当我们执行<code>git add xxx</code>和<code>git commit -m 'xxx'</code>的时候，Git都做了点什么？</p>
+</blockquote>
+<h1 id="动作分解">动作分解</h1>
+<p><img src="/series/git/images/repoin.001.webp"></p>
+<p>上面是一张简单的代码入库流程图：</p>
+<p><strong>用户执行<code>git add xxx</code>的动作分解：</strong></p>
+<ol>
+<li>为新文件创建一个blob对象文件，文件名为对文件内容计算的SHA1值高19Bytes对应的HEX（16进制字符串）值，目录为<code>.git/objects/xx/</code>，这里的xx为SHA1值的第1个字节对应的HEX值，注意这里创建的blob对象中存储的是源文件使用zlib压缩后的内容，并不是原始内容直接存储，这样大大降低了磁盘空间占用。</li>
+<li>使用文件的SHA1值和文件的属性信息（大小，创建时间，修改时间、权限等）更新暂存区文件<code>.git/index</code>。</li>
+</ol>
+<p><strong>用户执行<code>git commit -m 'xxx'</code>的动作分解：</strong></p>
+<ol start="3">
+<li>根据暂存区的内容生成一个新的tree对象，同样存放到<code>.git/objects/xx/</code>目录下，这里在存储之前，同样会计算tree对象的SHA1值，然后进行分目录存放。</li>
+<li>根据用户commit的消息，生成commit对象，这个对象中会记录tree对象信息，author、committer、parent、描述信息等，git同样会计算这个commit对象的SHA1值，将这个对象存放到<code>.git/objects/xx/</code>目录下。</li>
+<li>将上面的commit对象的SHA1值，更新到对应的分支引用对象的文件中，一般为<code>.git/refs/heads/master</code>。</li>
+</ol>
+<h1 id="思考">思考</h1>
+<p><strong>那么问题来了，如果两个文件的内容一样，那么在git中是保留一份还是两份呢？</strong></p>
+<p>按照步骤1中的描述我们可以得知，应该是只保留一份数据，因为文件的内容相同，SHA1值就相同，对应Git库中的BLOB对象文件名就相同，因此只能是一份记录。但这里需要注意的是，虽然文件内容相同，但文件名不同或者位于不同的目录中，因此，对应的是不同的tree对象条目。</p>
+
+  </div>
   
-   
+
+  <div class="mx-auto flex flex-row justify-between mt-8 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     
-      
-        
-      
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/41/">上一篇：Git原理-垃圾回收</a>
     
+    
+    <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
+      href="/series/git/43/">下一篇：Git原理-探寻日志记录</a>
+    
+  </div>
   
-
+  <div class="flex flex-col mt-2 mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
+    <p class="mx-auto font-bold text-red-500 cursor-pointer" onclick="coffee(this);">【文章不错，鼓励一下】</p>
+    <img src="/assets/images/like.webp" class="mx-auto w-[280px] rounded-md border shadow hidden">
+  </div>
   
-    <div class="grid grid-cols-1 m-4 gap-2 md:grid-cols-2 xl:grid-cols-4">
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/git/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/git/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">Git技术盘点 (44)</h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          记录从Git小白到专家的成长之路
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/mac-beginners/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/mac-beginners/images/default.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">Mac入坑指南 (36)</h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          入坑mac的新手指南，系统设置，软件推荐，软件配置，命令行环境等，老鸟勿入
-          
-        </p>
-      </a>
-    </div>
-  
-    <div class="flex flex-col justify-start w-full shadow rounded-xl overflow-hidden place-content-center border hover:shadow-lg duration-500 dark:border-slate-700">
-      <a class="block" href="/series/play-with-termux/">
-        
-        <img class="object-cover h-48  w-full hover:scale-110 duration-500" src="/series/play-with-termux/images/termux.webp" alt="">
-        
-        <h2 class="mx-4 mt-4">玩转termux (10)</h2>
-        <p class="mx-4 mb-4 text-sm text-gray-400">
-          
-          你的老手机还在吃灰吗？拿来做个服务器不香吗？ssh、git、svn、web, redis, postgresql ...
-          
-        </p>
-      </a>
-    </div>
-  
-</div>
-
-  
-
 </main>
 
+<div id="page-model-image-diag"
+  class="mx-auto items-center overflow-auto w-full h-full bg-black/80 fixed z-99 top-0 left-0 hidden"
+  onclick="hideImageDiag(event, this)">
+  <img src="" class="mx-auto max-w-[100vw] max-h-[100vh] cursor-zoom-in rounded-lg shadow-lg duration-500"
+    onclick="largeImageClick(event);" onkeypress="largeImagePress(event)" ondblclick="imageZoomIn(event, this)">
+</div>
 
   <footer>
   <div class="flex text-sm text-gray-400"> © ticktechman 2024</div>

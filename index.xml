@@ -16,11 +16,25 @@
       <description>在《Git原理-探寻日志记录》中我们看到，其实git是可以判断文件是否被改了个名字： bash 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 git log --name-status commit dc91f7f38cdb3c8876a7bfd38020e2a64f33015d (HEAD -&amp;gt; master, origin/master) Author: ticktechman</description>
     </item>
     <item>
+      <title>Git原理-探寻日志记录</title>
+      <link>https://ticktechman.tech/series/git/43/</link>
+      <pubDate>Wed, 12 Jun 2024 18:31:18 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/43/</guid>
+      <description>导读：当我们执行git log --name-status的时候，git都做了些什么？ 我们先来看看这个命令的输出内容，然后根据输出内容，探寻对应的数</description>
+    </item>
+    <item>
       <title>喝杯咖啡，交个朋友</title>
       <link>https://ticktechman.tech/blog/2024/05/</link>
       <pubDate>Tue, 11 Jun 2024 21:51:45 +0800</pubDate>
       <guid>https://ticktechman.tech/blog/2024/05/</guid>
       <description>各位看官，这个博客更新了一段时间了，大部分内容都是技术相关，目前已经有3个专栏： 《Git技术盘点》&amp;ndash; 持续更新中 《Mac入坑指南》</description>
+    </item>
+    <item>
+      <title>Git原理-代码入库</title>
+      <link>https://ticktechman.tech/series/git/42/</link>
+      <pubDate>Tue, 11 Jun 2024 21:43:54 +0800</pubDate>
+      <guid>https://ticktechman.tech/series/git/42/</guid>
+      <description>导读：有没有想过这个问题：当我们执行git add xxx和git commit -m &#39;xxx&#39;的时候，Git都做了点什么？ 动作分解 上面是一张简单的代码入库流程图：</description>
     </item>
     <item>
       <title>Git原理-垃圾回收</title>
