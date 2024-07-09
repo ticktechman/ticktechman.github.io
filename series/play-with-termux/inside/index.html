@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>玩转termux | 10.内部实现</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -151,7 +153,7 @@
 <p>通过这个子项目：termux-packages(<a href="https://github.com/termux/termux-packages">https://github.com/termux/termux-packages</a>)，这里有全部三方软件包的编译脚本和patch，它不但可以编译生成一个最小根文件系统，还能生成所有三方软件包，共计1000+个。</p>
 <p>这个项目中也有编译好的最小根文件系统压缩包：bootstrap-xxx.zip，在这个地址可以找到 <a href="https://github.com/termux/termux-packages/releases">https://github.com/termux/termux-packages/releases</a>。</p>
 <p>一个典型的最小根文件系统目录结构是这样的:</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -161,30 +163,30 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
-</span></span><span style="display:flex;"><span>├── SYMLINKS.txt <span style="color:#7f848e">## 符号连接配置项，首次启动APP的时候用到</span>
-</span></span><span style="display:flex;"><span>├── bin          <span style="color:#7f848e">## 系统命令</span>
-</span></span><span style="display:flex;"><span>├── etc          <span style="color:#7f848e">## 系统配置</span>
-</span></span><span style="display:flex;"><span>├── include      <span style="color:#7f848e">## 系统库头文件</span>
-</span></span><span style="display:flex;"><span>├── lib          <span style="color:#7f848e">## 系统库文件</span>
-</span></span><span style="display:flex;"><span>├── libexec
-</span></span><span style="display:flex;"><span>├── share
-</span></span><span style="display:flex;"><span>├── tmp
-</span></span><span style="display:flex;"><span>└── var</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── SYMLINKS.txt <span class="c1">## 符号连接配置项，首次启动APP的时候用到</span>
+</span></span><span class="line"><span class="cl">├── bin          <span class="c1">## 系统命令</span>
+</span></span><span class="line"><span class="cl">├── etc          <span class="c1">## 系统配置</span>
+</span></span><span class="line"><span class="cl">├── include      <span class="c1">## 系统库头文件</span>
+</span></span><span class="line"><span class="cl">├── lib          <span class="c1">## 系统库文件</span>
+</span></span><span class="line"><span class="cl">├── libexec
+</span></span><span class="line"><span class="cl">├── share
+</span></span><span class="line"><span class="cl">├── tmp
+</span></span><span class="line"><span class="cl">└── var</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -210,7 +212,7 @@
 <li><strong>如何将一个根文件系统装进APK的？</strong></li>
 </ol>
 <p>这个项目termux-app (<a href="https://github.com/termux/termux-app">https://github.com/termux/termux-app</a>)负责生成我们用到的termux.apk，在这个项目中，<code>app/src/main/cpp</code>目录负责将上面的bootstrap-xxx.zip打包为libtermux-bootstrap.so动态库给APK使用，实现的代码在一个termux-bootstrap-zip.S汇编代码中：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -220,46 +222,46 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>     <span style="color:#e06c75">.global</span> <span style="color:#e06c75">blob</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#e06c75">.global</span> <span style="color:#e06c75">blob_size</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#e06c75">.section</span> <span style="color:#e06c75">.rodata</span>
-</span></span><span style="display:flex;"><span> <span style="color:#e06c75">blob:</span>
-</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#if defined __i686__
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>     <span style="color:#e06c75">.incbin</span> <span style="color:#98c379">&#34;bootstrap-i686.zip&#34;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#elif defined __x86_64__
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>     <span style="color:#e06c75">.incbin</span> <span style="color:#98c379">&#34;bootstrap-x86_64.zip&#34;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#elif defined __aarch64__
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>     <span style="color:#e06c75">.incbin</span> <span style="color:#98c379">&#34;bootstrap-aarch64.zip&#34;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#elif defined __arm__
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>     <span style="color:#e06c75">.incbin</span> <span style="color:#98c379">&#34;bootstrap-arm.zip&#34;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#7f848e">#else
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span> <span style="color:#7f848e"># error Unsupported arch
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span> <span style="color:#7f848e">#endif
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span> 1:
-</span></span><span style="display:flex;"><span> <span style="color:#e06c75">blob_size:</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#e06c75">.int</span> <span style="color:#d19a66">1</span><span style="color:#e06c75">b</span> - <span style="color:#e06c75">blob</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl">     <span class="na">.global</span> <span class="no">blob</span>
+</span></span><span class="line"><span class="cl">     <span class="na">.global</span> <span class="no">blob_size</span>
+</span></span><span class="line"><span class="cl">     <span class="na">.section</span> <span class="no">.rodata</span>
+</span></span><span class="line"><span class="cl"> <span class="nl">blob:</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#if defined __i686__
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>     <span class="na">.incbin</span> <span class="s">&#34;bootstrap-i686.zip&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#elif defined __x86_64__
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>     <span class="na">.incbin</span> <span class="s">&#34;bootstrap-x86_64.zip&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#elif defined __aarch64__
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>     <span class="na">.incbin</span> <span class="s">&#34;bootstrap-aarch64.zip&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#elif defined __arm__
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>     <span class="na">.incbin</span> <span class="s">&#34;bootstrap-arm.zip&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#else
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="c1"># error Unsupported arch
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="c1">#endif
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="err">1:</span>
+</span></span><span class="line"><span class="cl"> <span class="nl">blob_size:</span>
+</span></span><span class="line"><span class="cl">     <span class="na">.int</span> <span class="mi">1</span><span class="no">b</span> <span class="p">-</span> <span class="no">blob</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

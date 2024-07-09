@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git服务器-给gerrit搭建一个LDAP认证服务</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -121,7 +123,7 @@
 <p>LDAP（Lightweight Directory Access Protocol）轻型目录访问协议，是一个开放的、中立的、工业标准的应用协议，它通过IP协议提供访问控制和维护分布式目录信息。之所以选择这个协议，因为这是一个开放的工业标准，成熟稳定，适合私有部署，保证信息安全，同时gerrit原生支持。本次我们使用的LDAP服务软件，是OpenLDAP的slapd，同时也是一个开源软件。使用LDAP后，gerrit的拓扑结构是这样的：</p>
 <p><img alt="gerrit with LDAP" src="/series/git/images/slapd.001.webp"></p>
 <h1 id="安装ldap">安装LDAP</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -131,20 +133,20 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># 安装软件slapd</span>
-</span></span><span style="display:flex;"><span>sudo apt install slapd ldap-utils
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 安装工具用户/组工具</span>
-</span></span><span style="display:flex;"><span>sudo apt install ldapscripts</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安装软件slapd</span>
+</span></span><span class="line"><span class="cl">sudo apt install slapd ldap-utils
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 安装工具用户/组工具</span>
+</span></span><span class="line"><span class="cl">sudo apt install ldapscripts</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -164,7 +166,7 @@ sudo apt install ldapscripts</div>
 <h1 id="配置ldap">配置LDAP</h1>
 <p>这是一个简单的目录树结构，用来为gerrit做认证服务：
 <img alt="LDAP root DN" src="/series/git/images/slapd.002.webp"></p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -174,14 +176,14 @@ sudo apt install ldapscripts</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 配置Root DN</span>
-</span></span><span style="display:flex;"><span>sudo dpkg-reconfigure slapd</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 配置Root DN</span>
+</span></span><span class="line"><span class="cl">sudo dpkg-reconfigure slapd</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -206,7 +208,7 @@ sudo dpkg-reconfigure slapd</div>
 <li>STEP7. [YES]</li>
 </ul>
 <p>接下来，需要添加people和groups组织单元（OU=organization unit）信息，新建一个<code>add.ldif</code>文件，内容如下：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -216,24 +218,24 @@ sudo dpkg-reconfigure slapd</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>dn: ou=people,dc=ticktechman,dc=tech
-</span></span><span style="display:flex;"><span>objectClass: organizationalUnit
-</span></span><span style="display:flex;"><span>ou: people
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>dn: ou=groups,dc=ticktechman,dc=tech
-</span></span><span style="display:flex;"><span>objectClass: organizationalUnit
-</span></span><span style="display:flex;"><span>ou: groups</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">dn: ou=people,dc=ticktechman,dc=tech
+</span></span><span class="line"><span class="cl">objectClass: organizationalUnit
+</span></span><span class="line"><span class="cl">ou: people
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dn: ou=groups,dc=ticktechman,dc=tech
+</span></span><span class="line"><span class="cl">objectClass: organizationalUnit
+</span></span><span class="line"><span class="cl">ou: groups</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -253,7 +255,7 @@ ou: groups</div>
     </div>
 </div>
 <p>然后执行下面的命令将OU信息添加到LDAP服务中：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -263,20 +265,20 @@ ou: groups</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 添加people和groups，这里需要输入密码，就是上面第4步中输入的密码</span>
-</span></span><span style="display:flex;"><span>sudo ldapadd -x -D <span style="color:#e06c75">cn</span><span style="color:#56b6c2">=</span>admin,dc<span style="color:#56b6c2">=</span>ticktechman,dc<span style="color:#56b6c2">=</span>tech -W -f add.ldif
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查询结果，这里ldapi:///使用的本地IPC通道，不是网络</span>
-</span></span><span style="display:flex;"><span>ldapsearch -x -LLL -H ldapi:/// </span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 添加people和groups，这里需要输入密码，就是上面第4步中输入的密码</span>
+</span></span><span class="line"><span class="cl">sudo ldapadd -x -D <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>ticktechman,dc<span class="o">=</span>tech -W -f add.ldif
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 查询结果，这里ldapi:///使用的本地IPC通道，不是网络</span>
+</span></span><span class="line"><span class="cl">ldapsearch -x -LLL -H ldapi:/// </span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -294,7 +296,7 @@ ldapsearch -x -LLL -H ldapi:/// </div>
     </div>
 </div>
 <p>接下来我们可以使用ldscripts来访问ldap服务器上的信息，主要是用来添加用户和组信息，不过在此之前，需要先修改好ldscripts的配置（主要是和服务器相关的配置信息），配置文件位于<code>/etc/ldapscripts/ldapscripts.conf</code>中，需要修改的内容如下：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -304,22 +306,22 @@ ldapsearch -x -LLL -H ldapi:/// </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cfg" data-lang="cfg"><span style="display:flex;"><span><span style="color:#e06c75">SERVER</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;ldap://192.168.1.107&#34;      ## 服务器地址</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">SUFFIX</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;dc=ticktechman,dc=tech&#34;    ## DN信息</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">GSUFFIX</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;ou=groups&#34;                ## 组对应的OU</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">USUFFIX</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;ou=people&#34;                ## 用户对应的OU</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">BINDPWDFILE</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;/etc/ldapscripts/ldapscripts.passwd&#34;  ## 这一项不需要修改，这里配置了访问LDAP服务的密码文件位置，注意这里的密码不能包含换行符</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cfg" data-lang="cfg"><span class="line"><span class="cl"><span class="na">SERVER</span><span class="o">=</span><span class="s">&#34;ldap://192.168.1.107&#34;      ## 服务器地址</span>
+</span></span><span class="line"><span class="cl"><span class="na">SUFFIX</span><span class="o">=</span><span class="s">&#34;dc=ticktechman,dc=tech&#34;    ## DN信息</span>
+</span></span><span class="line"><span class="cl"><span class="na">GSUFFIX</span><span class="o">=</span><span class="s">&#34;ou=groups&#34;                ## 组对应的OU</span>
+</span></span><span class="line"><span class="cl"><span class="na">USUFFIX</span><span class="o">=</span><span class="s">&#34;ou=people&#34;                ## 用户对应的OU</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">BINDPWDFILE</span><span class="o">=</span><span class="s">&#34;/etc/ldapscripts/ldapscripts.passwd&#34;  ## 这一项不需要修改，这里配置了访问LDAP服务的密码文件位置，注意这里的密码不能包含换行符</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -338,7 +340,7 @@ BINDPWDFILE=&#34;/etc/ldapscripts/ldapscripts.passwd&#34;  ## 这一项不需要
     </div>
 </div>
 <p>使用这个命令将密码添加的上面配置的文件中：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -348,12 +350,12 @@ BINDPWDFILE=&#34;/etc/ldapscripts/ldapscripts.passwd&#34;  ## 这一项不需要
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e5c07b">echo</span> -n <span style="color:#98c379">&#39;admin&#39;</span> | sudo tee /etc/ldapscripts/ldapscripts.passwd</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> -n <span class="s1">&#39;admin&#39;</span> <span class="p">|</span> sudo tee /etc/ldapscripts/ldapscripts.passwd</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -367,7 +369,7 @@ BINDPWDFILE=&#34;/etc/ldapscripts/ldapscripts.passwd&#34;  ## 这一项不需要
     </div>
 </div>
 <p>好了，接下来就可以添加用户和组信息了：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -377,32 +379,32 @@ BINDPWDFILE=&#34;/etc/ldapscripts/ldapscripts.passwd&#34;  ## 这一项不需要
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 添加组</span>
-</span></span><span style="display:flex;"><span>sudo ldapaddgroup administrators
-</span></span><span style="display:flex;"><span>sudo ldapaddgroup rnd
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 添加用户</span>
-</span></span><span style="display:flex;"><span>sudo ldapadduser admin administrators
-</span></span><span style="display:flex;"><span>sudo ldapadduser ticktech rnd
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 修改密码</span>
-</span></span><span style="display:flex;"><span>sudo sudo ldapsetpasswd admin
-</span></span><span style="display:flex;"><span>sudo sudo ldapsetpasswd ticktech</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 添加组</span>
+</span></span><span class="line"><span class="cl">sudo ldapaddgroup administrators
+</span></span><span class="line"><span class="cl">sudo ldapaddgroup rnd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 添加用户</span>
+</span></span><span class="line"><span class="cl">sudo ldapadduser admin administrators
+</span></span><span class="line"><span class="cl">sudo ldapadduser ticktech rnd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 修改密码</span>
+</span></span><span class="line"><span class="cl">sudo sudo ldapsetpasswd admin
+</span></span><span class="line"><span class="cl">sudo sudo ldapsetpasswd ticktech</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -426,7 +428,7 @@ sudo sudo ldapsetpasswd ticktech</div>
     </div>
 </div>
 <h1 id="配置gerrit">配置gerrit</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -436,32 +438,32 @@ sudo sudo ldapsetpasswd ticktech</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cfg" data-lang="cfg"><span style="display:flex;"><span><span style="color:#7f848e"># gerrit.config</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[auth]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">type</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">LDAP</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[ldap]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">server</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">ldap://192.168.1.107
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">    username = cn=admin,dc=ticktechman,dc=tech
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">    password = admin
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">    accountBase = ou=people,dc=ticktechman,dc=tech
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">    groupBase = ou=groups,dc=ticktechman,dc=tech
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">    accountPattern = (uid=${username})
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">    supportAnonymous = false</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cfg" data-lang="cfg"><span class="line"><span class="cl"><span class="c1"># gerrit.config</span>
+</span></span><span class="line"><span class="cl"><span class="k">[auth]</span>
+</span></span><span class="line"><span class="cl">    <span class="na">type</span> <span class="o">=</span> <span class="s">LDAP</span>
+</span></span><span class="line"><span class="cl"><span class="k">[ldap]</span>
+</span></span><span class="line"><span class="cl">    <span class="na">server</span> <span class="o">=</span> <span class="s">ldap://192.168.1.107
+</span></span></span><span class="line"><span class="cl"><span class="s">    username = cn=admin,dc=ticktechman,dc=tech
+</span></span></span><span class="line"><span class="cl"><span class="s">    password = admin
+</span></span></span><span class="line"><span class="cl"><span class="s">    accountBase = ou=people,dc=ticktechman,dc=tech
+</span></span></span><span class="line"><span class="cl"><span class="s">    groupBase = ou=groups,dc=ticktechman,dc=tech
+</span></span></span><span class="line"><span class="cl"><span class="s">    accountPattern = (uid=${username})
+</span></span></span><span class="line"><span class="cl"><span class="s">    supportAnonymous = false</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

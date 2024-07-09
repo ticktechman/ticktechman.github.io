@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>高效Git-命令别名</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -118,7 +120,7 @@
   
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     <p>除了自己开发一个扩展命令（<a href="/series/git/19/">高效Git-自定义命令</a>），还可以利用命令别名，就是给已知命令+固定参数创建一个新的别名，你只需要输入很简单的参数，就可以实现复杂参数实现的功能。下面举几个例子：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -128,38 +130,38 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cfg" data-lang="cfg"><span style="display:flex;"><span><span style="color:#c678dd">[alias]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">st</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">status -s
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  ci = commit
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  co = checkout
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  br = branch -vv
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  cl = clean -fd
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  df = diff
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  lg = log --name-status
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  ll = log --oneline
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  llg = log --oneline --graph
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  ls = ls-tree HEAD
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  lv = log --pretty=&#39;%C(auto)%h %G? %ad %an - %d%s&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  cat = cat-file -p
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  c = clone --depth=1</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cfg" data-lang="cfg"><span class="line"><span class="cl"><span class="k">[alias]</span>
+</span></span><span class="line"><span class="cl">  <span class="na">st</span> <span class="o">=</span> <span class="s">status -s
+</span></span></span><span class="line"><span class="cl"><span class="s">  ci = commit
+</span></span></span><span class="line"><span class="cl"><span class="s">  co = checkout
+</span></span></span><span class="line"><span class="cl"><span class="s">  br = branch -vv
+</span></span></span><span class="line"><span class="cl"><span class="s">  cl = clean -fd
+</span></span></span><span class="line"><span class="cl"><span class="s">  df = diff
+</span></span></span><span class="line"><span class="cl"><span class="s">  lg = log --name-status
+</span></span></span><span class="line"><span class="cl"><span class="s">  ll = log --oneline
+</span></span></span><span class="line"><span class="cl"><span class="s">  llg = log --oneline --graph
+</span></span></span><span class="line"><span class="cl"><span class="s">  ls = ls-tree HEAD
+</span></span></span><span class="line"><span class="cl"><span class="s">  lv = log --pretty=&#39;%C(auto)%h %G? %ad %an - %d%s&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">  cat = cat-file -p
+</span></span></span><span class="line"><span class="cl"><span class="s">  c = clone --depth=1</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -193,7 +195,7 @@
   <div class="mx-auto flex flex-row justify-between mt-8 min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/git/19/">上一篇：高效Git-自定义命令</a>
+      href="/series/git/19/">上一篇：高效Git-命令客制化</a>
     
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"

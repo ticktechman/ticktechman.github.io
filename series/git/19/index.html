@@ -24,8 +24,10 @@
   <meta name="description" content="如果Git丰富的命令还不能满足你的需求，那就自己写一个吧">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>高效Git-自定义命令</title>
+  <title>高效Git-命令客制化</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -105,7 +107,7 @@
   
   <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
   
-  <h2 class="pt-4 text-center">高效Git-自定义命令</h2>
+  <h2 class="pt-4 text-center">高效Git-命令客制化</h2>
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/04/29</span>
     <span class="px-1 py-2">|</span>
@@ -119,7 +121,7 @@
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     <p>Git原生提供了丰富的命令，但如果这些命令还是不能满足你的需求，git也提供了扩展命令的途径，你可以使用自己熟悉的任何编程语言来写一个自己的命令出来。下面小编用一个bash脚本作为例子，讲一讲扩展git命令的流程：</p>
 <p>我们要实现的是一个根据commit信息生成<code>CHANGELOG</code>的功能，需要提供一个起始commit id或者tag标识：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -129,68 +131,68 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">29
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## git-changelog</span>
-</span></span><span style="display:flex;"><span>error<span style="color:#56b6c2">()</span> <span style="color:#56b6c2">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;ERROR: </span><span style="color:#e06c75">$*</span><span style="color:#98c379">&#34;</span> &gt;&amp;<span style="color:#d19a66">2</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">exit</span> <span style="color:#d19a66">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#56b6c2">}</span>
-</span></span><span style="display:flex;"><span>usage<span style="color:#56b6c2">()</span> <span style="color:#56b6c2">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;usage: git changelog &lt;commit or tag&gt;&#34;</span> &gt;&amp;<span style="color:#d19a66">2</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">exit</span> <span style="color:#d19a66">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#56b6c2">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">_prefixes</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;feature fix doc refact&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#56b6c2">[[</span> <span style="color:#e06c75">$#</span> -ne <span style="color:#d19a66">1</span> <span style="color:#56b6c2">]]</span> <span style="color:#56b6c2">&amp;&amp;</span> usage
-</span></span><span style="display:flex;"><span>git rev-parse <span style="color:#e06c75">$1</span> &gt;/dev/null 2&gt;&amp;<span style="color:#d19a66">1</span> <span style="color:#56b6c2">||</span> error <span style="color:#98c379">&#34;invalid commit id </span><span style="color:#e06c75">$1</span><span style="color:#98c379">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">now</span><span style="color:#56b6c2">=</span><span style="color:#c678dd">$(</span>date +<span style="color:#98c379">&#39;%Y-%m-%dT%TZ%z&#39;</span><span style="color:#c678dd">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">from</span><span style="color:#56b6c2">=</span><span style="color:#e06c75">$1</span>
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">echo</span> changelog:
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;-------------&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;datetime: </span><span style="color:#e06c75">$now</span><span style="color:#98c379">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;baseline: </span><span style="color:#e06c75">$from</span><span style="color:#98c379">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">for</span> one in <span style="color:#98c379">${</span><span style="color:#e06c75">_prefixes</span><span style="color:#98c379">}</span>; <span style="color:#c678dd">do</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;</span><span style="color:#e06c75">$one</span><span style="color:#98c379">:&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;-------------&#34;</span>
-</span></span><span style="display:flex;"><span>  git --no-pager log <span style="color:#98c379">&#34;</span><span style="color:#98c379">${</span><span style="color:#e06c75">from</span><span style="color:#98c379">}</span><span style="color:#98c379">..HEAD&#34;</span> --grep<span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;^</span><span style="color:#98c379">${</span><span style="color:#e06c75">one</span><span style="color:#98c379">}</span><span style="color:#98c379">:&#34;</span> --pretty<span style="color:#56b6c2">=</span><span style="color:#98c379">&#39;%s&#39;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">done</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## git-changelog</span>
+</span></span><span class="line"><span class="cl">error<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;ERROR: </span><span class="nv">$*</span><span class="s2">&#34;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">usage<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;usage: git changelog &lt;commit or tag&gt;&#34;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">_prefixes</span><span class="o">=</span><span class="s2">&#34;feature fix doc refact&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[[</span> <span class="nv">$#</span> -ne <span class="m">1</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> usage
+</span></span><span class="line"><span class="cl">git rev-parse <span class="nv">$1</span> &gt;/dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="o">||</span> error <span class="s2">&#34;invalid commit id </span><span class="nv">$1</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">now</span><span class="o">=</span><span class="k">$(</span>date +<span class="s1">&#39;%Y-%m-%dT%TZ%z&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">from</span><span class="o">=</span><span class="nv">$1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> changelog:
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;-------------&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;datetime: </span><span class="nv">$now</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;baseline: </span><span class="nv">$from</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> one in <span class="si">${</span><span class="nv">_prefixes</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$one</span><span class="s2">:&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;-------------&#34;</span>
+</span></span><span class="line"><span class="cl">  git --no-pager log <span class="s2">&#34;</span><span class="si">${</span><span class="nv">from</span><span class="si">}</span><span class="s2">..HEAD&#34;</span> --grep<span class="o">=</span><span class="s2">&#34;^</span><span class="si">${</span><span class="nv">one</span><span class="si">}</span><span class="s2">:&#34;</span> --pretty<span class="o">=</span><span class="s1">&#39;%s&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -234,7 +236,7 @@ done</div>
 <p>将上面的文件保存到一个<code>git-changelog</code>文件，添加执行权限，并将它放到<code>/usr/local/bin</code>目录下，同时确保<code>/usr/local/bin</code>目录在你的<code>$PATH</code>变量中。</p>
 <hr>
 <p>接着就可以到任何你的git仓库中，执行：<code>git changelog &lt;start-commit-id&gt;</code>，下面是小编的一个git仓库下的执行结果：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -244,70 +246,70 @@ done</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">30
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>changelog:
-</span></span><span style="display:flex;"><span>-------------
-</span></span><span style="display:flex;"><span>datetime: 2024-04-29T10:30:51Z+0800
-</span></span><span style="display:flex;"><span>baseline: 74375de
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>feature:
-</span></span><span style="display:flex;"><span>-------------
-</span></span><span style="display:flex;"><span>feature: add ttf.name
-</span></span><span style="display:flex;"><span>feature: add hl for keynote terminal commands
-</span></span><span style="display:flex;"><span>feature: add hl for show code in keynode
-</span></span><span style="display:flex;"><span>feature: add github.js for fonts
-</span></span><span style="display:flex;"><span>feature: add defaults.domains.export
-</span></span><span style="display:flex;"><span>feature: add defaults.domains.export
-</span></span><span style="display:flex;"><span>feature: add mac-default.sh
-</span></span><span style="display:flex;"><span>feature: add formatter in nvchad
-</span></span><span style="display:flex;"><span>feature: add go and sql snippets for nvchad
-</span></span><span style="display:flex;"><span>feature: add make snippets for nvchad
-</span></span><span style="display:flex;"><span>feature: new nvchad repo
-</span></span><span style="display:flex;"><span>feature: add nvchad conf
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>fix:
-</span></span><span style="display:flex;"><span>-------------
-</span></span><span style="display:flex;"><span>fix: feishu.js for cn and en
-</span></span><span style="display:flex;"><span>fix: en-US for feishu
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>doc:
-</span></span><span style="display:flex;"><span>-------------
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>refact:
-</span></span><span style="display:flex;"><span>-------------</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">changelog:
+</span></span><span class="line"><span class="cl">-------------
+</span></span><span class="line"><span class="cl">datetime: 2024-04-29T10:30:51Z+0800
+</span></span><span class="line"><span class="cl">baseline: 74375de
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">feature:
+</span></span><span class="line"><span class="cl">-------------
+</span></span><span class="line"><span class="cl">feature: add ttf.name
+</span></span><span class="line"><span class="cl">feature: add hl for keynote terminal commands
+</span></span><span class="line"><span class="cl">feature: add hl for show code in keynode
+</span></span><span class="line"><span class="cl">feature: add github.js for fonts
+</span></span><span class="line"><span class="cl">feature: add defaults.domains.export
+</span></span><span class="line"><span class="cl">feature: add defaults.domains.export
+</span></span><span class="line"><span class="cl">feature: add mac-default.sh
+</span></span><span class="line"><span class="cl">feature: add formatter in nvchad
+</span></span><span class="line"><span class="cl">feature: add go and sql snippets for nvchad
+</span></span><span class="line"><span class="cl">feature: add make snippets for nvchad
+</span></span><span class="line"><span class="cl">feature: new nvchad repo
+</span></span><span class="line"><span class="cl">feature: add nvchad conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">fix:
+</span></span><span class="line"><span class="cl">-------------
+</span></span><span class="line"><span class="cl">fix: feishu.js for cn and en
+</span></span><span class="line"><span class="cl">fix: en-US for feishu
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">doc:
+</span></span><span class="line"><span class="cl">-------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">refact:
+</span></span><span class="line"><span class="cl">-------------</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mac程序员-ssh免密码登陆</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -119,7 +121,7 @@
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     <h1 id="免密码登陆">免密码登陆</h1>
 <p>对于大部分程序员来说，ssh的使用频率非常高，每次登陆都输入密码非常繁琐，使用下面的方法可以免密码登陆：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -129,20 +131,20 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 1. generate key. if you already have one skip to step 2.</span>
-</span></span><span style="display:flex;"><span>ssh-keygen -t ed25519
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 2. copy public key to remote server</span>
-</span></span><span style="display:flex;"><span>ssh-copy-id user@remote-server</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 1. generate key. if you already have one skip to step 2.</span>
+</span></span><span class="line"><span class="cl">ssh-keygen -t ed25519
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 2. copy public key to remote server</span>
+</span></span><span class="line"><span class="cl">ssh-copy-id user@remote-server</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -165,7 +167,7 @@ ssh-copy-id user@remote-server</div>
 <p>这样就可以直接登陆到远程服务器了。</p>
 <h1 id="起个别名更方便">起个别名更方便</h1>
 <p>如果觉得每次都需要用户名和IP地址很麻烦，也可以通过下面的方法，给每个服务器创建一个别名，里面包含服务器的IP地址和用户名信息：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -201,7 +203,7 @@ ssh-copy-id user@remote-server</div>
 <p>然后就可以执行: <code>ssh s1</code>来测试效果了。</p>
 <h1 id="去掉烦人的新服务器提示信息">去掉烦人的新服务器提示信息</h1>
 <p>在每次访问要一个新的服务器的时候，都会有如下的提示信息，需要输入<code>yes</code>才可以继续:</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -211,20 +213,20 @@ ssh-copy-id user@remote-server</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh termux
-</span></span><span style="display:flex;"><span>The authenticity of host <span style="color:#98c379">&#39;[192.168.1.100]:8022 ([192.168.1.100]:8022)&#39;</span> can&#39;t be established.
-</span></span><span style="display:flex;"><span>ED25519 key fingerprint is SHA256:vMfrBwvRexoYUHwriIynYQhVpAN5w7jhFzjNMZk9l7s.
-</span></span><span style="display:flex;"><span>This key is not known by any other names
-</span></span><span style="display:flex;"><span>Are you sure you want to <span style="color:#c678dd">continue</span> connecting <span style="color:#56b6c2">(</span>yes/no/<span style="color:#56b6c2">[</span>fingerprint<span style="color:#56b6c2">])</span>?</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh termux
+</span></span><span class="line"><span class="cl">The authenticity of host <span class="s1">&#39;[192.168.1.100]:8022 ([192.168.1.100]:8022)&#39;</span> can<span class="err">&#39;</span>t be established.
+</span></span><span class="line"><span class="cl">ED25519 key fingerprint is SHA256:vMfrBwvRexoYUHwriIynYQhVpAN5w7jhFzjNMZk9l7s.
+</span></span><span class="line"><span class="cl">This key is not known by any other names
+</span></span><span class="line"><span class="cl">Are you sure you want to <span class="k">continue</span> connecting <span class="o">(</span>yes/no/<span class="o">[</span>fingerprint<span class="o">])</span>?</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -242,7 +244,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?</div>
     </div>
 </div>
 <p>这个当然也可以去掉，只需要在<code>/etc/ssh/ssh_config</code>中如下配置即可：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>

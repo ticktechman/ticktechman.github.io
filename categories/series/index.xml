@@ -13,7 +13,7 @@
       <link>https://ticktechman.tech/series/git/44/</link>
       <pubDate>Thu, 13 Jun 2024 09:43:51 +0800</pubDate>
       <guid>https://ticktechman.tech/series/git/44/</guid>
-      <description>在《Git原理-探寻日志记录》中我们看到，其实git是可以判断文件是否被改了个名字： bash 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 git log --name-status commit dc91f7f38cdb3c8876a7bfd38020e2a64f33015d (HEAD -&amp;gt; master, origin/master) Author: ticktechman</description>
+      <description>在《Git原理-探寻日志记录》中我们看到，git是可以判断文件是否被改了个名字： bash 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 git log --name-status commit dc91f7f38cdb3c8876a7bfd38020e2a64f33015d (HEAD -&amp;gt; master, origin/master) Author: ticktechman &amp;lt;ticktechman@gmail.com&amp;gt; Date:</description>
     </item>
     <item>
       <title>Git原理-探寻日志记录</title>
@@ -149,7 +149,7 @@
       <description>我们在做项目的时候，会遇到各种各样的文件，除了代码之外，还有其它，比如：三方库、图片、视频、编译脚本、部署脚本等等。这么多文件都放到git里</description>
     </item>
     <item>
-      <title>Git使用-像专家一样写commit message</title>
+      <title>Git使用-commit信息怎么写</title>
       <link>https://ticktechman.tech/series/git/24/</link>
       <pubDate>Sun, 19 May 2024 12:15:43 +0800</pubDate>
       <guid>https://ticktechman.tech/series/git/24/</guid>
@@ -184,7 +184,7 @@
       <description>除了自己开发一个扩展命令（高效Git-自定义命令），还可以利用命令别名，就是给已知命令+固定参数创建一个新的别名，你只需要输入很简单的参数，</description>
     </item>
     <item>
-      <title>高效Git-自定义命令</title>
+      <title>高效Git-命令客制化</title>
       <link>https://ticktechman.tech/series/git/19/</link>
       <pubDate>Mon, 29 Apr 2024 09:27:53 +0800</pubDate>
       <guid>https://ticktechman.tech/series/git/19/</guid>
@@ -254,7 +254,7 @@
       <description>场景 在Git操作中，冲突一般出现在执行git merge或者git rebase操作后，出现冲突的原因一般是两个人修改了同一文件的同一区域，Gi</description>
     </item>
     <item>
-      <title>Git常见问题-推送出错了怎么办？</title>
+      <title>Git常见问题-推送被拒怎么办？</title>
       <link>https://ticktechman.tech/series/git/09/</link>
       <pubDate>Sun, 21 Apr 2024 10:00:39 +0800</pubDate>
       <guid>https://ticktechman.tech/series/git/09/</guid>
@@ -272,7 +272,7 @@
       <link>https://ticktechman.tech/series/git/07/</link>
       <pubDate>Sat, 20 Apr 2024 15:53:48 +0800</pubDate>
       <guid>https://ticktechman.tech/series/git/07/</guid>
-      <description>当我们在说放弃本地修改的时候，我们是在说如下几种场景： 只在工作区中做了修改 如果需要全部撤销：git reset --hard HEAD 如果只撤销个别文件：git checkout &amp;lt;file1&amp;gt; 在工作</description>
+      <description>当我们在说放弃本地修改（注意：这里指还没有push到远端仓库）的时候，我们是在说如下几种场景： 只在工作区中做了修改 如果需要全部撤销：git reset</description>
     </item>
     <item>
       <title>Git使用-极简工作流</title>

@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git使用-如何证明你的修改是你的</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -119,7 +121,7 @@
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
     <p>在Git中，用户名和邮箱是可以随意配置的，如果有人冒充你的邮箱和用户名，Git是不会做限制的，那如何证明这个修改是你做的？这就用到了数字签名技术。数字签名是密码学的一个应用，利用非对称加密技术（私钥加密、公钥解密）实现对生成的内容的加解密和完整性校验。内容发布者利用工具生成私钥和公钥，公钥可以公开发布，私钥自己保留。git使用这个技术来验证用户的提交和tag是否是发布者生成的，下面我们就讲讲如何实现git的签名操作。</p>
 <h1 id="准备">准备</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -129,42 +131,42 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## install gpg sign tools</span>
-</span></span><span style="display:flex;"><span>brew install gpg
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## list all keys</span>
-</span></span><span style="display:flex;"><span>gpg --list-keys
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## generate new key signing git</span>
-</span></span><span style="display:flex;"><span>gpg --gen-key
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## env for git signing</span>
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">echo</span> <span style="color:#98c379">&#39;export GPG_TTY=$(tty)&#39;</span> &gt;&gt; <span style="color:#e06c75">$HOME</span>/.zshrc
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">export</span> <span style="color:#e06c75">GPG_TTY</span><span style="color:#56b6c2">=</span><span style="color:#c678dd">$(</span>tty<span style="color:#c678dd">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## always signing the commit</span>
-</span></span><span style="display:flex;"><span>git config --local commit.gpgSign <span style="color:#e5c07b">true</span>
-</span></span><span style="display:flex;"><span>git config --local tag.gpgSign true</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## install gpg sign tools</span>
+</span></span><span class="line"><span class="cl">brew install gpg
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## list all keys</span>
+</span></span><span class="line"><span class="cl">gpg --list-keys
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## generate new key signing git</span>
+</span></span><span class="line"><span class="cl">gpg --gen-key
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## env for git signing</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;export GPG_TTY=$(tty)&#39;</span> &gt;&gt; <span class="nv">$HOME</span>/.zshrc
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GPG_TTY</span><span class="o">=</span><span class="k">$(</span>tty<span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## always signing the commit</span>
+</span></span><span class="line"><span class="cl">git config --local commit.gpgSign <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">git config --local tag.gpgSign true</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -193,7 +195,7 @@ git config --local tag.gpgSign true</div>
     </div>
 </div>
 <h1 id="签名">签名</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -203,20 +205,20 @@ git config --local tag.gpgSign true</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## manually sign the commit by &#39;-S&#39; option</span>
-</span></span><span style="display:flex;"><span>git commit -S -m <span style="color:#98c379">&#34;fix: tcp port doesn&#39;t  work&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## manual sign the tag by &#39;-s&#39; option</span>
-</span></span><span style="display:flex;"><span>git tag -s v1.1 -m <span style="color:#98c379">&#34;v1.1 released by ticktechman&#34;</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## manually sign the commit by &#39;-S&#39; option</span>
+</span></span><span class="line"><span class="cl">git commit -S -m <span class="s2">&#34;fix: tcp port doesn&#39;t  work&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## manual sign the tag by &#39;-s&#39; option</span>
+</span></span><span class="line"><span class="cl">git tag -s v1.1 -m <span class="s2">&#34;v1.1 released by ticktechman&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -235,7 +237,7 @@ git tag -s v1.1 -m &#34;v1.1 released by ticktechman&#34;</div>
 </div>
 <h1 id="查看">查看</h1>
 <p>可以通过下面的命令查看一个提交是否经过签名（高亮行）：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -245,38 +247,38 @@ git tag -s v1.1 -m &#34;v1.1 released by ticktechman&#34;</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt"> 1
+</span></span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="hl"><span class="lnt">11
+</span></span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex; background-color:#3d4148"><span>git log --show-signature
-</span></span><span style="display:flex;"><span>commit ba42494e77d8c9a659f1c3d960d15288e494104d <span style="color:#56b6c2">(</span>HEAD -&gt; master, tag: v1.5<span style="color:#56b6c2">)</span>
-</span></span><span style="display:flex;"><span>gpg: Signature made Thu Apr <span style="color:#d19a66">25</span> 10:57:08 <span style="color:#d19a66">2024</span> CST
-</span></span><span style="display:flex;"><span>gpg:                using EDDSA key D4D109F096BF6819D45569501C8045609E0B167C
-</span></span><span style="display:flex;"><span>gpg: Good signature from <span style="color:#98c379">&#34;ticktechman &lt;geek.wystan@gmail.com&gt;&#34;</span> <span style="color:#56b6c2">[</span>ultimate<span style="color:#56b6c2">]</span>
-</span></span><span style="display:flex;"><span>Author: ticktechman &lt;geek.wystan@gmail.com&gt;
-</span></span><span style="display:flex;"><span>Date:   2024-04-25 10:57:08 +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    fix
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git log --pretty<span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;%h %G? %ad %an - %s&#34;</span>
-</span></span><span style="display:flex;"><span>63da52a N 2024-04-26 15:16:44 +0800 ticktechman - unsigned commit
-</span></span><span style="display:flex;"><span>ba42494 G 2024-04-25 10:57:08 +0800 ticktechman - fix
-</span></span><span style="display:flex;"><span>803ed47 G 2024-04-25 10:51:34 +0800 ticktechman - sign</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line hl"><span class="cl">git log --show-signature
+</span></span><span class="line"><span class="cl">commit ba42494e77d8c9a659f1c3d960d15288e494104d <span class="o">(</span>HEAD -&gt; master, tag: v1.5<span class="o">)</span>
+</span></span><span class="line"><span class="cl">gpg: Signature made Thu Apr <span class="m">25</span> 10:57:08 <span class="m">2024</span> CST
+</span></span><span class="line"><span class="cl">gpg:                using EDDSA key D4D109F096BF6819D45569501C8045609E0B167C
+</span></span><span class="line"><span class="cl">gpg: Good signature from <span class="s2">&#34;ticktechman &lt;geek.wystan@gmail.com&gt;&#34;</span> <span class="o">[</span>ultimate<span class="o">]</span>
+</span></span><span class="line"><span class="cl">Author: ticktechman &lt;geek.wystan@gmail.com&gt;
+</span></span><span class="line"><span class="cl">Date:   2024-04-25 10:57:08 +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    fix
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">git log --pretty<span class="o">=</span><span class="s2">&#34;%h %G? %ad %an - %s&#34;</span>
+</span></span><span class="line"><span class="cl">63da52a N 2024-04-26 15:16:44 +0800 ticktechman - unsigned commit
+</span></span><span class="line"><span class="cl">ba42494 G 2024-04-25 10:57:08 +0800 ticktechman - fix
+</span></span><span class="line"><span class="cl">803ed47 G 2024-04-25 10:51:34 +0800 ticktechman - sign</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -308,7 +310,7 @@ ba42494 G 2024-04-25 10:57:08 &#43;0800 ticktechman - fix
 <li>第二条命令：第二列中为<code>G</code>表示已经签名，<code>N</code>表示未签名；</li>
 </ol>
 <h1 id="验证">验证</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -318,22 +320,22 @@ ba42494 G 2024-04-25 10:57:08 &#43;0800 ticktechman - fix
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## verify a commit</span>
-</span></span><span style="display:flex;"><span>git verify-commit HEAD
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## verify a tag</span>
-</span></span><span style="display:flex;"><span>git verify-tag v1.1
-</span></span><span style="display:flex;"><span>git tag -v v1.1</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## verify a commit</span>
+</span></span><span class="line"><span class="cl">git verify-commit HEAD
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## verify a tag</span>
+</span></span><span class="line"><span class="cl">git verify-tag v1.1
+</span></span><span class="line"><span class="cl">git tag -v v1.1</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -353,7 +355,7 @@ git tag -v v1.1</div>
 </div>
 <h1 id="关于公钥">关于公钥</h1>
 <p>公钥支持导出和导入操作，导出是将自己的公钥导出，一般用于上传到keyserver或者通过邮件发送给需要的用户，导入用于将别人的公钥导入到自己本地钥匙串中，用于验证别人的签名是否正常</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -363,52 +365,52 @@ git tag -v v1.1</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="hl"><span class="lnt"> 2
+</span></span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="hl"><span class="lnt">18
+</span></span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="hl"><span class="lnt">21
 </span></span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## show public key information</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>gpg --armor --export your-username@abc.com
-</span></span><span style="display:flex;"><span>-----BEGIN PGP PUBLIC KEY BLOCK-----
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>mDMEZinD9RYJKwYBBAHaRw8BAQdAKRhZGICa32pnqXwvz516dvBwe1b2GTfRgfSY
-</span></span><span style="display:flex;"><span>jHRP+Am0I3RpY2t0ZWNobWFuIDxnZWVrLnd5c3RhbkBnbWFpbC5jb20+iJkEExYK
-</span></span><span style="display:flex;"><span>AEEWIQTU0Qnwlr9oGdRVaVAcgEVgngsWfAUCZinD9QIbAwUJBaOagAULCQgHAgIi
-</span></span><span style="display:flex;"><span>AgYVCgkICwIEFgIDAQIeBwIXgAAKCRAcgEVgngsWfNH6AQDXsmDGyEgLtLuCD86v
-</span></span><span style="display:flex;"><span>hvpOdYzryJM1kXsdPTPDT1ggiwEA9q3iFqKWhAcMgX9T9TL3zbDmiQttnweHQr/6
-</span></span><span style="display:flex;"><span>bC0swQu4OARmKcP1EgorBgEEAZdVAQUBAQdANiqCf1iu4fMtpT6EFZQR+zUzK8Gy
-</span></span><span style="display:flex;"><span>nODRoTSmAcuAWCUDAQgHiH4EGBYKACYWIQTU0Qnwlr9oGdRVaVAcgEVgngsWfAUC
-</span></span><span style="display:flex;"><span>ZinD9QIbDAUJBaOagAAKCRAcgEVgngsWfMA2AQDr+UGOimeVgLJRZzyfvk6aq2tG
-</span></span><span style="display:flex;"><span>3PBt+tlxznQsUZmgrwD/dtqff1AeXJZZrnb5QuMTrlzkZDMDHeNgHA6fZyRwKgc<span style="color:#56b6c2">=</span>
-</span></span><span style="display:flex;"><span><span style="color:#56b6c2">=</span>zH2u
-</span></span><span style="display:flex;"><span>-----END PGP PUBLIC KEY BLOCK-----
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## export public key to a file</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>gpg --output your-username.gpg --export your-username@abc.com
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## import a public key from a file</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>gpg --import &lt;public-key-file&gt;</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## show public key information</span>
+</span></span><span class="line hl"><span class="cl">gpg --armor --export your-username@abc.com
+</span></span><span class="line"><span class="cl">-----BEGIN PGP PUBLIC KEY BLOCK-----
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mDMEZinD9RYJKwYBBAHaRw8BAQdAKRhZGICa32pnqXwvz516dvBwe1b2GTfRgfSY
+</span></span><span class="line"><span class="cl">jHRP+Am0I3RpY2t0ZWNobWFuIDxnZWVrLnd5c3RhbkBnbWFpbC5jb20+iJkEExYK
+</span></span><span class="line"><span class="cl">AEEWIQTU0Qnwlr9oGdRVaVAcgEVgngsWfAUCZinD9QIbAwUJBaOagAULCQgHAgIi
+</span></span><span class="line"><span class="cl">AgYVCgkICwIEFgIDAQIeBwIXgAAKCRAcgEVgngsWfNH6AQDXsmDGyEgLtLuCD86v
+</span></span><span class="line"><span class="cl">hvpOdYzryJM1kXsdPTPDT1ggiwEA9q3iFqKWhAcMgX9T9TL3zbDmiQttnweHQr/6
+</span></span><span class="line"><span class="cl">bC0swQu4OARmKcP1EgorBgEEAZdVAQUBAQdANiqCf1iu4fMtpT6EFZQR+zUzK8Gy
+</span></span><span class="line"><span class="cl">nODRoTSmAcuAWCUDAQgHiH4EGBYKACYWIQTU0Qnwlr9oGdRVaVAcgEVgngsWfAUC
+</span></span><span class="line"><span class="cl">ZinD9QIbDAUJBaOagAAKCRAcgEVgngsWfMA2AQDr+UGOimeVgLJRZzyfvk6aq2tG
+</span></span><span class="line"><span class="cl">3PBt+tlxznQsUZmgrwD/dtqff1AeXJZZrnb5QuMTrlzkZDMDHeNgHA6fZyRwKgc<span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span>zH2u
+</span></span><span class="line"><span class="cl">-----END PGP PUBLIC KEY BLOCK-----
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## export public key to a file</span>
+</span></span><span class="line hl"><span class="cl">gpg --output your-username.gpg --export your-username@abc.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## import a public key from a file</span>
+</span></span><span class="line hl"><span class="cl">gpg --import &lt;public-key-file&gt;</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

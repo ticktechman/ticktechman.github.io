@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git基本概念-其它</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -130,7 +132,7 @@
 <li>提交者：指将更改最终提交到 Git 仓库中的人。在一些情况下，author 和 committer 可能是同一人，但在一些协作环境中（例如，代码审查后的合并操作），committer 可能是负责审查和合并其他人更改的人。</li>
 </ul>
 <p>在Git库中，可以通过<code>git cat-file -p &lt;commit-id&gt;</code>查看一个修改的作者与提交者信息。</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -140,24 +142,24 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt">1
+</span></span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex; background-color:#3d4148"><span>git cat-file -p HEAD
-</span></span><span style="display:flex;"><span>tree 815b0a130b1689e2e68f021b42c609ff84b1a5d9
-</span></span><span style="display:flex;"><span>parent 2c7dcac45b2d91a6367aed9588d84e24e75f7210
-</span></span><span style="display:flex;"><span>author ticktechman &lt;geek.wystan@gmail.com&gt; <span style="color:#d19a66">1712144787</span> +0800
-</span></span><span style="display:flex;"><span>committer ticktechman &lt;geek.wystan@gmail.com&gt; <span style="color:#d19a66">1712144787</span> +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>DS_Store</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line hl"><span class="cl">git cat-file -p HEAD
+</span></span><span class="line"><span class="cl">tree 815b0a130b1689e2e68f021b42c609ff84b1a5d9
+</span></span><span class="line"><span class="cl">parent 2c7dcac45b2d91a6367aed9588d84e24e75f7210
+</span></span><span class="line"><span class="cl">author ticktechman &lt;geek.wystan@gmail.com&gt; <span class="m">1712144787</span> +0800
+</span></span><span class="line"><span class="cl">committer ticktechman &lt;geek.wystan@gmail.com&gt; <span class="m">1712144787</span> +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DS_Store</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -179,7 +181,7 @@ DS_Store</div>
 <h1 id="提交记录">提交记录</h1>
 <p>用户的每次修改，都会产生一条提交记录，用户可以为本次提交添加一些描述信息，每个提交记录中包含一些元数据信息，包括：作者、时间、描述信息、上一个版本的ID等。Git就是通过提交记录，来把对代码的修改联系起来，形成一个串联的历史记录。每个提交记录对应一个历史版本，用一个十六进制的ID（例如2c29cc6c80ac19d6b329d44b3f84fe1e82ec167f）来标识。用户可以切换到其中的某个版本进行版本回退或修改bug。</p>
 <p>上图中的每个节点，都代表一条提交记录。在Git库中，可以执行<code>git log</code>查看提交记录。</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -189,46 +191,46 @@ DS_Store</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt"> 1
+</span></span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex; background-color:#3d4148"><span>git log
-</span></span><span style="display:flex;"><span>commit baa818089f9721eba6b10f4326e0c25d0ce1cf33 <span style="color:#56b6c2">(</span>HEAD -&gt; main, origin/main, origin/HEAD<span style="color:#56b6c2">)</span>
-</span></span><span style="display:flex;"><span>Author: ticktechman &lt;geek.wystan@gmail.com&gt;
-</span></span><span style="display:flex;"><span>Date:   2024-04-03 19:46:27 +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    DS_Store
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>commit 2c7dcac45b2d91a6367aed9588d84e24e75f7210
-</span></span><span style="display:flex;"><span>Author: ticktechman &lt;geek.wystan@gmail.com&gt;
-</span></span><span style="display:flex;"><span>Date:   2023-11-01 23:03:10 +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    fix: <span style="color:#c678dd">return</span> a binary format of plist after change it
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>commit ef333f238bb190fc144de208771067e22f00aa91
-</span></span><span style="display:flex;"><span>Author: ticktechman &lt;geek.wystan@gmail.com&gt;
-</span></span><span style="display:flex;"><span>Date:   2023-11-01 22:38:11 +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    feature: add plist.dict.empty</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line hl"><span class="cl">git log
+</span></span><span class="line"><span class="cl">commit baa818089f9721eba6b10f4326e0c25d0ce1cf33 <span class="o">(</span>HEAD -&gt; main, origin/main, origin/HEAD<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Author: ticktechman &lt;geek.wystan@gmail.com&gt;
+</span></span><span class="line"><span class="cl">Date:   2024-04-03 19:46:27 +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    DS_Store
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">commit 2c7dcac45b2d91a6367aed9588d84e24e75f7210
+</span></span><span class="line"><span class="cl">Author: ticktechman &lt;geek.wystan@gmail.com&gt;
+</span></span><span class="line"><span class="cl">Date:   2023-11-01 23:03:10 +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    fix: <span class="k">return</span> a binary format of plist after change it
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">commit ef333f238bb190fc144de208771067e22f00aa91
+</span></span><span class="line"><span class="cl">Author: ticktechman &lt;geek.wystan@gmail.com&gt;
+</span></span><span class="line"><span class="cl">Date:   2023-11-01 22:38:11 +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    feature: add plist.dict.empty</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

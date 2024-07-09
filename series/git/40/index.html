@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git原理-细说引用文件</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -124,7 +126,7 @@
 <li>当前仓库的头指针，它可能是一个sym-ref（里面存储了一个字符串，指向另外一个引用文件），或者是一个OID（object-id），指向一个commit对象</li>
 <li>当用户执行<code>git checkout &lt;SHA1&gt;</code>时，会将HEAD中的内容设置为一个commit对象的OID，一般情况下时指向一个分支的sym-ref；</li>
 </ul>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -134,26 +136,26 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
-</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">8
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="hl"><span class="lnt">2
+</span></span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="hl"><span class="lnt">6
+</span></span><span class="hl"><span class="lnt">7
+</span></span><span class="lnt">8
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 指向一个分支</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/HEAD
-</span></span><span style="display:flex;"><span>ref: refs/heads/master
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 指向一个特定的commit</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git checkout 2ddde35
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/HEAD
-</span></span><span style="display:flex;"><span>2ddde356826d4ce2c3f5fffd44c5093d7f1221aa</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 指向一个分支</span>
+</span></span><span class="line hl"><span class="cl">cat .git/HEAD
+</span></span><span class="line"><span class="cl">ref: refs/heads/master
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 指向一个特定的commit</span>
+</span></span><span class="line hl"><span class="cl">git checkout 2ddde35
+</span></span><span class="line hl"><span class="cl">cat .git/HEAD
+</span></span><span class="line"><span class="cl">2ddde356826d4ce2c3f5fffd44c5093d7f1221aa</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -181,7 +183,7 @@ cat .git/HEAD
 <li>当我们在这个分支下执行<code>git commit</code>操作时，会将里面的内容修改为最新的commit对象的OID</li>
 <li>位于<code>.git/refs/heads</code>目录下的文件分别对应了一个本地分支，可以被独立创建和删除</li>
 </ul>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -191,46 +193,46 @@ cat .git/HEAD
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="hl"><span class="lnt"> 2
+</span></span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="hl"><span class="lnt"> 6
+</span></span><span class="hl"><span class="lnt"> 7
+</span></span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="hl"><span class="lnt">11
+</span></span><span class="hl"><span class="lnt">12
+</span></span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="hl"><span class="lnt">16
+</span></span><span class="hl"><span class="lnt">17
+</span></span><span class="lnt">18
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## master分支引用</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/refs/heads/master
-</span></span><span style="display:flex;"><span>b69cab5ee8f71009d312611ab87263a8b588abd8
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 修改master分支引用</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git commit -m <span style="color:#98c379">&#34;new commit for master&#34;</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/refs/heads/master
-</span></span><span style="display:flex;"><span>15fd76b46eecca06277b06d992ca7da67e5e7411
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 新建分支引用dev</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git checkout -b dev
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/refs/heads/dev
-</span></span><span style="display:flex;"><span>b69cab5ee8f71009d312611ab87263a8b588abd8
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 删除dev分支引用</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git branch -D dev
-</span></span><span style="display:flex; background-color:#3d4148"><span>ls .git/refs/heads
-</span></span><span style="display:flex;"><span>master</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## master分支引用</span>
+</span></span><span class="line hl"><span class="cl">cat .git/refs/heads/master
+</span></span><span class="line"><span class="cl">b69cab5ee8f71009d312611ab87263a8b588abd8
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 修改master分支引用</span>
+</span></span><span class="line hl"><span class="cl">git commit -m <span class="s2">&#34;new commit for master&#34;</span>
+</span></span><span class="line hl"><span class="cl">cat .git/refs/heads/master
+</span></span><span class="line"><span class="cl">15fd76b46eecca06277b06d992ca7da67e5e7411
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 新建分支引用dev</span>
+</span></span><span class="line hl"><span class="cl">git checkout -b dev
+</span></span><span class="line hl"><span class="cl">cat .git/refs/heads/dev
+</span></span><span class="line"><span class="cl">b69cab5ee8f71009d312611ab87263a8b588abd8
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 删除dev分支引用</span>
+</span></span><span class="line hl"><span class="cl">git branch -D dev
+</span></span><span class="line hl"><span class="cl">ls .git/refs/heads
+</span></span><span class="line"><span class="cl">master</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -272,7 +274,7 @@ master</div>
 <li>可以使用<code>git remote add/remove</code>来新建和删除远端引用</li>
 <li>可以使用<code>git fetch</code>和<code>git push</code>来更新远端引用的信息</li>
 </ul>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -282,38 +284,38 @@ master</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="hl"><span class="lnt"> 2
+</span></span><span class="lnt"> 3
+</span><span class="hl"><span class="lnt"> 4
+</span></span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="hl"><span class="lnt"> 8
+</span></span><span class="hl"><span class="lnt"> 9
+</span></span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="hl"><span class="lnt">14
 </span></span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 检查远端引用origin相关信息</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/refs/remotes/origin/HEAD
-</span></span><span style="display:flex;"><span>ref: refs/remotes/origin/master
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/refs/remotes/origin/master
-</span></span><span style="display:flex;"><span>15fd76b46eecca06277b06d992ca7da67e5e7411
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 添加一个新的远端引用</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git remote add github git@github.com:ticktechman/demo.git
-</span></span><span style="display:flex; background-color:#3d4148"><span>git remote -v
-</span></span><span style="display:flex;"><span>github	git@github.com:ticktechman/demo.git <span style="color:#56b6c2">(</span>fetch<span style="color:#56b6c2">)</span>
-</span></span><span style="display:flex;"><span>github	git@github.com:ticktechman/demo.git <span style="color:#56b6c2">(</span>push<span style="color:#56b6c2">)</span>
-</span></span><span style="display:flex;"><span>origin	/Users/ticktech/usr/playground/git/demo.git <span style="color:#56b6c2">(</span>fetch<span style="color:#56b6c2">)</span>
-</span></span><span style="display:flex;"><span>origin	/Users/ticktech/usr/playground/git/demo.git <span style="color:#56b6c2">(</span>push<span style="color:#56b6c2">)</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git push github</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 检查远端引用origin相关信息</span>
+</span></span><span class="line hl"><span class="cl">cat .git/refs/remotes/origin/HEAD
+</span></span><span class="line"><span class="cl">ref: refs/remotes/origin/master
+</span></span><span class="line hl"><span class="cl">cat .git/refs/remotes/origin/master
+</span></span><span class="line"><span class="cl">15fd76b46eecca06277b06d992ca7da67e5e7411
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 添加一个新的远端引用</span>
+</span></span><span class="line hl"><span class="cl">git remote add github git@github.com:ticktechman/demo.git
+</span></span><span class="line hl"><span class="cl">git remote -v
+</span></span><span class="line"><span class="cl">github	git@github.com:ticktechman/demo.git <span class="o">(</span>fetch<span class="o">)</span>
+</span></span><span class="line"><span class="cl">github	git@github.com:ticktechman/demo.git <span class="o">(</span>push<span class="o">)</span>
+</span></span><span class="line"><span class="cl">origin	/Users/ticktech/usr/playground/git/demo.git <span class="o">(</span>fetch<span class="o">)</span>
+</span></span><span class="line"><span class="cl">origin	/Users/ticktech/usr/playground/git/demo.git <span class="o">(</span>push<span class="o">)</span>
+</span></span><span class="line hl"><span class="cl">git push github</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -346,7 +348,7 @@ git push github</div>
 <li>可以使用<code>git tag &lt;tag-name&gt;</code>创建普通tag，使用<code>git tag &lt;tag-name&gt; -m &quot;xxx&quot;</code>创建带注释信息的tag</li>
 <li>tag的内容不可被修改</li>
 </ul>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -356,78 +358,78 @@ git push github</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">24
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">25
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">27
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">28
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">31
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">32
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">33
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">34
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="hl"><span class="lnt"> 2
+</span></span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="hl"><span class="lnt">10
+</span></span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="hl"><span class="lnt">13
+</span></span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="hl"><span class="lnt">22
+</span></span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="hl"><span class="lnt">25
+</span></span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="hl"><span class="lnt">28
+</span></span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 查看tag信息</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git tag -l
-</span></span><span style="display:flex;"><span>v0.1
-</span></span><span style="display:flex;"><span>v0.2
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 创建普通tag</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git tag v0.1 HEAD
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 普通tag指向一个commit对象</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/refs/tags/v0.1
-</span></span><span style="display:flex;"><span>1484b845a4740af06ccbe7d19901dbcca86a248c
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git cat-file -p 1484b845a4740af06ccbe7d19901dbcca86a248c
-</span></span><span style="display:flex;"><span>tree 032b962a1b664a74363fa46fc908e744324e27f0
-</span></span><span style="display:flex;"><span>parent 2ddde356826d4ce2c3f5fffd44c5093d7f1221aa
-</span></span><span style="display:flex;"><span>author wystan &lt;oswystan@126.com&gt; <span style="color:#d19a66">1717808388</span> +0800
-</span></span><span style="display:flex;"><span>committer wystan &lt;oswystan@126.com&gt; <span style="color:#d19a66">1717808388</span> +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 创建带注释信息的tag</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git tag v0.2 -m <span style="color:#98c379">&#34;v0.2 released&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 带注释信息的tag指向一个tag对象，这个tag对象指向一个commit对象</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/refs/tags/v0.2
-</span></span><span style="display:flex;"><span>715e4b0a6221d2449b314e68790098cea5e62905
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git cat-file -p 715e4b0a6221d2449b314e68790098cea5e62905
-</span></span><span style="display:flex;"><span>object b69cab5ee8f71009d312611ab87263a8b588abd8
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">type</span> commit
-</span></span><span style="display:flex;"><span>tag v0.2
-</span></span><span style="display:flex;"><span>tagger wystan &lt;oswystan@126.com&gt; <span style="color:#d19a66">1717808752</span> +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>v0.2 released</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 查看tag信息</span>
+</span></span><span class="line hl"><span class="cl">git tag -l
+</span></span><span class="line"><span class="cl">v0.1
+</span></span><span class="line"><span class="cl">v0.2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 创建普通tag</span>
+</span></span><span class="line hl"><span class="cl">git tag v0.1 HEAD
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 普通tag指向一个commit对象</span>
+</span></span><span class="line hl"><span class="cl">cat .git/refs/tags/v0.1
+</span></span><span class="line"><span class="cl">1484b845a4740af06ccbe7d19901dbcca86a248c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">git cat-file -p 1484b845a4740af06ccbe7d19901dbcca86a248c
+</span></span><span class="line"><span class="cl">tree 032b962a1b664a74363fa46fc908e744324e27f0
+</span></span><span class="line"><span class="cl">parent 2ddde356826d4ce2c3f5fffd44c5093d7f1221aa
+</span></span><span class="line"><span class="cl">author wystan &lt;oswystan@126.com&gt; <span class="m">1717808388</span> +0800
+</span></span><span class="line"><span class="cl">committer wystan &lt;oswystan@126.com&gt; <span class="m">1717808388</span> +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 创建带注释信息的tag</span>
+</span></span><span class="line hl"><span class="cl">git tag v0.2 -m <span class="s2">&#34;v0.2 released&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 带注释信息的tag指向一个tag对象，这个tag对象指向一个commit对象</span>
+</span></span><span class="line hl"><span class="cl">cat .git/refs/tags/v0.2
+</span></span><span class="line"><span class="cl">715e4b0a6221d2449b314e68790098cea5e62905
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">git cat-file -p 715e4b0a6221d2449b314e68790098cea5e62905
+</span></span><span class="line"><span class="cl">object b69cab5ee8f71009d312611ab87263a8b588abd8
+</span></span><span class="line"><span class="cl"><span class="nb">type</span> commit
+</span></span><span class="line"><span class="cl">tag v0.2
+</span></span><span class="line"><span class="cl">tagger wystan &lt;oswystan@126.com&gt; <span class="m">1717808752</span> +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">v0.2 released</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -479,7 +481,7 @@ v0.2 released</div>
 <li>这是在执行<code>git stash</code>操作时创建的文件，里面对应的是一个commit对象的OID；</li>
 <li>这里新创建了一个commit，用于记录本次stash操作的信息</li>
 </ul>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -489,42 +491,42 @@ v0.2 released</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="hl"><span class="lnt"> 2
+</span></span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="hl"><span class="lnt"> 5
+</span></span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="hl"><span class="lnt"> 9
+</span></span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 修改一个文件，然后执行下面的stash命令</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git stash 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查看stash中的内容</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/refs/stash
-</span></span><span style="display:flex;"><span>063c84a00c12ca4de380b0a6c8be233e643fdb48
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查看这个OID对应的commit对象的内容</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git cat-file -p 063c84a00c12ca4de380b0a6c8be233e643fdb48
-</span></span><span style="display:flex;"><span>tree b8ab1cbcac9442078c111eea5c2f7d4e2b7f3565
-</span></span><span style="display:flex;"><span>parent 15fd76b46eecca06277b06d992ca7da67e5e7411
-</span></span><span style="display:flex;"><span>parent 352352a403f70885e8905d64f228196bd5a89b2b
-</span></span><span style="display:flex;"><span>author wystan &lt;oswystan@126.com&gt; <span style="color:#d19a66">1717812687</span> +0800
-</span></span><span style="display:flex;"><span>committer wystan &lt;oswystan@126.com&gt; <span style="color:#d19a66">1717812687</span> +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>WIP on master: 15fd76b new commit <span style="color:#c678dd">for</span> master</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 修改一个文件，然后执行下面的stash命令</span>
+</span></span><span class="line hl"><span class="cl">git stash 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 查看stash中的内容</span>
+</span></span><span class="line hl"><span class="cl">cat .git/refs/stash
+</span></span><span class="line"><span class="cl">063c84a00c12ca4de380b0a6c8be233e643fdb48
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 查看这个OID对应的commit对象的内容</span>
+</span></span><span class="line hl"><span class="cl">git cat-file -p 063c84a00c12ca4de380b0a6c8be233e643fdb48
+</span></span><span class="line"><span class="cl">tree b8ab1cbcac9442078c111eea5c2f7d4e2b7f3565
+</span></span><span class="line"><span class="cl">parent 15fd76b46eecca06277b06d992ca7da67e5e7411
+</span></span><span class="line"><span class="cl">parent 352352a403f70885e8905d64f228196bd5a89b2b
+</span></span><span class="line"><span class="cl">author wystan &lt;oswystan@126.com&gt; <span class="m">1717812687</span> +0800
+</span></span><span class="line"><span class="cl">committer wystan &lt;oswystan@126.com&gt; <span class="m">1717812687</span> +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WIP on master: 15fd76b new commit <span class="k">for</span> master</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -560,7 +562,7 @@ WIP on master: 15fd76b new commit for master</div>
 <li>包含所有引用，每个引用占用一行</li>
 <li>git在使用过程中，优先使用<code>.git/refs/xxx</code>目录下的引用，如果找不到，则到<code>packed-refs</code>中查找</li>
 </ul>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -570,28 +572,28 @@ WIP on master: 15fd76b new commit for master</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">9
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="hl"><span class="lnt">2
+</span></span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 文件内容</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/packed-refs
-</span></span><span style="display:flex;"><span>15fd76b46eecca06277b06d992ca7da67e5e7411 refs/heads/master
-</span></span><span style="display:flex;"><span>15fd76b46eecca06277b06d992ca7da67e5e7411 refs/remotes/github/master
-</span></span><span style="display:flex;"><span>15fd76b46eecca06277b06d992ca7da67e5e7411 refs/remotes/origin/master
-</span></span><span style="display:flex;"><span>f5a0fc64531839b87fb2b2d6154eca3b5c7f64ae refs/stash
-</span></span><span style="display:flex;"><span>1484b845a4740af06ccbe7d19901dbcca86a248c refs/tags/v0.1
-</span></span><span style="display:flex;"><span>715e4b0a6221d2449b314e68790098cea5e62905 refs/tags/v0.2
-</span></span><span style="display:flex;"><span>^b69cab5ee8f71009d312611ab87263a8b588abd8</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 文件内容</span>
+</span></span><span class="line hl"><span class="cl">cat .git/packed-refs
+</span></span><span class="line"><span class="cl">15fd76b46eecca06277b06d992ca7da67e5e7411 refs/heads/master
+</span></span><span class="line"><span class="cl">15fd76b46eecca06277b06d992ca7da67e5e7411 refs/remotes/github/master
+</span></span><span class="line"><span class="cl">15fd76b46eecca06277b06d992ca7da67e5e7411 refs/remotes/origin/master
+</span></span><span class="line"><span class="cl">f5a0fc64531839b87fb2b2d6154eca3b5c7f64ae refs/stash
+</span></span><span class="line"><span class="cl">1484b845a4740af06ccbe7d19901dbcca86a248c refs/tags/v0.1
+</span></span><span class="line"><span class="cl">715e4b0a6221d2449b314e68790098cea5e62905 refs/tags/v0.2
+</span></span><span class="line"><span class="cl">^b69cab5ee8f71009d312611ab87263a8b588abd8</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

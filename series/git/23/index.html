@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git使用-利用钩子实现自动化</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -219,7 +221,7 @@
 <p>不过，如果你通过标准的ssh服务来搭建git服务，而不是复杂的gitlab或github服务，也可以通过修改<code>.git/hooks</code>目录下的脚本来实现钩子。</p>
 <h1 id="举个例子">举个例子</h1>
 <p>这里我们利用<code>post-receive</code>钩子来关闭gitlab issue的功能。这是一个服务器端的钩子，在收到客户端的push后触发。我们的钩子脚本会检查是否是一个bugfix提交，同时检查里面是否包含issue的编号，如果有，修改对应的issue状态为close。我们这里用的语言是python，代码如下：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -229,110 +231,110 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">31
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">32
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">33
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">34
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">35
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">36
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">37
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">38
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">39
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">40
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">41
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">42
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">43
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">44
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">45
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">46
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">47
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">48
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">49
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">50
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#7f848e">#!/usr/bin/env python3</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e"># post-receive</span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e"># run: pip install gitpython requests</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">git</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">logging</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">sys</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">re</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">requests</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e"># change THIS to your own token and project id</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">GITLAB_TOKEN</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">GITLAB_PROJECT_ID</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">logging</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">basicConfig</span>(<span style="color:#e06c75">level</span><span style="color:#56b6c2">=</span><span style="color:#e06c75">logging</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">INFO</span>, <span style="color:#e06c75">filename</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#39;/tmp/post-recv.log&#39;</span>, <span style="color:#e06c75">filemode</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">&#39;a&#39;</span>, <span style="color:#e5c07b">format</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">&#39;</span><span style="color:#98c379">%(asctime)s</span><span style="color:#98c379"> - </span><span style="color:#98c379">%(levelname)s</span><span style="color:#98c379">: </span><span style="color:#98c379">%(message)s</span><span style="color:#98c379">&#39;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">def</span> <span style="color:#61afef;font-weight:bold">close_issue</span>(<span style="color:#e06c75">IID</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">GITLAB_URL</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">f</span><span style="color:#98c379">&#34;https://gitlab.com/api/v4/projects/</span><span style="color:#98c379">{</span><span style="color:#e06c75">GITLAB_PROJECT_ID</span><span style="color:#98c379">}</span><span style="color:#98c379">/issues/</span><span style="color:#98c379">{</span><span style="color:#e06c75">IID</span><span style="color:#98c379">}</span><span style="color:#98c379">?state_event=close&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">HEADERS</span> <span style="color:#56b6c2">=</span> {<span style="color:#98c379">&#34;PRIVATE-TOKEN&#34;</span>: <span style="color:#e06c75">GITLAB_TOKEN</span>}
-</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">result</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">requests</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">put</span>(<span style="color:#e06c75">GITLAB_URL</span>, <span style="color:#e06c75">headers</span><span style="color:#56b6c2">=</span><span style="color:#e06c75">HEADERS</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">if</span> <span style="color:#e06c75">result</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">status_code</span> <span style="color:#56b6c2">==</span> <span style="color:#d19a66">200</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#7f848e"># logging.info(f&#34;issue {IID} closed&#34;)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">else</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#e06c75">logging</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">error</span>(<span style="color:#98c379">f</span><span style="color:#98c379">&#34;failed with status:</span><span style="color:#98c379">{</span><span style="color:#e06c75">result</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">status_code</span><span style="color:#98c379">}</span><span style="color:#98c379">&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">def</span> <span style="color:#61afef;font-weight:bold">extract_issue_id</span>(<span style="color:#e06c75">msg</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">if</span> <span style="color:#e06c75">msg</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">startswith</span>(<span style="color:#98c379">&#34;fix: &#34;</span>):
-</span></span><span style="display:flex;"><span>        <span style="color:#c678dd">match</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">re</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">search</span>(<span style="color:#98c379">r</span><span style="color:#98c379">&#39;#(\d+)\s+&#39;</span>, <span style="color:#e06c75">msg</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#c678dd">if</span> <span style="color:#c678dd">match</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#c678dd">return</span> <span style="color:#c678dd">match</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">group</span>(<span style="color:#d19a66">1</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#c678dd">else</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#c678dd">return</span> <span style="color:#98c379">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">else</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#c678dd">return</span> <span style="color:#98c379">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">repo</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">git</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">Repo</span>(<span style="color:#98c379">&#39;.&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">for</span> <span style="color:#e06c75">oneline</span> <span style="color:#56b6c2">in</span> <span style="color:#e06c75">sys</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">stdin</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#7f848e"># logging.info(oneline)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#7f848e"># oneline format: HASH1 HASH2 refname</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#7f848e"># example: 50d688ea0b85ac401450bbeae897fd2e38ed1b21 dc0f390584b057c11a865c486b293ff593279e13 refs/heads/master</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">record</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">re</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">split</span>(<span style="color:#98c379">r</span><span style="color:#98c379">&#39;\s+&#39;</span>, <span style="color:#e06c75">oneline</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#e5c07b">str</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">record</span>[<span style="color:#d19a66">0</span>] <span style="color:#56b6c2">+</span> <span style="color:#98c379">&#34;..&#34;</span> <span style="color:#56b6c2">+</span> <span style="color:#e06c75">record</span>[<span style="color:#d19a66">1</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#c678dd">for</span> <span style="color:#e06c75">one_commit</span> <span style="color:#56b6c2">in</span> <span style="color:#e06c75">repo</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">iter_commits</span>(<span style="color:#e5c07b">str</span>):
-</span></span><span style="display:flex;"><span>        <span style="color:#7f848e"># logging.info(one_commit.message)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e06c75">iid</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">extract_issue_id</span>(<span style="color:#e06c75">one_commit</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">message</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#c678dd">if</span> <span style="color:#e06c75">iid</span> <span style="color:#56b6c2">!=</span> <span style="color:#98c379">&#34;&#34;</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#e06c75">logging</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">info</span>(<span style="color:#e06c75">iid</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#e06c75">close_issue</span>(<span style="color:#e06c75">iid</span>)</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># post-receive</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># run: pip install gitpython requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">git</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># change THIS to your own token and project id</span>
+</span></span><span class="line"><span class="cl"><span class="n">GITLAB_TOKEN</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">GITLAB_PROJECT_ID</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;/tmp/post-recv.log&#39;</span><span class="p">,</span> <span class="n">filemode</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">close_issue</span><span class="p">(</span><span class="n">IID</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GITLAB_URL</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;https://gitlab.com/api/v4/projects/</span><span class="si">{</span><span class="n">GITLAB_PROJECT_ID</span><span class="si">}</span><span class="s2">/issues/</span><span class="si">{</span><span class="n">IID</span><span class="si">}</span><span class="s2">?state_event=close&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;PRIVATE-TOKEN&#34;</span><span class="p">:</span> <span class="n">GITLAB_TOKEN</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">GITLAB_URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># logging.info(f&#34;issue {IID} closed&#34;)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;failed with status:</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">extract_issue_id</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;fix: &#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;#(\d+)\s+&#39;</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="k">match</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">repo</span> <span class="o">=</span> <span class="n">git</span><span class="o">.</span><span class="n">Repo</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">oneline</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># logging.info(oneline)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># oneline format: HASH1 HASH2 refname</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># example: 50d688ea0b85ac401450bbeae897fd2e38ed1b21 dc0f390584b057c11a865c486b293ff593279e13 refs/heads/master</span>
+</span></span><span class="line"><span class="cl">    <span class="n">record</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">oneline</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">str</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&#34;..&#34;</span> <span class="o">+</span> <span class="n">record</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">one_commit</span> <span class="ow">in</span> <span class="n">repo</span><span class="o">.</span><span class="n">iter_commits</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># logging.info(one_commit.message)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">iid</span> <span class="o">=</span> <span class="n">extract_issue_id</span><span class="p">(</span><span class="n">one_commit</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">iid</span> <span class="o">!=</span> <span class="s2">&#34;&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">close_issue</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -428,7 +430,7 @@ for oneline in sys.stdin:
     
     
     <a class="block px-4 py-2 text-sm text-gray-400 mx-1 bg-black/5 rounded italic hover:text-blue-500 dark:bg-white/10"
-      href="/series/git/24/">下一篇：Git使用-像专家一样写commit message</a>
+      href="/series/git/24/">下一篇：Git使用-commit信息怎么写</a>
     
   </div>
   

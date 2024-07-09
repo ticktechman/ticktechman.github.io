@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git原理-探究rename规则</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -109,7 +111,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/06/13</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数760</span>
+    <span class="px-1 py-2">字数758</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读2分钟</span>
   </h4>
@@ -117,8 +119,8 @@
 
   
   <div id="page-content" class="mx-auto min-w-[340px] w-4/5 md:w-3/4 lg:w-2/3">
-    <p>在《<a href="/series/git/43/">Git原理-探寻日志记录</a>》中我们看到，其实git是可以判断文件是否被改了个名字：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+    <p>在《<a href="/series/git/43/">Git原理-探寻日志记录</a>》中我们看到，git是可以判断文件是否被改了个名字：</p>
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -128,42 +130,42 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt"> 1
+</span></span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex; background-color:#3d4148"><span>git log --name-status
-</span></span><span style="display:flex;"><span>commit dc91f7f38cdb3c8876a7bfd38020e2a64f33015d <span style="color:#56b6c2">(</span>HEAD -&gt; master, origin/master<span style="color:#56b6c2">)</span>
-</span></span><span style="display:flex;"><span>Author: ticktechman &lt;ticktechman@gmail.com&gt;
-</span></span><span style="display:flex;"><span>Date:   2024-06-12 19:28:09 +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    delete conn.c
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>D    src/conn.c
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>commit 0909df98f750118bebab6fb325ede8a836b6b7c1
-</span></span><span style="display:flex;"><span>Author: ticktechman &lt;ticktechman@gmail.com&gt;
-</span></span><span style="display:flex;"><span>Date:   2024-06-12 19:27:38 +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    rename demo.c to conn.c
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>R100 src/demo.c  src/conn.c</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line hl"><span class="cl">git log --name-status
+</span></span><span class="line"><span class="cl">commit dc91f7f38cdb3c8876a7bfd38020e2a64f33015d <span class="o">(</span>HEAD -&gt; master, origin/master<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Author: ticktechman &lt;ticktechman@gmail.com&gt;
+</span></span><span class="line"><span class="cl">Date:   2024-06-12 19:28:09 +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    delete conn.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">D    src/conn.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">commit 0909df98f750118bebab6fb325ede8a836b6b7c1
+</span></span><span class="line"><span class="cl">Author: ticktechman &lt;ticktechman@gmail.com&gt;
+</span></span><span class="line"><span class="cl">Date:   2024-06-12 19:27:38 +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    rename demo.c to conn.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">R100 src/demo.c  src/conn.c</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -203,7 +205,7 @@ R100 src/demo.c  src/conn.c</div>
 </ul>
 <h1 id="相似度计算">相似度计算</h1>
 <p>从上面的判断依据中，我们可以看到有一个两个文件相似度的值，这个值是如何来的呢？既然是要判断相似度，那就免不了要读取文件内容，git会将两个文件中的内容分割成64Bytes大小的块，然后分块计算HASH值，HASH值相同则认为文件内容相同，相似度就等于相同部分的大小与文件总大小的比值。计算HASH的时候会忽略换行符和回车符，因为他们对文件相似度没有贡献。公式如下：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -213,22 +215,22 @@ R100 src/demo.c  src/conn.c</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#7f848e">// diffcore-rename.c
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e">//     max_size为需要对比的两个文件大小取最大值
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e">//     src_copied就是两个文件相同部分的大小
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e">//     score就是计算出来的分值，相似度百分比 = score / MAX_SCORE
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#7f848e">#define MAX_SCORE 60000.0
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#e06c75">score</span> <span style="color:#56b6c2">=</span> (<span style="color:#e5c07b">int</span>)(<span style="color:#e06c75">src_copied</span> <span style="color:#56b6c2">*</span> <span style="color:#e06c75">MAX_SCORE</span> <span style="color:#56b6c2">/</span> <span style="color:#e06c75">max_size</span>);</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// diffcore-rename.c
+</span></span></span><span class="line"><span class="cl"><span class="c1">//     max_size为需要对比的两个文件大小取最大值
+</span></span></span><span class="line"><span class="cl"><span class="c1">//     src_copied就是两个文件相同部分的大小
+</span></span></span><span class="line"><span class="cl"><span class="c1">//     score就是计算出来的分值，相似度百分比 = score / MAX_SCORE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define MAX_SCORE 60000.0
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">score</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">src_copied</span> <span class="o">*</span> <span class="n">MAX_SCORE</span> <span class="o">/</span> <span class="n">max_size</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

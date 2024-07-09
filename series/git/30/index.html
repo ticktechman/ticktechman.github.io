@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git使用-多仓库管理之repo</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -109,7 +111,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/05/23</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数916</span>
+    <span class="px-1 py-2">字数944</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读2分钟</span>
   </h4>
@@ -122,7 +124,7 @@
 <p><img alt="Git-Repo架构设计" src="/series/git/images/git-repo.001.webp"></p>
 <p>repo是Google开发的一套python脚本，前端命令是<code>repo</code>，同时提供了20多个子命令来管理多个仓库，包括下载代码、创建分支、提交代码、生成版本快照等功能。repo依赖manifest.xml来管理多个仓库的信息，这个XML文件存储在manifest.git仓库中。manifest.xml中记录了多个仓库的名称、远端仓库URL以及版本信息，repo命令负责解析manifest.xml文件内容，并根据用户输入的子命令进行处理。</p>
 <h1 id="安装">安装</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -132,20 +134,20 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## ubuntu</span>
-</span></span><span style="display:flex;"><span>sudo apt install -y repo
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## macos</span>
-</span></span><span style="display:flex;"><span>brew install repo</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## ubuntu</span>
+</span></span><span class="line"><span class="cl">sudo apt install -y repo
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## macos</span>
+</span></span><span class="line"><span class="cl">brew install repo</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -176,7 +178,7 @@ brew install repo</div>
 </ol>
 <hr>
 <p>下面是一个<code>default.xml</code>的例子：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -186,48 +188,48 @@ brew install repo</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#7f848e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">&lt;manifest&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">&lt;remote</span>  <span style="color:#e06c75">name=</span><span style="color:#98c379">&#34;origin&#34;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#e06c75">fetch=</span><span style="color:#98c379">&#34;https://gerrit1-url.com&#34;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#e06c75">revision=</span><span style="color:#98c379">&#34;master&#34;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#e06c75">review=</span><span style="color:#98c379">&#34;https://gerrit1-url.com&#34;</span> <span style="color:#e06c75">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">&lt;remote</span>  <span style="color:#e06c75">name=</span><span style="color:#98c379">&#34;gerrit2&#34;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#e06c75">fetch=</span><span style="color:#98c379">&#34;https://gerrit2-url.com&#34;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#e06c75">revision=</span><span style="color:#98c379">&#34;master&#34;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#e06c75">review=</span><span style="color:#98c379">&#34;https://gerrit2-url.com&#34;</span> <span style="color:#e06c75">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">&lt;default</span> <span style="color:#e06c75">remote=</span><span style="color:#98c379">&#34;origin&#34;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#e06c75">revision=</span><span style="color:#98c379">&#34;master&#34;</span>
-</span></span><span style="display:flex;"><span>           <span style="color:#e06c75">sync-j=</span><span style="color:#98c379">&#34;4&#34;</span> <span style="color:#e06c75">/&gt;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">&lt;project</span> <span style="color:#e06c75">name=</span><span style="color:#98c379">&#34;google/git-repo&#34;</span> <span style="color:#e06c75">path=</span><span style="color:#98c379">&#34;git-repo&#34;</span> <span style="color:#e06c75">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">&lt;project</span> <span style="color:#e06c75">name=</span><span style="color:#98c379">&#34;ticktechman/blog&#34;</span> <span style="color:#e06c75">path=</span><span style="color:#98c379">&#34;blog&#34;</span> <span style="color:#e06c75">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">&lt;project</span> <span style="color:#e06c75">name=</span><span style="color:#98c379">&#34;ticktechman/libarch&#34;</span> <span style="color:#e06c75">path=</span><span style="color:#98c379">&#34;lib/libarch&#34;</span> <span style="color:#e06c75">remote=</span><span style="color:#98c379">&#34;gerrit2&#34;</span> <span style="color:#e06c75">/&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">&lt;project</span> <span style="color:#e06c75">name=</span><span style="color:#98c379">&#34;ticktechman/libconn&#34;</span> <span style="color:#e06c75">path=</span><span style="color:#98c379">&#34;lib/libconn&#34;</span> <span style="color:#e06c75">remote=</span><span style="color:#98c379">&#34;gerrit2&#34;</span> <span style="color:#e06c75">/&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">&lt;/manifest&gt;</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;manifest&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;remote</span>  <span class="na">name=</span><span class="s">&#34;origin&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">fetch=</span><span class="s">&#34;https://gerrit1-url.com&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">revision=</span><span class="s">&#34;master&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">review=</span><span class="s">&#34;https://gerrit1-url.com&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;remote</span>  <span class="na">name=</span><span class="s">&#34;gerrit2&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">fetch=</span><span class="s">&#34;https://gerrit2-url.com&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">revision=</span><span class="s">&#34;master&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">review=</span><span class="s">&#34;https://gerrit2-url.com&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;default</span> <span class="na">remote=</span><span class="s">&#34;origin&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">revision=</span><span class="s">&#34;master&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="na">sync-j=</span><span class="s">&#34;4&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">&#34;google/git-repo&#34;</span> <span class="na">path=</span><span class="s">&#34;git-repo&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">&#34;ticktechman/blog&#34;</span> <span class="na">path=</span><span class="s">&#34;blog&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">&#34;ticktechman/libarch&#34;</span> <span class="na">path=</span><span class="s">&#34;lib/libarch&#34;</span> <span class="na">remote=</span><span class="s">&#34;gerrit2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">&#34;ticktechman/libconn&#34;</span> <span class="na">path=</span><span class="s">&#34;lib/libconn&#34;</span> <span class="na">remote=</span><span class="s">&#34;gerrit2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/manifest&gt;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -260,7 +262,7 @@ brew install repo</div>
 </div>
 <hr>
 <p>下面是工作流相关的repo命令：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -270,56 +272,56 @@ brew install repo</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 下载代码</span>
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">export</span> <span style="color:#e06c75">REPO_URL</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;your-git-repo-url&#34;</span>
-</span></span><span style="display:flex;"><span>mkdir my-project <span style="color:#56b6c2">&amp;&amp;</span> <span style="color:#e5c07b">cd</span> my-project
-</span></span><span style="display:flex;"><span>repo init -u &lt;manifest-repo-url&gt;
-</span></span><span style="display:flex;"><span>repo sync -j4
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 创建本地分支，开发功能</span>
-</span></span><span style="display:flex;"><span>repo start --all local_dev
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## coding</span>
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> blog 
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#98c379">&#34;feature: xxxx&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 上传代码到远程服务器</span>
-</span></span><span style="display:flex;"><span>repo upload --cbr blog
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 生成版本快照</span>
-</span></span><span style="display:flex;"><span>repo manifest -r -o snapshot-20240520.xml
-</span></span><span style="display:flex;"><span>mv snapshot-20240520.xml .repo/manifests/
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> .repo/manifests/
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#98c379">&#34;new snapshot of code&#34;</span>
-</span></span><span style="display:flex;"><span>git push origin HEAD:master</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 下载代码</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">REPO_URL</span><span class="o">=</span><span class="s2">&#34;your-git-repo-url&#34;</span>
+</span></span><span class="line"><span class="cl">mkdir my-project <span class="o">&amp;&amp;</span> <span class="nb">cd</span> my-project
+</span></span><span class="line"><span class="cl">repo init -u &lt;manifest-repo-url&gt;
+</span></span><span class="line"><span class="cl">repo sync -j4
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 创建本地分支，开发功能</span>
+</span></span><span class="line"><span class="cl">repo start --all local_dev
+</span></span><span class="line"><span class="cl"><span class="c1">## coding</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> blog 
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;feature: xxxx&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 上传代码到远程服务器</span>
+</span></span><span class="line"><span class="cl">repo upload --cbr blog
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 生成版本快照，并保存到manifest中</span>
+</span></span><span class="line"><span class="cl">repo manifest -r -o snapshot-20240520.xml
+</span></span><span class="line"><span class="cl">mv snapshot-20240520.xml .repo/manifests/
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> .repo/manifests/
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;new snapshot of code&#34;</span>
+</span></span><span class="line"><span class="cl">git push origin HEAD:master</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -345,7 +347,7 @@ git commit -m &#34;feature: xxxx&#34;
 ## 上传代码到远程服务器
 repo upload --cbr blog
 
-## 生成版本快照
+## 生成版本快照，并保存到manifest中
 repo manifest -r -o snapshot-20240520.xml
 mv snapshot-20240520.xml .repo/manifests/
 cd .repo/manifests/

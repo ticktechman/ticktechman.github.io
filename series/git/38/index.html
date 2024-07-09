@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git原理-元数据之谜</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -109,7 +111,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/06/06</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数1100</span>
+    <span class="px-1 py-2">字数1163</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读3分钟</span>
   </h4>
@@ -124,15 +126,20 @@
 <li>HEAD：这是git操作的源头，HEAD是一个引用文件，在这个场景中，它指向了<code>refs/heads/main</code>文件</li>
 <li>main：这是主分支的引用文件，里面存放了最近commit对象的SHA1值</li>
 <li>commit：commit对象用来串联版本信息，内容包括：作者&amp;提交人信息、日期、父commit对象SHA1值、tree对象SHA1值、commit消息内容等</li>
-<li>tree：tree对象记录仓库的一个版本快照，内容包括子tree对象SHA1值，blob对象SHA1值</li>
+<li>tree：tree对象记录仓库的一个版本快照，内容包括：子tree对象SHA1值、blob对象SHA1值</li>
 <li>blob：blob对象用来存储实际代码</li>
 </ul>
 <hr>
 <p>有了上面的这些元数据，我们就可以给出上面问题的答案了：</p>
-<p>git首先读取HEAD文件的内容，进而得知需要获取<code>refs/heads/main</code>引用文件的内容，读取main文件，得到最新的commit对象，通过这个commit对象，就可以拿到这个版本的所有信息：是谁提交的代码，什么时间提交的，提交消息填写的什么，然后通过commit对象的tree对象，就可以拿到那个版本对应的所有文件快照，然后通过parent值，就能拿到上一个版本的commit对象，然后通过这个commit对象，就能拿到上一个版本的所有信息。这样通过逐一遍历所有的从HEAD到最后一个commit的对象，就能遍历仓库的所有版本记录。</p>
+<ol>
+<li>git首先读取HEAD文件的内容，进而得知需要获取<code>refs/heads/main</code>引用文件的内容，读取main文件，得到最新的commit对象；</li>
+<li>通过这个commit对象，就可以拿到这个版本的所有信息：是谁提交的代码，什么时间提交的，提交消息填写的什么，然后通过commit对象的tree对象，就可以拿到那个版本对应的所有文件快照；</li>
+<li>然后通过当前commit对象的parent值，就能拿到上一个版本的commit对象；然后通过这个commit对象，就能拿到上一个版本的所有信息。</li>
+<li>重复上述步骤2&amp;3，遍历所有的从HEAD到最后一个commit的对象，就能遍历仓库的所有版本记录。</li>
+</ol>
 <hr>
-<p>下面是这些文件的内容参考，让各位有一个直观的印象：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<p>下面是这些文件的内容参考，让各位有一个直观的印象（高亮的行是执行的命令，随后是命令的输出内容）：</p>
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -142,94 +149,94 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">31
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">32
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">33
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">34
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">35
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">36
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">37
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">38
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">39
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">40
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">41
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">42
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="hl"><span class="lnt"> 2
+</span></span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="hl"><span class="lnt"> 6
+</span></span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="hl"><span class="lnt">10
+</span></span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="hl"><span class="lnt">19
+</span></span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="hl"><span class="lnt">37
+</span></span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 查看HEAD引用内容</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/HEAD
-</span></span><span style="display:flex;"><span>ref: refs/heads/main
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查看main引用文件内容</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>cat .git/refs/heads/main
-</span></span><span style="display:flex;"><span>ad6a880ba3d1e88f9a9f816f2a24a642c0aa3aa6
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查看commit对象内容</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git cat-file -p ad6a880ba3d1e88f9a9f816f2a24a642c0aa3aa6
-</span></span><span style="display:flex;"><span>tree 77c46e4bc3dc28f5f3a1c6b51b83305a0734276f
-</span></span><span style="display:flex;"><span>parent 65c0a3147edff1925eba68973ccb682c9bcc6873
-</span></span><span style="display:flex;"><span>author ticktechman &lt;geek.wystan@gmail.com&gt; <span style="color:#d19a66">1717643056</span> +0800
-</span></span><span style="display:flex;"><span>committer ticktechman &lt;geek.wystan@gmail.com&gt; <span style="color:#d19a66">1717643056</span> +0800
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>git meta data v1
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查看tree对象内容</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git cat-file -p 77c46e4bc3dc28f5f3a1c6b51b83305a0734276f
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">100644</span> blob 1b5270a5055e8b37f5801394e29f315e6b01f580	.gitignore
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">100644</span> blob 305f51ce023be0029eff07f6a8dc324a00b98a93	README.md
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">040000</span> tree 669afee07a4c86aac5a9934a4a972927043f62eb	archetypes
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">040000</span> tree 88812a14b70a756a670787764657d24ba2583485	assets
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">040000</span> tree ef1c7bf66dc7b746f05c0c3e0abc6578f2096df8	content
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">100644</span> blob 9593c798833adb0dfca8a6963d16c3f08b419f3e	hugo.toml
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">040000</span> tree 161d7c97059307c472c6f939f80116d59f640efa	i18n
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">040000</span> tree e6b848fa0e7e4296209a3620c4a898c2e6faa3a8	layouts
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">100644</span> blob 1eb7a9ce6256f978f38514e0ad8781b913915357	package-lock.json
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">100644</span> blob 460d9cbfecab7678b20286021f553e830b06a777	package.json
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">040000</span> tree 98ecb18fc5535988822ba3eba79869b42652e8ec	scripts
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">040000</span> tree 2778eba01f886d13326084ba5821ddb8f407f572	static
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">100644</span> blob 0f178be6c6b0f846d0831634f84ff1d4dcd4c629	tailwind.config.js
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">040000</span> tree 377ebf1206616cb63a011b3d055aaadd445d0e0c	ticktechman.github.io
-</span></span><span style="display:flex;"><span><span style="color:#d19a66">100644</span> blob 14d52ad30454b8b7ccf40e4b0590564899516442	zshrc
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查看某个文件内容：.gitignore</span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git cat-file -p 1b5270a5055e8b37f5801394e29f315e6b01f580
-</span></span><span style="display:flex;"><span>**/node_modules
-</span></span><span style="display:flex;"><span>**/.DS_Store
-</span></span><span style="display:flex;"><span>.hugo_build.lock
-</span></span><span style="display:flex;"><span>public
-</span></span><span style="display:flex;"><span>static/assets/css/style.css</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 查看HEAD引用内容</span>
+</span></span><span class="line hl"><span class="cl">cat .git/HEAD
+</span></span><span class="line"><span class="cl">ref: refs/heads/main
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 查看main引用文件内容</span>
+</span></span><span class="line hl"><span class="cl">cat .git/refs/heads/main
+</span></span><span class="line"><span class="cl">ad6a880ba3d1e88f9a9f816f2a24a642c0aa3aa6
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 查看commit对象内容</span>
+</span></span><span class="line hl"><span class="cl">git cat-file -p ad6a880ba3d1e88f9a9f816f2a24a642c0aa3aa6
+</span></span><span class="line"><span class="cl">tree 77c46e4bc3dc28f5f3a1c6b51b83305a0734276f
+</span></span><span class="line"><span class="cl">parent 65c0a3147edff1925eba68973ccb682c9bcc6873
+</span></span><span class="line"><span class="cl">author ticktechman &lt;geek.wystan@gmail.com&gt; <span class="m">1717643056</span> +0800
+</span></span><span class="line"><span class="cl">committer ticktechman &lt;geek.wystan@gmail.com&gt; <span class="m">1717643056</span> +0800
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git meta data v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 查看tree对象内容</span>
+</span></span><span class="line hl"><span class="cl">git cat-file -p 77c46e4bc3dc28f5f3a1c6b51b83305a0734276f
+</span></span><span class="line"><span class="cl"><span class="m">100644</span> blob 1b5270a5055e8b37f5801394e29f315e6b01f580	.gitignore
+</span></span><span class="line"><span class="cl"><span class="m">100644</span> blob 305f51ce023be0029eff07f6a8dc324a00b98a93	README.md
+</span></span><span class="line"><span class="cl"><span class="m">040000</span> tree 669afee07a4c86aac5a9934a4a972927043f62eb	archetypes
+</span></span><span class="line"><span class="cl"><span class="m">040000</span> tree 88812a14b70a756a670787764657d24ba2583485	assets
+</span></span><span class="line"><span class="cl"><span class="m">040000</span> tree ef1c7bf66dc7b746f05c0c3e0abc6578f2096df8	content
+</span></span><span class="line"><span class="cl"><span class="m">100644</span> blob 9593c798833adb0dfca8a6963d16c3f08b419f3e	hugo.toml
+</span></span><span class="line"><span class="cl"><span class="m">040000</span> tree 161d7c97059307c472c6f939f80116d59f640efa	i18n
+</span></span><span class="line"><span class="cl"><span class="m">040000</span> tree e6b848fa0e7e4296209a3620c4a898c2e6faa3a8	layouts
+</span></span><span class="line"><span class="cl"><span class="m">100644</span> blob 1eb7a9ce6256f978f38514e0ad8781b913915357	package-lock.json
+</span></span><span class="line"><span class="cl"><span class="m">100644</span> blob 460d9cbfecab7678b20286021f553e830b06a777	package.json
+</span></span><span class="line"><span class="cl"><span class="m">040000</span> tree 98ecb18fc5535988822ba3eba79869b42652e8ec	scripts
+</span></span><span class="line"><span class="cl"><span class="m">040000</span> tree 2778eba01f886d13326084ba5821ddb8f407f572	static
+</span></span><span class="line"><span class="cl"><span class="m">100644</span> blob 0f178be6c6b0f846d0831634f84ff1d4dcd4c629	tailwind.config.js
+</span></span><span class="line"><span class="cl"><span class="m">040000</span> tree 377ebf1206616cb63a011b3d055aaadd445d0e0c	ticktechman.github.io
+</span></span><span class="line"><span class="cl"><span class="m">100644</span> blob 14d52ad30454b8b7ccf40e4b0590564899516442	zshrc
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 查看某个文件内容：.gitignore</span>
+</span></span><span class="line hl"><span class="cl">git cat-file -p 1b5270a5055e8b37f5801394e29f315e6b01f580
+</span></span><span class="line"><span class="cl">**/node_modules
+</span></span><span class="line"><span class="cl">**/.DS_Store
+</span></span><span class="line"><span class="cl">.hugo_build.lock
+</span></span><span class="line"><span class="cl">public
+</span></span><span class="line"><span class="cl">static/assets/css/style.css</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -284,7 +291,7 @@ static/assets/css/style.css</div>
     </div>
 </div>
 <blockquote>
-<p>上面用到了一个git底层命令：<code>git cat-file -p &lt;SHA1&gt;</code>用来打印SHA1对应的文件内容</p>
+<p>上面用到了一个git底层命令：<code>git cat-file -p &lt;SHA1&gt;</code>用来显示对象对应的文件内容，这个命令可以自动识别对象类型，并解析文件。</p>
 </blockquote>
 
   </div>

@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git服务器-使用gerrit搭建私有git服务</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -136,7 +138,7 @@
 </ul>
 <hr>
 <p>使用下面的命令安装gerrit以及依赖包：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -146,28 +148,28 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">9
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 安装依赖</span>
-</span></span><span style="display:flex;"><span>sudo apt install -y openjdk-21-jdk nginx apache2-utils
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 创建gerrit用户</span>
-</span></span><span style="display:flex;"><span>sudo adduser gerrit
-</span></span><span style="display:flex;"><span>sudo su gerrit
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 下载安装包</span>
-</span></span><span style="display:flex;"><span>wget https://gerrit-releases.storage.googleapis.com/gerrit-3.10.0.war</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 安装依赖</span>
+</span></span><span class="line"><span class="cl">sudo apt install -y openjdk-21-jdk nginx apache2-utils
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 创建gerrit用户</span>
+</span></span><span class="line"><span class="cl">sudo adduser gerrit
+</span></span><span class="line"><span class="cl">sudo su gerrit
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 下载安装包</span>
+</span></span><span class="line"><span class="cl">wget https://gerrit-releases.storage.googleapis.com/gerrit-3.10.0.war</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -189,7 +191,7 @@ wget https://gerrit-releases.storage.googleapis.com/gerrit-3.10.0.war</div>
     </div>
 </div>
 <h1 id="初始化">初始化</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -199,16 +201,16 @@ wget https://gerrit-releases.storage.googleapis.com/gerrit-3.10.0.war</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 初始化gerrit数据目录</span>
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">export</span> <span style="color:#e06c75">GERRIT_SITE</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;</span><span style="color:#e06c75">$HOME</span><span style="color:#98c379">/gerrit-data&#34;</span>
-</span></span><span style="display:flex;"><span>java -jar gerrit-3.10.0.war init -d <span style="color:#e06c75">$GERRIT_SITE</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 初始化gerrit数据目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GERRIT_SITE</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/gerrit-data&#34;</span>
+</span></span><span class="line"><span class="cl">java -jar gerrit-3.10.0.war init -d <span class="nv">$GERRIT_SITE</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -224,7 +226,7 @@ java -jar gerrit-3.10.0.war init -d $GERRIT_SITE</div>
     </div>
 </div>
 <p>参考下面的配置：<code>${GERRIT_SITE}/etc/gerrit.config</code></p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -234,64 +236,64 @@ java -jar gerrit-3.10.0.war init -d $GERRIT_SITE</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">27
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cfg" data-lang="cfg"><span style="display:flex;"><span><span style="color:#7f848e">## ${GERRIT_SITE}/etc/gerrit.config</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[gerrit]</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">basePath</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">git
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	canonicalWebUrl = http://192.168.1.107:8081
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	serverId = 59bd29f4-c852-4b3e-9ae4-2e535e733969</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[container]</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">javaOptions</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">&#34;-Dflogger.backend_factory=com.google.common.flogger.backend.log4j.Log4jBackendFactory#getInstance&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	javaOptions = &#34;-Dflogger.logging_context=com.google.gerrit.server.logging.LoggingContext#getInstance&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	user = gerrit
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	javaHome = /usr/lib/jvm/java-21-openjdk-amd64</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[index]</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">type</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">lucene</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[auth]</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">type</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">HTTP
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	emailFormat = {0}@ticktechman.tech
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	loginUrl = http://192.168.1.107:8000/login
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	logoutUrl = http://192.168.1.107:8000/logout</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[receive]</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">enableSignedPush</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">false</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[sendemail]</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">smtpServer</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">localhost</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[sshd]</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">listenAddress</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">*:29418</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[httpd]</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">listenUrl</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">http://*:8081/</span>
-</span></span><span style="display:flex;"><span><span style="color:#c678dd">[cache]</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">directory</span> <span style="color:#56b6c2">=</span> <span style="color:#98c379">cache</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cfg" data-lang="cfg"><span class="line"><span class="cl"><span class="c1">## ${GERRIT_SITE}/etc/gerrit.config</span>
+</span></span><span class="line"><span class="cl"><span class="k">[gerrit]</span>
+</span></span><span class="line"><span class="cl">	<span class="na">basePath</span> <span class="o">=</span> <span class="s">git
+</span></span></span><span class="line"><span class="cl"><span class="s">	canonicalWebUrl = http://192.168.1.107:8081
+</span></span></span><span class="line"><span class="cl"><span class="s">	serverId = 59bd29f4-c852-4b3e-9ae4-2e535e733969</span>
+</span></span><span class="line"><span class="cl"><span class="k">[container]</span>
+</span></span><span class="line"><span class="cl">	<span class="na">javaOptions</span> <span class="o">=</span> <span class="s">&#34;-Dflogger.backend_factory=com.google.common.flogger.backend.log4j.Log4jBackendFactory#getInstance&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">	javaOptions = &#34;-Dflogger.logging_context=com.google.gerrit.server.logging.LoggingContext#getInstance&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">	user = gerrit
+</span></span></span><span class="line"><span class="cl"><span class="s">	javaHome = /usr/lib/jvm/java-21-openjdk-amd64</span>
+</span></span><span class="line"><span class="cl"><span class="k">[index]</span>
+</span></span><span class="line"><span class="cl">	<span class="na">type</span> <span class="o">=</span> <span class="s">lucene</span>
+</span></span><span class="line"><span class="cl"><span class="k">[auth]</span>
+</span></span><span class="line"><span class="cl">	<span class="na">type</span> <span class="o">=</span> <span class="s">HTTP
+</span></span></span><span class="line"><span class="cl"><span class="s">	emailFormat = {0}@ticktechman.tech
+</span></span></span><span class="line"><span class="cl"><span class="s">	loginUrl = http://192.168.1.107:8000/login
+</span></span></span><span class="line"><span class="cl"><span class="s">	logoutUrl = http://192.168.1.107:8000/logout</span>
+</span></span><span class="line"><span class="cl"><span class="k">[receive]</span>
+</span></span><span class="line"><span class="cl">	<span class="na">enableSignedPush</span> <span class="o">=</span> <span class="s">false</span>
+</span></span><span class="line"><span class="cl"><span class="k">[sendemail]</span>
+</span></span><span class="line"><span class="cl">	<span class="na">smtpServer</span> <span class="o">=</span> <span class="s">localhost</span>
+</span></span><span class="line"><span class="cl"><span class="k">[sshd]</span>
+</span></span><span class="line"><span class="cl">	<span class="na">listenAddress</span> <span class="o">=</span> <span class="s">*:29418</span>
+</span></span><span class="line"><span class="cl"><span class="k">[httpd]</span>
+</span></span><span class="line"><span class="cl">	<span class="na">listenUrl</span> <span class="o">=</span> <span class="s">http://*:8081/</span>
+</span></span><span class="line"><span class="cl"><span class="k">[cache]</span>
+</span></span><span class="line"><span class="cl">	<span class="na">directory</span> <span class="o">=</span> <span class="s">cache</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -332,7 +334,7 @@ java -jar gerrit-3.10.0.war init -d $GERRIT_SITE</div>
 </div>
 <h1 id="初始化nginx">初始化nginx</h1>
 <p>参考下面的配置：<code>/etc/nginx/conf.d/gerrit.conf</code></p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -342,76 +344,76 @@ java -jar gerrit-3.10.0.war init -d $GERRIT_SITE</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">31
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">32
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">33
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cfg" data-lang="cfg"><span style="display:flex;"><span><span style="color:#7f848e">## /etc/nginx/conf.d/gerrit.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">server {</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">listen 8000 default_server;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">listen [::]:8000 default_server;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">root /var/www/html;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#7f848e"># Add index.php to the list if you are using PHP</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">index index.html index.htm index.nginx-debian.html;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">server_name _;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#e06c75">location / {</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#7f848e"># First attempt to serve request as file, then</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#7f848e"># as directory, then fall back to displaying a 404.</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#e06c75">try_files $uri $uri/</span> <span style="color:#56b6c2">=</span><span style="color:#98c379">404;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		proxy_pass        http://127.0.0.1:8081/;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		proxy_set_header  X-Forwarded-For $remote_addr;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		proxy_set_header  Host $host;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		auth_request /login;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	}
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	location /login {
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		# First attempt to serve request as file, then
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		# as directory, then fall back to displaying a 404.
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		auth_basic &#34;Gerrit Code Review&#34;;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		auth_basic_user_file /etc/nginx/.htpasswd;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		proxy_pass        http://127.0.0.1:8081;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		proxy_set_header  X-Forwarded-For $remote_addr;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		proxy_set_header  Host $host;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	}
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	location /logout {
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">		return 302 http://192.168.1.107:8081;
-</span></span></span><span style="display:flex;"><span><span style="color:#98c379">	}</span>
-</span></span><span style="display:flex;"><span><span style="color:#e06c75">}</span></span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cfg" data-lang="cfg"><span class="line"><span class="cl"><span class="c1">## /etc/nginx/conf.d/gerrit.conf</span>
+</span></span><span class="line"><span class="cl"><span class="na">server {</span>
+</span></span><span class="line"><span class="cl">	<span class="na">listen 8000 default_server;</span>
+</span></span><span class="line"><span class="cl">	<span class="na">listen [::]:8000 default_server;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="na">root /var/www/html;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1"># Add index.php to the list if you are using PHP</span>
+</span></span><span class="line"><span class="cl">	<span class="na">index index.html index.htm index.nginx-debian.html;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="na">server_name _;</span>
+</span></span><span class="line"><span class="cl">	<span class="na">location / {</span>
+</span></span><span class="line"><span class="cl">		<span class="c1"># First attempt to serve request as file, then</span>
+</span></span><span class="line"><span class="cl">		<span class="c1"># as directory, then fall back to displaying a 404.</span>
+</span></span><span class="line"><span class="cl">		<span class="na">try_files $uri $uri/</span> <span class="o">=</span><span class="s">404;
+</span></span></span><span class="line"><span class="cl"><span class="s">		proxy_pass        http://127.0.0.1:8081/;
+</span></span></span><span class="line"><span class="cl"><span class="s">		proxy_set_header  X-Forwarded-For $remote_addr;
+</span></span></span><span class="line"><span class="cl"><span class="s">		proxy_set_header  Host $host;
+</span></span></span><span class="line"><span class="cl"><span class="s">		auth_request /login;
+</span></span></span><span class="line"><span class="cl"><span class="s">	}
+</span></span></span><span class="line"><span class="cl"><span class="s">	location /login {
+</span></span></span><span class="line"><span class="cl"><span class="s">		# First attempt to serve request as file, then
+</span></span></span><span class="line"><span class="cl"><span class="s">		# as directory, then fall back to displaying a 404.
+</span></span></span><span class="line"><span class="cl"><span class="s">		auth_basic &#34;Gerrit Code Review&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="s">		auth_basic_user_file /etc/nginx/.htpasswd;
+</span></span></span><span class="line"><span class="cl"><span class="s">		proxy_pass        http://127.0.0.1:8081;
+</span></span></span><span class="line"><span class="cl"><span class="s">		proxy_set_header  X-Forwarded-For $remote_addr;
+</span></span></span><span class="line"><span class="cl"><span class="s">		proxy_set_header  Host $host;
+</span></span></span><span class="line"><span class="cl"><span class="s">	}
+</span></span></span><span class="line"><span class="cl"><span class="s">	location /logout {
+</span></span></span><span class="line"><span class="cl"><span class="s">		return 302 http://192.168.1.107:8081;
+</span></span></span><span class="line"><span class="cl"><span class="s">	}</span>
+</span></span><span class="line"><span class="cl"><span class="na">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -457,7 +459,7 @@ server {
     </div>
 </div>
 <p>配置完成后，重启nginx服务和gerrit服务</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -467,14 +469,14 @@ server {
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo service nginx restart
-</span></span><span style="display:flex;"><span><span style="color:#98c379">${</span><span style="color:#e06c75">GERRIT_SITE</span><span style="color:#98c379">}</span>/bin/gerrit.sh restart</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo service nginx restart
+</span></span><span class="line"><span class="cl"><span class="si">${</span><span class="nv">GERRIT_SITE</span><span class="si">}</span>/bin/gerrit.sh restart</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -490,7 +492,7 @@ ${GERRIT_SITE}/bin/gerrit.sh restart</div>
 </div>
 <h1 id="测试">测试</h1>
 <h2 id="添加用户">添加用户</h2>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -500,20 +502,20 @@ ${GERRIT_SITE}/bin/gerrit.sh restart</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 创建管理员用户</span>
-</span></span><span style="display:flex;"><span>sudo htpasswd -b -c /etc/nginx/.htpasswd admin admin123
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 创建普通用户</span>
-</span></span><span style="display:flex;"><span>sudo htpasswd -b /etc/nginx/.htpasswd ticktech ticktech123</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 创建管理员用户</span>
+</span></span><span class="line"><span class="cl">sudo htpasswd -b -c /etc/nginx/.htpasswd admin admin123
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 创建普通用户</span>
+</span></span><span class="line"><span class="cl">sudo htpasswd -b /etc/nginx/.htpasswd ticktech ticktech123</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -621,7 +623,7 @@ sudo htpasswd -b /etc/nginx/.htpasswd ticktech ticktech123</div>
   </div>
 </div></p>
 <h2 id="代码下载提交">代码下载&amp;提交</h2>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -631,36 +633,36 @@ sudo htpasswd -b /etc/nginx/.htpasswd ticktech ticktech123</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 下载代码</span>
-</span></span><span style="display:flex;"><span>git clone ssh://ticktech@192.168.1.107:29418/myrepo.git
-</span></span><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> myrepo/
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 配置commit-msg钩子，为了生成change-id，这个是gerrit需要的</span>
-</span></span><span style="display:flex;"><span>wget http://192.168.1.107:8081/tools/hooks/commit-msg -O .git/hooks/commit-msg
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## coding</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 提交代码，注意这里提交的远端分支为refs/for/master</span>
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit
-</span></span><span style="display:flex;"><span>git push origin HEAD:refs/for/master</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 下载代码</span>
+</span></span><span class="line"><span class="cl">git clone ssh://ticktech@192.168.1.107:29418/myrepo.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> myrepo/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 配置commit-msg钩子，为了生成change-id，这个是gerrit需要的</span>
+</span></span><span class="line"><span class="cl">wget http://192.168.1.107:8081/tools/hooks/commit-msg -O .git/hooks/commit-msg
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## coding</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 提交代码，注意这里提交的远端分支为refs/for/master</span>
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit
+</span></span><span class="line"><span class="cl">git push origin HEAD:refs/for/master</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>玩转termux | 6.搭建web服务</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -109,7 +111,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/03/18</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数530</span>
+    <span class="px-1 py-2">字数545</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读2分钟</span>
   </h4>
@@ -124,7 +126,7 @@
 <p>Nginx是异步框架的网页服务器，也可以用作反向代理、负载平衡器和HTTP缓存。该软件由俄罗斯程序员伊戈尔·赛索耶夫开发并于2004年首次公开发布。2011年成立同名公司以提供支持服务。2019年3月11日，Nginx公司被F5网络公司以6.7亿美元收购。 Nginx是免费的开源软件，根据类BSD许可证的条款发布。</p>
 <p>—— 来自维基百科</p>
 <h1 id="安装">安装</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -134,12 +136,12 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install -y nginx</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt install -y nginx</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -153,31 +155,52 @@
     </div>
 </div>
 <h1 id="配置启动">配置&amp;启动</h1>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
-        <div class=" font-mono grow text-center">conf</div>
+        <div class=" font-mono grow text-center">cfg</div>
     </div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <pre tabindex="0"><code class="language-conf" data-lang="conf">## file: $PREFIX/etc/nginx/nginx.conf
-
-    server {
-        listen       8080;
-        server_name  localhost;
-
-        #charset koi8-r;
-
-        #access_log  logs/host.access.log  main;
-
-        location / {
-            root   /data/data/com.termux/files/usr/share/nginx/html;
-            index  index.html index.htm;
-        }
-    }</code></pre>
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cfg" data-lang="cfg"><span class="line"><span class="cl"><span class="c1">## file: $PREFIX/etc/nginx/nginx.conf</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="na">server {</span>
+</span></span><span class="line"><span class="cl">        <span class="na">listen       8080;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">server_name  localhost;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">#charset koi8-r;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">#access_log  logs/host.access.log  main;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="na">location / {</span>
+</span></span><span class="line"><span class="cl">            <span class="na">root   /data/data/com.termux/files/usr/share/nginx/html;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">index  index.html index.htm;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">}</span>
+</span></span><span class="line"><span class="cl">    <span class="na">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
         </div>
         <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
             <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">

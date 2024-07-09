@@ -24,8 +24,10 @@
   <meta name="description" content="写Git提交信息对大部分程序员来说都是个苦差事，这篇文章给点儿参考">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Git使用-像专家一样写commit message</title>
+  <title>Git使用-commit信息怎么写</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -105,7 +107,7 @@
   
   <img class="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover shadow-md" src="/series/git/images/default.webp" alt="">
   
-  <h2 class="pt-4 text-center">Git使用-像专家一样写commit message</h2>
+  <h2 class="pt-4 text-center">Git使用-commit信息怎么写</h2>
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/05/19</span>
     <span class="px-1 py-2">|</span>
@@ -157,7 +159,7 @@
 <li>在项目clone之后，执行<code>git config --local commit.template .gitmessage</code>就可以生效了</li>
 </ul>
 <p><code>.gitmessage</code>文件的内容可以参考下面这个：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -167,26 +169,26 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">8
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># feature: new feature avaliable
-</span></span><span style="display:flex;"><span># fix: [#NNN] fix a bug
-</span></span><span style="display:flex;"><span># doc: docs for new support
-</span></span><span style="display:flex;"><span># style: change code style
-</span></span><span style="display:flex;"><span># test: new test cases or fix a test failure.
-</span></span><span style="display:flex;"><span># refactor: refactor framework
-</span></span><span style="display:flex;"><span># build: build script or build bugfix
-</span></span><span style="display:flex;"><span># nothing special, so NO prefix for this commit</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl"># feature: new feature avaliable
+</span></span><span class="line"><span class="cl"># fix: [#NNN] fix a bug
+</span></span><span class="line"><span class="cl"># doc: docs for new support
+</span></span><span class="line"><span class="cl"># style: change code style
+</span></span><span class="line"><span class="cl"># test: new test cases or fix a test failure.
+</span></span><span class="line"><span class="cl"># refactor: refactor framework
+</span></span><span class="line"><span class="cl"># build: build script or build bugfix
+</span></span><span class="line"><span class="cl"># nothing special, so NO prefix for this commit</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git原理-解密暂存区</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -109,7 +111,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/06/06</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数1010</span>
+    <span class="px-1 py-2">字数1053</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读3分钟</span>
   </h4>
@@ -200,6 +202,41 @@
     </svg>
   </div>
 </div></p>
+<p>可以使用下面的命令查看暂存区内容：</p>
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
+    <div class="mt-2 mx-4 flex flex-row">
+        <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
+        <div class="rounded-full size-3 bg-green-400 ml-1.5 my-auto"></div>
+        <div class=" font-mono grow text-center">bash</div>
+    </div>
+    <div class="flex flex-row mx-4 my-3">
+        <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
+        
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt">1
+</span></span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line hl"><span class="cl">git ls-files -s
+</span></span><span class="line"><span class="cl"><span class="m">100644</span> 11abb9d67bb3941c8d4daa2d3bd84c91e95d0e65 0	a
+</span></span><span class="line"><span class="cl"><span class="m">100644</span> dad48ad8f17303cdfab1867c1522f1c807ad4f62 0	src/init.c</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        <div class="flex-none pl-1 text-right cursor-pointer" onclick="copyCode(this);">
+            <svg name="copy-code" class="duration-500" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 48 48" fill="#ccc">
+                <path d="M9 43.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.8h3v30.15h23.7v3Zm6-6q-1.2 0-2.1-.9-.9-.9-.9-2.1v-28q0-1.2.9-2.1.9-.9 2.1-.9h22q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h22v-28H15v28Zm0 0v-28 28Z"/>
+            </svg>
+            <svg name="copy-success" viewBox="0 0 1024 1024" class="hidden duration-500" width="24" fill="#0a0"><path d="M911.075556 192.796444a45.511111 45.511111 0 0 1 5.518222 64.113778l-455.111111 540.444445a45.511111 45.511111 0 0 1-68.835556 0.910222l-227.555555-256a45.511111 45.511111 0 0 1 68.039111-60.472889l192.625777 216.689778 421.205334-500.224a45.511111 45.511111 0 0 1 64.113778-5.461334z" p-id="5114"></path></svg>
+        </div>
+        <div class="hidden">git ls-files -s
+100644 11abb9d67bb3941c8d4daa2d3bd84c91e95d0e65 0	a
+100644 dad48ad8f17303cdfab1867c1522f1c807ad4f62 0	src/init.c</div>
+    </div>
+</div>
 <h1 id="为什么需要暂存区">为什么需要暂存区</h1>
 <p>暂存区的存在，主要是让我们可以把多个修改合并到一起提交到git仓库，甚至在不同的时间点的操作合并到一起提交，这就带来了很大的灵活性。当然副作用就是，需要多一步的操作，不过git也提供了简化流程的方法，例如可以使用<code>git commit -am &quot;xxx&quot;</code>一次性的完成提交暂存区和本地仓库的双操作。</p>
 

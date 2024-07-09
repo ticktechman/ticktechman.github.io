@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git常见问题-如何查看远端仓库的信息</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -124,7 +126,7 @@
 <li>查看远端仓库标签：<code>git fetch &amp;&amp; git tag -l</code></li>
 </ol>
 <p>注意上面的后两个命令都需要先执行<code>git fetch</code>，这样会获取最新远端库上的代码。第3个命令查看的是所有标签，目前貌似还没有方式只获取远端标签。下面是命令的输出演示（高亮行是命令）：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -134,34 +136,34 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt"> 1
+</span></span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="hl"><span class="lnt"> 5
+</span></span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="hl"><span class="lnt">10
+</span></span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex; background-color:#3d4148"><span>git remote -v
-</span></span><span style="display:flex;"><span>origin	/Users/winner/usr/playground/git/demo.git <span style="color:#56b6c2">(</span>fetch<span style="color:#56b6c2">)</span>
-</span></span><span style="display:flex;"><span>origin	/Users/winner/usr/playground/git/demo.git <span style="color:#56b6c2">(</span>push<span style="color:#56b6c2">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git fetch <span style="color:#56b6c2">&amp;&amp;</span> git branch -r
-</span></span><span style="display:flex;"><span>  origin/HEAD -&gt; origin/master
-</span></span><span style="display:flex;"><span>  origin/dev
-</span></span><span style="display:flex;"><span>  origin/master
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex; background-color:#3d4148"><span>git fetch <span style="color:#56b6c2">&amp;&amp;</span> git tag -l
-</span></span><span style="display:flex;"><span>1.0
-</span></span><span style="display:flex;"><span>v0.1</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line hl"><span class="cl">git remote -v
+</span></span><span class="line"><span class="cl">origin	/Users/winner/usr/playground/git/demo.git <span class="o">(</span>fetch<span class="o">)</span>
+</span></span><span class="line"><span class="cl">origin	/Users/winner/usr/playground/git/demo.git <span class="o">(</span>push<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">git fetch <span class="o">&amp;&amp;</span> git branch -r
+</span></span><span class="line"><span class="cl">  origin/HEAD -&gt; origin/master
+</span></span><span class="line"><span class="cl">  origin/dev
+</span></span><span class="line"><span class="cl">  origin/master
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">git fetch <span class="o">&amp;&amp;</span> git tag -l
+</span></span><span class="line"><span class="cl">1.0
+</span></span><span class="line"><span class="cl">v0.1</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

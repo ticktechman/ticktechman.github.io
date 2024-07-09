@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git使用-如何做代码合并</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -109,7 +111,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/04/23</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数733</span>
+    <span class="px-1 py-2">字数781</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读2分钟</span>
   </h4>
@@ -188,29 +190,24 @@
 </blockquote>
 <p>可以在<a href="/series/git/10/">《Git常见问题-如何解决冲突》</a>找到如何处理冲突</p>
 <h1 id="流程">流程</h1>
+<h2 id="使用rebase">使用rebase</h2>
 <ol>
 <li>获取最新代码：<code>git checkout master &amp;&amp; git fetch</code></li>
-<li>合并
-<ul>
-<li>merge：<code>git merge topic</code></li>
-<li>rebase：<code>git checkout topic &amp;&amp; git rebase master</code></li>
-</ul>
-</li>
-<li>解决冲突：
-<ul>
-<li>merge：<code>git add &lt;conflict-file&gt; &amp;&amp; git merge --continue</code></li>
-<li>rebase：<code>git add &lt;conflict-file&gt; &amp;&amp; git rebase --continue</code></li>
-</ul>
-</li>
-<li>推送
-<ul>
-<li>merge: <code>git push</code></li>
-<li>rebase：<code>git push origin topic:master</code></li>
-</ul>
-</li>
+<li>合并：<code>git checkout topic &amp;&amp; git rebase master</code></li>
+<li>解决冲突：<code>git add &lt;conflict-file&gt; &amp;&amp; git rebase --continue</code></li>
+<li>推送：<code>git push origin topic:master</code></li>
+</ol>
+<h2 id="使用merge">使用merge</h2>
+<ol>
+<li>获取最新代码：<code>git checkout master &amp;&amp; git fetch</code></li>
+<li>合并：<code>git merge topic</code></li>
+<li>解决冲突：<code>git add &lt;conflict-file&gt; &amp;&amp; git merge --continue</code></li>
+<li>推送: <code>git push</code></li>
 </ol>
 <h1 id="选哪种">选哪种</h1>
-<p>就小编个人的偏好，【<strong>首选rebase</strong>】，原因：代码提交历史清晰，和实际代码上库的顺序一致，不会出现merge操作导致的代码路径混乱的问题。</p>
+<p>就小编个人的偏好，【<strong>首选rebase</strong>】，原因：代码提交历史清晰，和实际代码上库的顺序一致，不会出现merge操作导致的代码路径混乱的问题。
+看看下面git merge的log信息，如果驾驭不了的话，还是用rebase吧。
+<img src="/series/git/images/merge-or-rebase.001.webp"></p>
 
   </div>
   

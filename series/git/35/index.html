@@ -26,6 +26,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Git进阶-如何管理非文本文件</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/syntax.dark.css">
 </head>
 
 <body>
@@ -109,7 +111,7 @@
   <h4 class="text-center text-gray-400 text-sm mb-3">
     <span class="px-1 py-2">2024/06/03</span>
     <span class="px-1 py-2">|</span>
-    <span class="px-1 py-2">字数1877</span>
+    <span class="px-1 py-2">字数1882</span>
     <span class="px-1 py-2">|</span>
     <span class="px-1 py-2">阅读4分钟</span>
   </h4>
@@ -122,7 +124,7 @@
 <ul>
 <li>前端开发的资源文件，大部分都是高清的图片资源，尤其是移动端开发，需要适配不同的屏幕尺寸，同时UI设计师们可能随时修改资源文件</li>
 <li>后端同学用到了一个供应商开发的库文件，不提供源码，只有二进制形式，文件很大，前期修改频繁</li>
-<li>嵌入式开发里面用到了一个特定版本的编译器。例如手机厂商在开发android系统时，git库里面就有类似这种编译器的软件</li>
+<li>嵌入式开发里面用到了一个特定版本的编译器。例如手机厂商在开发android系统时，git库里面就有各种版本的arm-gcc编译器</li>
 </ul>
 <p>有的小伙伴可能会说，如果有需求的话，直接放进去不就可以了，为什么要特殊处理。其实这话也不算错，前提是这样的文件小且修改不频繁。因为Git对于非文本文件是全量存储，也就是每个版本都有一个完整的拷贝，同时git仓库默认会把所有的历史版本下载到本地，如果文件很大且修改频繁，就会导致整个git仓库巨大无比，进而下载起来非常的慢，幸福感直线下降。</p>
 <h1 id="如何解决">如何解决</h1>
@@ -131,7 +133,7 @@
 <p>相对于原生的Git管理方式，LFS的方式由于不需要一次性的下载所有历史版本，首次下载速度不会有很大影响。但是由于历史版本还在远端，如果需要切换不同的版本，就会临时下载对应的版本，这样实际上是把下载的过程在时间维度上离散化了。对于不关心历史版本的人来说，降低了下载时长。</p>
 <h1 id="具体怎么做">具体怎么做</h1>
 <h2 id="安装">安装</h2>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -141,26 +143,26 @@
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">8
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## mac系统</span>
-</span></span><span style="display:flex;"><span>brew install git-lfs
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## ubuntu系统安装</span>
-</span></span><span style="display:flex;"><span>sudo apt install git-lfs
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 当前用户启用lfs（用户级设置）</span>
-</span></span><span style="display:flex;"><span>git lfs install</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## mac系统</span>
+</span></span><span class="line"><span class="cl">brew install git-lfs
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## ubuntu系统安装</span>
+</span></span><span class="line"><span class="cl">sudo apt install git-lfs
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 当前用户启用lfs（用户级设置）</span>
+</span></span><span class="line"><span class="cl">git lfs install</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -181,7 +183,7 @@ git lfs install</div>
     </div>
 </div>
 <h2 id="跟踪取消跟踪文件">跟踪/取消跟踪文件</h2>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -191,56 +193,56 @@ git lfs install</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">23
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪根目录下的所有png文件，但不包含子目录</span>
-</span></span><span style="display:flex;"><span>$ git lfs track <span style="color:#98c379">&#39;*.png&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪所有目录下的png文件</span>
-</span></span><span style="display:flex;"><span>$ git lfs track <span style="color:#98c379">&#39;**/*.png&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪res目录下的所有文件，包含子目录</span>
-</span></span><span style="display:flex;"><span>$ git lfs track <span style="color:#98c379">&#39;res/**&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪res目录下的所有文件，不包含子目录</span>
-</span></span><span style="display:flex;"><span>$ git lfs track <span style="color:#98c379">&#39;res/*&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 跟踪根目录下的所有已经存在的zip文件，后续新增的不算（因为你的shell会将*.zip转译为所有已经存在的zip文件列表）</span>
-</span></span><span style="display:flex;"><span>$ git lfs track *.zip
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 取消对所有ogg文件的跟踪</span>
-</span></span><span style="display:flex;"><span>git lfs untrack <span style="color:#98c379">&#39;*.ogg&#39;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 由于跟踪的规则记录在.gitattributes文件中，因此修改规则需要保存对这个文件的修改</span>
-</span></span><span style="display:flex;"><span>git add .gitattributes
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 推送到远端仓库</span>
-</span></span><span style="display:flex;"><span>git push
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#7f848e">## 查看lfs管理了哪些文件</span>
-</span></span><span style="display:flex;"><span>git lfs ls-files</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 跟踪根目录下的所有png文件，但不包含子目录</span>
+</span></span><span class="line"><span class="cl">$ git lfs track <span class="s1">&#39;*.png&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 跟踪所有目录下的png文件</span>
+</span></span><span class="line"><span class="cl">$ git lfs track <span class="s1">&#39;**/*.png&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 跟踪res目录下的所有文件，包含子目录</span>
+</span></span><span class="line"><span class="cl">$ git lfs track <span class="s1">&#39;res/**&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 跟踪res目录下的所有文件，不包含子目录</span>
+</span></span><span class="line"><span class="cl">$ git lfs track <span class="s1">&#39;res/*&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 跟踪根目录下的所有已经存在的zip文件，后续新增的不算（因为你的shell会将*.zip转译为所有已经存在的zip文件列表）</span>
+</span></span><span class="line"><span class="cl">$ git lfs track *.zip
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 取消对所有ogg文件的跟踪</span>
+</span></span><span class="line"><span class="cl">git lfs untrack <span class="s1">&#39;*.ogg&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 由于跟踪的规则记录在.gitattributes文件中，因此修改规则需要保存对这个文件的修改</span>
+</span></span><span class="line"><span class="cl">git add .gitattributes
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 推送到远端仓库</span>
+</span></span><span class="line"><span class="cl">git push
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 查看lfs管理了哪些文件</span>
+</span></span><span class="line"><span class="cl">git lfs ls-files</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -277,7 +279,7 @@ git lfs ls-files</div>
 </div>
 <h2 id="切换版本">切换版本</h2>
 <p>和日常的切换版本一样，不需要额外的命令：</p>
-<div class="flex flex-col bg-[#282c34] my-2 rounded-xl overflow-hidden shadow">
+<div class="flex flex-col bg-[#eee8d5] my-2 rounded-xl overflow-hidden shadow dark:bg-[#282c34]">
     <div class="mt-2 mx-4 flex flex-row">
         <div class="rounded-full size-3 bg-red-400 ml-1.5 my-auto"></div>
         <div class="rounded-full size-3 bg-yellow-400 ml-1.5 my-auto"></div>
@@ -287,12 +289,12 @@ git lfs ls-files</div>
     <div class="flex flex-row mx-4 my-3">
         <div class="grow text-white text-nowrap overflow-auto scroll" style="scrollbar-color: #ccc #282c34;scrollbar-width: thin;">
         
-        <div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">1
+        <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout &lt;HASH&gt;</span></span></code></pre></td></tr></table>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git checkout &lt;HASH&gt;</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
