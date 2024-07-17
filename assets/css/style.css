@@ -2954,8 +2954,8 @@ hr {
 }
 
 #page-content p {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 #page-content {
@@ -2975,22 +2975,6 @@ hr {
 #page-content h3:before {
   counter-increment: h3;
   content: counter(h1) "." counter(h2) "." counter(h3) " "
-}
-
-#page-content h4:before {
-  counter-increment: h4;
-  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) " "
-}
-
-#page-content h5:before {
-  counter-increment: h5;
-  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " "
-}
-
-#page-content h6:before,
-h6.md-focus.md-heading:before {
-  counter-increment: h6;
-  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " "
 }
 
 #page-content h1 {
@@ -3016,11 +3000,13 @@ h6 {
 }
 
 #page-content ul {
-  list-style-position: inside;
+  margin-left: 1rem;
+  list-style-position: outside;
 }
 
 #page-content ol {
-  list-style-position: inside;
+  margin-left: 1rem;
+  list-style-position: outside;
 }
 
 #page-content ul {
@@ -3039,10 +3025,10 @@ li>ol {
 #page-content blockquote {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
-  border-inline-start-width: 2px;
+  border-inline-start-width: 4px;
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
-  padding: 0.25rem;
+  padding: 0.125rem;
   font-style: italic;
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
